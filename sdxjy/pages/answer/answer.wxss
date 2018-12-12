@@ -1,0 +1,134 @@
+/* pages/answer/answer.wxss */
+.common{
+  background: #fff;
+}
+.top-head{
+  width: 659rpx;
+  height: 71rpx;
+  background-color: #f6f6f6;
+	border-radius: 8rpx;
+  margin: 0 auto;
+}
+.top-search{
+  flex-grow: 1;
+}
+.top-search image{
+  width: 30rpx;
+  height: 30rpx;
+  margin: 0 17rpx 0 16rpx;
+}
+.top-search input{
+  text-align: left;
+  flex-grow: 1;
+}
+.top-head .right{
+  width: 173rpx;
+  justify-content: flex-start;
+  height: 44rpx;
+  border-left: 2rpx solid #cccccc;
+}
+.top-head .right image{
+  width: 32rpx;
+  height: 32rpx;
+  margin: 0 21rpx 0 25rpx;
+}
+.top-head .right .name{
+  font-size: 30rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #666666
+}
+
+.top-btn{
+  padding: 53rpx 0 29rpx 0;
+}
+.btn-item{
+  flex-grow: 1;
+}
+.top-item{
+  width: 110rpx;
+  height: 110rpx;
+  display: flex;
+  border-radius: 50%;
+  align-items: center;
+  background: #54A8FF;
+  margin: 0 auto;
+}
+.top-item.bg2{
+  background: #FF8E54
+}
+.top-item.bg3{
+  background: #59CB70
+}
+.top-item.bg4{
+  background: #FF6A6A
+}
+.top-item image{
+  width: 56rpx;
+  height: 53rpx;
+  display: block;
+  margin: 0 auto;
+}
+.btn-item .btnName{
+  text-align: center;
+  font-size: 26rpx;
+  line-height: 37rpx;
+  margin-top:14rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #333333;
+}
+.top-scroll{
+  padding-left: 44rpx;
+  margin-bottom:12rpx;
+}
+.scroll-item{
+  padding-right: 138rpx;
+}
+
+.answer-con{
+  padding: 28rpx;
+  border-top:4rpx solid #f3f3f3;
+}
+.answer-con .title{
+  line-height: 45rpx;
+  width: 694rpx;
+  font-size: 32rpx;
+	font-weight: bold;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #333333;
+}
+.answer-con .answer-content{
+  font-size: 30rpx;
+  line-height: 40rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #555555;
+  margin-top: 14rpx;
+}
+.answer-bot{
+  justify-content: flex-start;
+  margin-top: 32rpx;
+}
+.answer-bot .nums{
+  margin-right: 14rpx;
+  font-size: 28rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #333333;
+}
+.answer-bot .gz{
+  margin-left: 65rpx;
+}
+.answer-bot .bot-name{
+  font-size: 28rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #999999;
+}

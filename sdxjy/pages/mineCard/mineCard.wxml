@@ -1,0 +1,30 @@
+<!--pages/mineCard/mineCard.wxml-->
+<import src="/pages/template/loadBox/loadBox.wxml"/>
+
+<template wx:if='{{loadBox}}' is="loadBox" />
+
+<view hidden='{{loadBox}}' class='mineCard common'>
+    <view class='center'>
+          <view class='head left flex'>
+              <view class='name'>头像</view>
+              <image src='{{mineData.wxPicurl}}'></image>
+          </view>
+
+          <view class='card-list left'>
+              <view class='title'>姓名</view>
+              <input placeholder-class='placeholder' placeholder='请输入您的姓名' class='card-val' bindinput='setCustomerName' value='{{customerName}}'></input>
+          </view>
+
+           <view class='card-list left'>
+              <view class='title'>电话</view>
+              <input type='Number' placeholder-class='placeholder' placeholder='请输入您的电话' bindinput='setPhone' class='card-val' value='{{phone}}'></input>
+          </view>
+
+           <view class='card-list left'>
+              <view class='title'>联系地址</view>
+              <input placeholder-class='placeholder' placeholder='请输入您的联系地址' class='card-val' bindinput='setAddress' value='{{address}}'></input>
+          </view>
+    </view>
+
+    <button class='save' bindtap='saveMineMess'>保存</button>
+</view>

@@ -1,0 +1,187 @@
+<!--pages/mineAppointment/mineAppointment.wxml-->
+<view class='mineAppointment common'>
+     <view class='top-head flex'>
+        <view bindtap='setCurrent' data-index='0' class='{{current == "0"?"tab-btnname active":"tab-btnname"}}'>进行中</view>
+        <view bindtap='setCurrent' data-index='1' class='{{current == "1"?"tab-btnname active":"tab-btnname"}}'>待评价</view>
+         <view bindtap='setCurrent' data-index='2' class='{{current == "2"?"tab-btnname active":"tab-btnname"}}'>已完成</view>
+      </view>
+
+      <swiper current='{{current}}' bindchange='current' style='height:calc(100% - 70rpx)'>
+            <swiper-item>
+                 <view class='center'>
+                      <view class='list'>
+                          <view class='top-center flex'>
+                              <view class='left'>
+                                  <image src='/image/person.png'></image>
+                                  <view class='tip'>2星专家</view>
+                              </view>
+                              <view class='content'>
+                                  <view class='name'>谢敏</view>
+                                  <view class='desc overflow2'>教育与职业顾问规划师</view>
+                                  <view class='type'>预约类型：<text>电话聊</text></view>
+                              </view>
+                          </view>
+
+                          <view class='bot-con flex'>
+                              <view class='btn pay'>去支付￥58</view>
+                          </view>
+                      </view>
+
+                       <view class='list'>
+                          <view class='top-center flex'>
+                              <view class='left'>
+                                  <image src='/image/person.png'></image>
+                                  <view class='tip'>2星专家</view>
+                              </view>
+                              <view class='content'>
+                                  <view class='name'>谢敏</view>
+                                  <view class='desc overflow2'>教育与职业顾问规划师</view>
+                                  <view class='type'>预约类型：<text class='video'>视频聊</text></view>
+                              </view>
+                          </view>
+
+                          <view class='bot-con flex'>
+                              <view class='btn pay'>已沟通</view>
+                          </view>
+                      </view>
+
+                       <view class='list'>
+                          <view class='top-center flex'>
+                              <view class='left'>
+                                  <image src='/image/person.png'></image>
+                                  <view class='tip'>2星专家</view>
+                              </view>
+                              <view class='content'>
+                                  <view class='name'>谢敏</view>
+                                  <view class='desc overflow2'>教育与职业顾问规划师</view>
+                                  <view class='type'>预约类型：<text class='see'>见面聊</text></view>
+                              </view>
+                          </view>
+
+                          <view class='bot-con flex'>
+                              <view class='btn pay'>已见面</view>
+                          </view>
+                      </view>
+                 </view>
+            </swiper-item>
+
+             <swiper-item>
+                 <view class='center'>
+                      <view class='list'>
+                          <view class='top-center flex'>
+                              <view class='left'>
+                                  <image src='/image/person.png'></image>
+                                  <view class='tip'>2星专家</view>
+                              </view>
+                              <view class='content'>
+                                  <view class='name'>谢敏</view>
+                                  <view class='desc overflow2'>教育与职业顾问规划师</view>
+                                  <view class='type'>预约类型：<text>电话聊</text></view>
+                                  <view class='time'>预约时间：<text>2018-09-12</text></view>
+                              </view>
+                          </view>
+
+                          <view class='bot-con flex'>
+                              <view class='btn pay'>去评价</view>
+                          </view>
+                      </view>
+
+                       <view class='list'>
+                          <view class='top-center flex'>
+                              <view class='left'>
+                                  <image src='/image/person.png'></image>
+                                  <view class='tip'>2星专家</view>
+                              </view>
+                              <view class='content'>
+                                  <view class='name'>谢敏</view>
+                                  <view class='desc overflow2'>教育与职业顾问规划师</view>
+                                  <view class='type'>预约类型：<text class='video'>视频聊</text></view>
+                              </view>
+                          </view>
+
+                          <view class='bot-con flex'>
+                              <view class='btn pay'>去评价</view>
+                          </view>
+                      </view>
+
+                       <view class='list'>
+                          <view class='top-center flex'>
+                              <view class='left'>
+                                  <image src='/image/person.png'></image>
+                                  <view class='tip'>2星专家</view>
+                              </view>
+                              <view class='content'>
+                                  <view class='name'>谢敏</view>
+                                  <view class='desc overflow2'>教育与职业顾问规划师</view>
+                                  <view class='type'>预约类型：<text class='see'>见面聊</text></view>
+                              </view>
+                          </view>
+
+                          <view class='bot-con flex'>
+                              <view class='btn pay'>去评价</view>
+                          </view>
+                      </view>
+                 </view>
+            </swiper-item>
+
+             <swiper-item>
+                 <view class='center'>
+                      <view class='list'>
+                          <view class='top-center flex'>
+                              <view class='left'>
+                                  <image src='/image/person.png'></image>
+                                  <view class='tip'>2星专家</view>
+                              </view>
+                              <view class='content'>
+                                  <view class='name'>谢敏</view>
+                                  <view class='desc overflow2'>教育与职业顾问规划师</view>
+                                  <view class='type'>预约类型：<text>电话聊</text></view>
+                              </view>
+                          </view>
+
+                          <view class='bot-con flex'>
+                              <view class='btn pay'>已完成</view>
+                          </view>
+                      </view>
+
+                       <view class='list'>
+                          <view class='top-center flex'>
+                              <view class='left'>
+                                  <image src='/image/person.png'></image>
+                                  <view class='tip'>2星专家</view>
+                              </view>
+                              <view class='content'>
+                                  <view class='name'>谢敏</view>
+                                  <view class='desc overflow2'>教育与职业顾问规划师</view>
+                                  <view class='type'>预约类型：<text class='video'>视频聊</text></view>
+                              </view>
+                          </view>
+
+                          <view class='bot-con flex'>
+                              <view class='btn pay'>已完成</view>
+                          </view>
+                      </view>
+
+                       <view class='list'>
+                          <view class='top-center flex'>
+                              <view class='left'>
+                                  <image src='/image/person.png'></image>
+                                  <view class='tip'>2星专家</view>
+                              </view>
+                              <view class='content'>
+                                  <view class='name'>谢敏</view>
+                                  <view class='desc overflow2'>教育与职业顾问规划师</view>
+                                  <view class='type'>预约类型：<text class='see'>见面聊</text></view>
+                              </view>
+                          </view>
+
+                          <view class='bot-con flex'>
+                              <view class='btn pay'>已完成</view>
+                          </view>
+                      </view>
+                 </view>
+            </swiper-item>
+      </swiper>
+     
+     
+</view>

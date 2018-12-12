@@ -1,0 +1,3 @@
+<template name="ceng" >
+    <view class='bgceng' bindtap='close'></view>
+</template>

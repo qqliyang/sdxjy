@@ -1,0 +1,13 @@
+<!--pages/aboutPhoneChat/aboutPhoneChat.wxml-->
+<view class='aboutPhoneChat common'>
+    <view class='center'>
+        <view class='title'>关于电话沟通</view>
+        <view class='content'>用户提问需要先支付费用，咨询师接受提问后，会主动与您联系。咨询师超过48小时未确认将全额退款。文案待确认。
+</view>
+        <view class='title'>关于退款</view>
+        <view class='content'>此界面文案待定此界面文案待定此界面文案待定，咨询师接受提问后，会主动与您联系。咨询师超过48小时未确认将全额退款。文案待确认。
+
+        </view>
+        <button>我知道了</button>
+    </view>
+</view>

@@ -1,0 +1,69 @@
+<!--pages/search/search.wxml-->
+<import src="/pages/template/loading/loading.wxml"/>
+<import src="/pages/template/empty/empty.wxml"/>
+<view class='search common'>
+    <view class='top-head flex'>
+        <view class='left flex'>
+            <image src='/image/search2.png'></image>
+            <input value='{{contentDesc}}' placeholder-class='placeholder' bindconfirm='startSearch' bindinput='setInput'  placeholder='2019高考指南'></input>
+            <image class='delete' bindtap='deleteInput' src='/image/delete.png'></image>
+        </view>
+        <view bindtap='cancle' class='cancle'>取消</view>
+    </view>
+
+    <view class='top-box' wx:if='{{!isResult}}'>
+        <view  class='item-con'>
+            <view class='total'>大家都在搜</view>
+            <view class='result-con'>
+                <view class='search-result overflow1'>2019高考指南</view>
+                <view class='search-result overflow1'>新高考改革新高考改革新高考改革新高考改革新高考改革新高考改革新高考改革</view>
+                <view class='search-result overflow1'>学渣如何变学霸</view>
+                <view class='search-result overflow1'>权威媒体聊升学</view>
+            </view>
+        </view>
+        <view  class='item-con'>
+            <view class='top-item flex'>
+                <view class='total'>历史搜索</view>
+                <image class='delete' src='/image/delete2.png'></image>
+            </view>
+            <view class='result-con'>
+                <view class='search-result overflow1'>2019高考指南</view>
+                <view class='search-result overflow1'>新高考改革新高考改革新高考改革新高考改革新高考改革新高考改革新高考改革</view>
+                <view class='search-result overflow1'>学渣如何变学霸</view>
+                <view class='search-result overflow1'>权威媒体聊升学</view>
+            </view>
+        </view>
+    </view>
+
+    <!--搜索的文章-->
+     <view class='bot-scroll' wx:if='{{isResult}}'>   
+          <view wx:for='{{articleList}}' data-id='{{item.contentId}}' bindtap='seeDetails' class='bot-scroll-con flex'>
+              <view class='left'>
+                  <image src='{{item.cover}}'></image>
+                  <view class='tag'>{{item.contentType}}</view>
+              </view>
+              <view class='right'>
+                  <view class='title overflow2'>
+                    <searchHighlightTextView 
+                      class="result-item" 
+                      data='{{item}}'
+                      >
+                      </searchHighlightTextView>
+                  </view>
+                  <view class='right-conta flex'>
+                      <view class='conta-left overflow1'>{{item.author}}</view>
+                      <view class='conta-right flex'>
+                          <image src='/image/see.png'></image>
+                          <view class='nums'>{{item.viewCount}}</view>
+                          <image class='second' src='/image/pl.png'></image>
+                          <view class='nums'>{{item.commentCount}}</view>
+                      </view>
+                  </view>
+              </view>
+          </view>
+      </view>
+
+      <template wx:if='{{isLoad}}' is="loading" />
+      <view class='noMoreData' wx:if='{{noMore}}'>没有更多的了--!</view>
+      <template is="empty" wx:if='{{totalRow == 0}}' data="{{msg}}"/>
+</view>

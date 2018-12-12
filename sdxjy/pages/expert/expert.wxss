@@ -1,0 +1,23 @@
+/* pages/expert/expert.wxss */
+.common{
+  padding: 0 30rpx 35rpx;
+  background: #fff;
+}
+.title{
+  text-align: left;
+  font-size: 30rpx;
+  line-height: 42rpx;
+	font-weight: bold;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #333333;
+  padding: 20rpx 0 35rpx 0;
+}
+.content{
+  font-size: 32rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #333333;
+  text-indent: 64rpx;
+}

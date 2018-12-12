@@ -1,0 +1,11 @@
+<!--pages/authority/authority.wxml-->
+<view class='authority common'>
+    <view class='authorize-con'>
+
+        <view class='desc'>为了内容的正常显示</view>
+        <view class='desc'>该页面需要获取您的昵称等公开信息</view>
+        <button wx:if="{{canIUse}}"  open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo"
+>授权头像和昵称</button>
+        <view wx:else>请升级微信版本</view>
+    </view>
+</view>

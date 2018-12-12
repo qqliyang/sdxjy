@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "searchHighlightTextView": "/pages/component/searchHighlightTextView/searchHighlightTextView"
+  },
+  "navigationBarTitleText": "机构帮",
+  "enablePullDownRefresh": false
+}

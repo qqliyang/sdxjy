@@ -1,0 +1,17 @@
+<!--pages/beingEvaluated/beingEvaluated.wxml-->
+<view class='beingEvaluated common'>
+    <view class='top-con'>
+        <view class='title'>我来评价</view>
+        <view class='star-con flex'>
+            <image src='/image/star2.png'></image>
+            <image src='/image/star2.png'></image>
+            <image src='/image/star2.png'></image>
+            <image src='/image/star2.png'></image>
+            <image src='/image/star2.png'></image>
+        </view>
+        <view class='desc'>点击星星给老师打分</view>
+
+        <textarea placeholder-class='placeholder' placeholder='请对老师的服务做出评价…'></textarea>
+    </view>
+    <button class='commit'>发表评论</button>
+</view>

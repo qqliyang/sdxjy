@@ -1,0 +1,53 @@
+/* pages/beingEvaluated/beingEvaluated.wxss */
+page{
+  background: #fff;
+}
+.top-con{
+  background: #fff;
+  overflow: hidden;
+}
+.title{
+  font-size: 34rpx;
+  line-height: 40rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #000000;
+  margin: 80rpx 0 50rpx;
+  text-align: center;
+}
+.star-con{
+  justify-content: center;
+}
+.star-con image{
+  width: 34rpx;
+  height: 32rpx;
+  margin-right: 39rpx;
+}
+.star-con image:last-child{
+  margin: 0;
+}
+.desc{
+  text-align: center;
+  font-size: 24rpx;
+  line-height: 40rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #ffb800;
+  margin: 50rpx 0 60rpx 0;
+}
+
+textarea{
+  width: 680rpx;
+  height: 412rpx;
+  padding: 17rpx 24rpx;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+	border-radius: 4rpx;
+  margin: 0 auto;
+}
+.commit{
+  width: 671rpx;
+  margin-top: 65rpx;
+}

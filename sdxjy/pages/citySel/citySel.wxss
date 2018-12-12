@@ -1,0 +1,4 @@
+/* pages/citySel/citySel.wxss */
+page{
+  background: #fff;
+}

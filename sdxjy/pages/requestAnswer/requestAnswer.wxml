@@ -1,0 +1,50 @@
+<!--pages/requestAnswer/requestAnswer.wxml-->
+<import src="/pages/template/loading/loading.wxml"/>
+<import src="/pages/template/empty/empty.wxml"/>
+<import src="/pages/template/loadBox/loadBox.wxml"/>
+<template wx:if='{{loadBox}}' is="loadBox" />
+
+
+<view class='requestAnswer common'>
+
+    <view class='top-head flex'>
+        <view bindtap='setCurrent' data-index='0' class='{{current == "0"?"tab-btnname active":"tab-btnname"}}'>免费老师</view>
+        <view bindtap='setCurrent' data-index='1' class='{{current == "1"?"tab-btnname active":"tab-btnname"}}'>付费老师</view>
+    </view>
+
+    <swiper bindchange='current' current='{{current}}' style='height:calc(100% - 70rpx)'>
+        <swiper-item wx:for='{{2}}'>
+            <scroll-view scroll-y bindscrolltolower='lower'>
+                 <view class='answer-con' wx:for='{{teacherData}}'>
+                     <view class='answer-teacher flex'>
+                          <view class='teacher-left'>
+                              <image class='headimg' id='{{item.customerId}}' bindtap='seePersonPage' src='{{item.workPicurl}}'></image>
+                               <image data-index='{{index}}' data-id='{{item.customerId}}' catchtap='Follow' data-isfollow='{{item.myFollow}}' class='guanzhu' src='{{item.myFollow == "true" ?"/image/guanzhu2.png" : "/image/guanzhu1.png"}}'></image>
+                              <view class='nums'>{{item.followCount}}</view>
+                          </view>
+                          <view class='right' id='{{item.customerId}}' bindtap='seePersonPage'>
+                              <view class='top flex'>
+                                  <view class='name'>{{item.customerName}}</view>
+                                  <view class='tip'>{{item.customerLevel}}星专家</view>
+                              </view>
+                               <view class='desc overflow2'>{{item.job}}</view>
+                              <view class='content'>擅长：{{item.speciality}}</view>
+                          </view>
+                      </view>
+
+                     <view class='answer-bot'>
+                          <view bindtap='payInvite' data-index='{{index}}' data-id='{{item.customerId}}' data-invite='{{item.myInvite}}' class='{{item.myInvite==0?"btn opacity":"btn opacity has"}}'>{{item.myInvite == 0?item.inviteName:"已邀请"}}</view>
+                     </view>
+                 </view>
+
+                 <template wx:if='{{isLoad}}' is="loading" />
+                 <view class='noMoreData' wx:if='{{noMore}}'>没有更多的了--!</view>
+                
+                 <template is="empty" wx:if='{{totalRow == 0}}' data="{{msg}}"/>
+
+            </scroll-view>
+        </swiper-item>
+
+    </swiper>
+
+</view>

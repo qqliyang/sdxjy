@@ -1,0 +1,83 @@
+/* pages/higherLearning/higherLearning.wxss */
+.placeholder{
+  font-size: 30rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #cccccc;
+}
+textarea{
+  padding: 28rpx 30rpx;
+  height: 300rpx;
+  box-sizing: border-box;
+  width: 100%;
+  /* border-top:2rpx solid #f3f3f3; */
+  border-bottom:2rpx solid #f3f3f3;
+  font-size: 30rpx;
+  background: #fff;
+}
+.bot-con{
+  background: #fff;
+}
+.nums{
+  text-align: right;
+  padding:20rpx 45rpx 20rpx 0;
+  font-size: 26rpx;
+  line-height: 37rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #999999;
+}
+.upload-name{
+  line-height: 38rpx;
+  font-size: 30rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #666666;
+  margin-top:35rpx;
+  padding-left: 25rpx;
+}
+.upload-con{
+  padding: 37rpx;
+  min-height: 400rpx;
+}
+.upload-con image{
+  width: 104rpx;
+  height: 104rpx;
+}
+
+.submit{
+  width: 671rpx;
+  height: 84rpx;
+  margin: 51rpx auto 30rpx;
+}
+.bot-tip{
+  justify-content: center;
+}
+.bot-tip image{
+  width: 21rpx;
+  height: 25rpx;
+  margin-right: 8rpx;
+}
+.bot-tip .tip{
+  font-size: 24rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #bbbbbb;
+}
+.imgCon{
+  position: relative;
+  display: inline-block;
+  margin-right: 30rpx;
+  margin-bottom: 30rpx;
+}
+.imgCon image.delete{
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  right: -12rpx;
+  top:-12rpx;
+}

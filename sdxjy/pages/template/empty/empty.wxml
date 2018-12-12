@@ -1,0 +1,6 @@
+<template name="empty" >
+    <view class='empty-box'>
+          <image src='/image/empty.png'></image>
+          <view class='emptyName'>{{msg}}</view>
+    </view>
+</template>

@@ -1,0 +1,155 @@
+/* pages/higherLearning/higherLearning.wxss */
+.common{
+  padding-bottom: 100rpx;
+}
+.placeholder{
+  font-size: 30rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #cccccc;
+}
+textarea{
+  padding: 28rpx 30rpx;
+  height: 300rpx;
+  box-sizing: border-box;
+  width: 100%;
+  /* border-top:2rpx solid #f3f3f3; */
+  border-bottom:2rpx solid #f3f3f3;
+  font-size: 30rpx;
+  background: #fff;
+}
+
+.bot-con{
+  background: #fff;
+}
+.nums{
+  text-align: right;
+  padding:20rpx 45rpx 20rpx 0;
+  font-size: 26rpx;
+  line-height: 37rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #999999;
+}
+.upload-name{
+  line-height: 38rpx;
+  font-size: 30rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #666666;
+  margin-top:35rpx;
+  padding-left: 25rpx;
+}
+.upload-con{
+  padding: 37rpx;
+  min-height: 400rpx;
+}
+.upload-con image{
+  width: 104rpx;
+  height: 104rpx;
+}
+
+.telphone-person{
+  background: #fff;
+  margin-top: 12rpx;
+  padding-top: 33rpx;
+  padding-bottom: 38rpx;
+}
+.top-con{
+  padding: 0 30rpx 0rpx 25rpx;
+}
+.top-con .left{
+  justify-content: flex-start;
+}
+.top-con image{
+  width: 31rpx;
+  height: 29rpx;
+}
+.top-con .left image{
+  width: 30rpx;
+  height: 23rpx;
+  margin-right: 17rpx;
+}
+.center-con{
+  justify-content: center;
+  align-items: flex-start;
+  margin: 50rpx 0 0rpx 0;
+}
+.center-right{
+  width: 400rpx;
+  padding-top: 7rpx;
+}
+.center-con image{
+  width: 138rpx;
+  height: 138rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 55rpx;
+}
+.center-con .name{
+  font-size: 32rpx;
+  line-height: 37rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #333333;
+}
+.center-con .phone{
+  font-size: 26rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #555555;
+  line-height: 37rpx;
+  margin: 9rpx 0 4rpx 0;
+}
+.center-con .address{
+  font-size: 26rpx;
+  line-height: 37rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #555555;
+}
+.submit{
+  width: 671rpx;
+  height: 84rpx;
+  margin: 51rpx auto 30rpx;
+  background: #ff775f;
+}
+.bot-tip{
+  justify-content: center;
+}
+.bot-tip image{
+  width: 21rpx;
+  height: 25rpx;
+  margin-right: 8rpx;
+}
+.tip{
+  font-size: 24rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #bbbbbb;
+  text-align: center;
+}
+.about{
+  margin-top: 18rpx;
+  text-decoration:underline;
+}
+.imgCon{
+  position: relative;
+  display: inline-block;
+  margin-right: 30rpx;
+  margin-bottom: 30rpx;
+}
+.imgCon image.delete{
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  right: -12rpx;
+  top:-12rpx;
+}

@@ -1,0 +1,74 @@
+<!--pages/answer/answer.wxml-->
+<import src="/pages/template/loading/loading.wxml"/>
+<view class='answer common'>
+    <view class='top-head flex'>
+        <view class='top-search flex'>
+            <image src='/image/search.png'></image>
+            <input placeholder-class='placeholder' placeholder='请搜索您感兴趣的内容'></input>
+        </view>
+        <view class='right flex opacity' bindtap='ask'>
+            <image src='/image/edit.png'></image>
+            <view class='name'>提问</view>
+        </view>
+    </view>
+
+    <view class='top-btn flex'>
+        <view class='btn-item opacity'>
+            <view class='top-item'>
+                <image src='/image/answer1.png'></image>
+            </view>
+            <view class='btnName'>自主招生</view>
+        </view>
+
+         <view class='btn-item opacity'>
+            <view class='top-item bg2'>
+                <image src='/image/answer1.png'></image>
+            </view>
+            <view class='btnName'>志愿填报</view>
+        </view>
+
+         <view class='btn-item opacity'>
+            <view class='top-item bg3'>
+                <image src='/image/answer1.png'></image>
+            </view>
+            <view class='btnName'>港澳院校</view>
+        </view>
+
+         <view class='btn-item opacity'>
+            <view class='top-item bg4'>
+                <image src='/image/answer1.png'></image>
+            </view>
+            <view class='btnName'>公开课</view>
+        </view>
+        
+    </view>
+
+      <!--滑动区域--> 
+      <scroll-view class='{{scroll?"top-scroll active":"top-scroll"}}' scroll-x>
+          <view bindtap='setSelIndex' data-index='{{index}}' class='scroll-item' wx:for='{{scrollData}}'>
+              <view class='{{selindex == index?"scroll-name active":"scroll-name"}}'>{{item}}</view>
+              <view  class='bot-line' wx:if='{{selindex == index}}'></view>
+          </view>
+      </scroll-view>
+
+      <view class='answer-con' wx:for='{{answerList}}' bindtap='seeDetails' data-id='{{item.questionId}}'>
+          <view class='anwer-list'>
+              <view class='title overflow2'>{{item.title}}</view>
+              <view class='answer-content  overflow3'>{{item.describe}}</view>
+              <view class='answer-bot flex'>
+                  <view class='answer flex'>
+                      <view class='nums'>{{item.answerCount}}</view>
+                      <view class='bot-name'>回答</view>
+                  </view>
+                  <view class='gz flex'>
+                       <view class='nums'>{{item.followCount}}</view>
+                       <view class='bot-name'>关注</view>
+                  </view>
+              </view>
+          </view>
+      </view>
+
+      <template wx:if='{{isLoad}}' is="loading" />
+      <view class='noMoreData' wx:if='{{noMore}}'>没有更多的了--!</view>
+      
+</view>

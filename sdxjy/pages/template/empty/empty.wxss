@@ -1,0 +1,15 @@
+.empty-box{
+  padding: 100rpx 0;
+  background: #fff;
+}
+.empty-box image{
+  display: block;
+  width: 300rpx;
+  height: 200rpx;
+  margin: 0 auto;
+}
+.empty-box .emptyName{
+  text-align: center;
+  margin-top: 10rpx;
+  color:#737373;
+}

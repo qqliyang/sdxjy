@@ -1,0 +1,4 @@
+<!--pages/citySel/citySel.wxml-->
+<view  class='wrapper' style='padding-top:{{topHeight}}'> 
+  <list-html data="{{city}}" binddetail="bindtap" search="{{value}}"></list-html>
+</view>

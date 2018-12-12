@@ -1,0 +1,5 @@
+<template name="loadBox" >
+    <view class='loadBox flex'>
+          <image src='/image/loading.gif'></image>
+    </view>
+</template>

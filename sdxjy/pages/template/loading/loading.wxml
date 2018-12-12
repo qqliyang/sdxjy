@@ -1,0 +1,6 @@
+<template name="loading" >
+    <view class='loading-box flex'>
+          <image src='/image/loading.gif'></image>
+          <view class='loadingName'>正在加载</view>
+    </view>
+</template>

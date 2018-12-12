@@ -1,0 +1,15 @@
+<!--pages/ask/ask.wxml-->
+<view class='ask common'>
+    <view class='top-con'>
+        <input bindinput='setTitle' value='{{title}}' placeholder-class='placeholder' placeholder='请输入问题标题'></input>
+        <textarea bindinput='setTextarea' value='{{textareaVal}}' placeholder-class='placeholder' placeholder='请详细描述您的问题，以便专家更好的解答'></textarea>
+         <view class='upload-con'>
+            <view class='imgCon' hidden='{{noImgUrl == item}}' wx:for='{{pics}}' data-index='{{index}}' bindtap='previewImg' >
+                <image src='selImg' src='{{item}}'></image>
+                <image class='delete' data-index='{{index}}' catchtap='deleteImg' src='/image/delete.png'></image>
+            </view>
+            <image src='/image/add.png' bindtap='choose'></image>
+        </view>
+    </view>
+    <button class='submit' bindtap='commitQuestion'>提交问题</button>
+</view>

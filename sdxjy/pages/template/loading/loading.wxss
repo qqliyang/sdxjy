@@ -1,0 +1,13 @@
+.loading-box.flex{
+  justify-content: center;
+  padding: 10rpx 0;
+}
+.loading-box image{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 20rpx;
+}
+.loading-box .loadingName{
+  font-size: 24rpx;
+  color:#737373;
+}

@@ -1,0 +1,78 @@
+/* pages/search/search.wxss */
+.search{
+  background: #fff;
+  position: absolute;
+  width: 100%;
+  min-height: 100%;
+}
+.top-head{
+  width: 100%;
+  margin: 20rpx 0;
+  padding-left: 35rpx;
+}
+.top-head .left{
+  width: 572rpx;
+  height: 64rpx;
+  border-radius: 64rpx;
+  background: #f8f8f8;
+  padding-left: 34rpx;
+}
+.top-head .left input{
+  flex-grow: 1;
+  padding-left: 20rpx;
+}
+.top-head .left image{
+  width: 28rpx;
+  height: 27rpx;
+}
+.top-head .left image.delete{
+  width: 28rpx;
+  height: 29rpx;
+  padding: 16.5rpx 20rpx;
+}
+.cancle{
+  width: 143rpx;
+  text-align: center;
+  font-size: 30rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #000000;
+}
+.total{
+  line-height: 40rpx;
+  font-size: 28rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #000000;
+  padding-left: 35rpx;
+}
+.result-con{
+  padding-left: 35rpx;
+}
+.search-result{
+  max-width: 700rpx;
+  padding: 0 28rpx;
+  height: 58rpx;
+  line-height: 58rpx;
+  font-size: 28rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #333333;
+  background-color: #f8f8f8;
+	border-radius: 35rpx;
+  display: inline-block;
+  margin-top: 34rpx;
+  margin-right: 32rpx;
+}
+.item-con{
+  margin-top: 44rpx;
+  margin-bottom: 5rpx;
+}
+.top-item image{
+  width: 29rpx;
+  height: 27rpx;
+  padding: 10rpx 48rpx;
+}

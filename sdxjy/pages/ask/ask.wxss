@@ -1,0 +1,51 @@
+/* pages/ask/ask.wxss */
+.top-con{
+  background: #fff;
+  overflow: hidden;
+  margin-top: 2rpx;
+}
+input{
+  width: 665rpx;
+  border-bottom: 2rpx solid #eeeeee;
+  margin: 20rpx auto 0;
+}
+input.placeholder{
+  color: #999999;
+  font-size: 34rpx;
+}
+textarea.placeholder{
+  color: #cccccc;
+  font-size: 30rpx;
+}
+textarea{
+  width: 665rpx;
+  margin: 12rpx auto 0;
+  padding-top: 20rpx;
+}
+.upload-con{
+  padding: 37rpx;
+  min-height: 400rpx;
+}
+.upload-con image{
+  width: 104rpx;
+  height: 104rpx;
+}
+
+.submit{
+  width: 671rpx;
+  height: 84rpx;
+  margin: 51rpx auto 30rpx;
+}
+.imgCon{
+  position: relative;
+  display: inline-block;
+  margin-right: 30rpx;
+  margin-bottom: 30rpx;
+}
+.imgCon image.delete{
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  right: -12rpx;
+  top:-12rpx;
+}

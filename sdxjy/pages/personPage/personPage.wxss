@@ -1,0 +1,572 @@
+/* pages/personPage/personPage.wxss */
+.common{
+  padding-bottom: 50rpx;
+}
+.top-head{
+  width: 100%;
+  height: 451rpx;
+  background: rgba(0,0,0,1);
+  position: relative;
+}
+.head-box{
+  position: absolute;
+  width: 100%;
+  z-index: 111;
+  bottom:20rpx;
+}
+.top-head image{
+  opacity: 0.5
+}
+.center-con{
+  position: relative;
+  z-index: 111;
+  background: #fff;
+}
+.head-con{
+  justify-content: flex-start;
+}
+.head-con .headimg{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+}
+.headname{
+  margin-right: 16rpx;
+  padding-left: 46rpx;
+  font-size: 34rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #ffffff;
+}
+.headtip{
+  padding: 0 12rpx;
+	height: 33rpx;
+  line-height: 33rpx;
+  text-align: center;
+	background-image: linear-gradient(90deg, 
+		#8ab2ff 0%, 
+		#5fcaff 100%);
+	border-radius: 4rpx;
+  font-size: 22rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #ffffff;
+}
+
+.head-score{
+  justify-content: center;
+  padding-top: 16rpx;
+}
+.star-con{
+  justify-content: center;
+  margin-bottom: 18rpx;
+}
+.star-con image{
+  width: 24rpx;
+  height: 23rpx;
+  margin-right: 16rpx;
+}
+.star-con image:last-child{
+  margin-right: 0;
+}
+.score-right{
+  text-align: left;
+  padding-left: 42rpx;
+}
+.star-desc{
+  font-size: 22rpx;
+  line-height: 30rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #bbbbbb;
+}
+.score-right .tip{
+  font-size: 30rpx;
+  line-height: 42rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #ffffff;
+  margin-bottom: 15rpx;
+  width: 700rpx;
+}
+.score-right .location{
+  line-height: 33rpx;
+	font-size: 24rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #ffffff;
+}
+.location text{
+  padding: 0 10rpx;
+  color:#ff775f;
+}
+.location image{
+  width: 16rpx;
+  height: 19rpx;
+}
+.head-item{
+  padding: 40rpx 0 40rpx 0;
+  background: #fff;
+  border-bottom: 14rpx solid #f3f3f3;
+}
+.head-item .item-name{
+  flex-grow: 1;
+  line-height: 33rpx;
+  font-size: 30rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #555555;
+  border-right: 2rpx solid #dddddd;
+  text-align: center;
+}
+.item-name text{
+  font-size: 36rpx;
+  margin-right: 5rpx;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #555555;
+  font-weight: bold;
+}
+.head-item .item-name:last-child{
+  border-right: none;
+}
+scroll-view{
+  white-space: nowrap;
+  background: #fff;
+}
+scroll-view.active{
+  position: fixed;
+  top:0rpx;
+  z-index: 111;
+  background: #fff;
+}
+
+scroll-view{
+  white-space: nowrap;
+}
+.tab-con{
+  display: inline-block;
+  padding: 25rpx 46rpx 0rpx;
+  text-align: center;
+  height: 80rpx; 
+  position: relative;
+  width: 25%;
+}
+.tab-name{
+  font-size: 30rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #333333;
+}
+.tab-name.active{
+  color: #ffb800;
+}
+.bot-line{
+  border-color: #ffb800;
+}
+
+.content-con{
+  padding: 34rpx 25rpx;
+  background: #fff;
+}
+.product{
+  font-size: 30rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	line-height: 47rpx;
+	letter-spacing: 0px;
+	color: #666666;
+}
+.rightImg{
+  width: 18rpx;
+  height: 22rpx;
+  margin-right: 30rpx;
+}
+
+.type-list-name{
+  font-size: 30rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #333333;
+  height: 105rpx;
+  line-height: 105rpx;
+  padding-left: 32rpx;
+}
+.type-list-name.left{
+  padding-left: 35rpx;
+  font-size: 30rpx;
+	font-weight: bold;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #333333;
+}
+.type-list-con{
+  border-top:2rpx solid #eeeeee;
+}
+.type-list-con:last-child{
+  border-bottom:2rpx solid #eeeeee;
+}
+
+.pl-title{
+  font-size: 30rpx;
+	font-weight: bold;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #333333;
+  padding-left: 35rpx;
+  margin: 40rpx 0 20rpx;
+}
+.pl-con{
+  padding: 27rpx 28rpx 31rpx 35rpx;
+  border-bottom: 2rpx solid #eeeeee;
+  align-items: flex-start;
+}
+.pl-con:last-child{
+  border-bottom: none
+}
+.pl-con .leftimg{
+  width: 44rpx;
+  height: 44rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.pl-con .center{
+  flex-grow: 1;
+  padding-left: 25rpx;
+  padding-top: 8rpx;
+}
+.top .name{
+  font-size: 26rpx;
+  line-height: 37rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #999999;
+}
+.top .time{
+  padding-right: 23rpx;
+  font-size: 26rpx;
+  line-height: 37rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #999999;
+}
+.content{
+  font-size: 26rpx;
+  line-height: 40rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #333333;
+  width: 100%;
+  margin-top: 28rpx;
+}
+.center .content.right{
+  text-align: right;
+  font-size: 24rpx;
+  margin: 0;
+  color: #666666;
+}
+.see-more{
+  font-size: 22rpx;
+  line-height: 30rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #bbbbbb;
+  text-align: center;
+  padding: 29rpx 0;
+}
+
+.share-btn{
+  position: fixed;
+  bottom:0;
+  width: 100%;
+  height: 100rpx;
+  background: #fff;
+  z-index: 111;
+}
+.share-btn image{
+  width: 27rpx;
+  height: 27rpx;
+}
+.share-btn .btn{
+  background: #fff;
+  width: 304rpx;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 30rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #555555;
+  border-top:2rpx solid #eeeeee;
+  border-radius: 0;
+}
+.share-btn .btn.flex{
+  justify-content: center;
+}
+.share-btn .btn image{
+  margin-right: 14rpx;
+}
+.share-btn .chat{
+  flex-grow: 1;
+  text-align: center;
+  background-color: rgba(255, 184, 0, 0.8);
+  height: 100%;
+  line-height: 100rpx;
+  font-size: 30rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #ffffff;
+}
+
+.type-list{
+  padding: 30rpx 33rpx 33rpx 30rpx;
+  border-bottom: 2rpx solid #eeeeee;
+}
+.type-list image{
+  width: 180rpx;
+  height: 140rpx;
+}
+.type-content{
+  width: 482rpx;
+}
+
+/*个人分享名片*/
+.person-share-con{
+  width: 656rpx;
+	height: 833rpx;
+	border-radius: 8rpx;
+  position: fixed;
+  z-index: 999999;
+  left: 50%;
+  top:50%;
+  margin-top: -416.5rpx;
+  margin-left: -328rpx;
+  overflow: hidden;
+}
+
+.top-person{
+  background: #fff;
+  padding-bottom: 71rpx;
+}
+.top-person .img-con{
+  height:336rpx;
+  background:rgba(174,174,176,1);
+  overflow: hidden;
+}
+.top-person .img-con image{
+  display: block;
+  margin: 21rpx auto 0;
+  width: 315rpx;
+  height: 315rpx;
+}
+.person-content{
+  padding: 29rpx 0 0rpx 42rpx;
+}
+.content-title{
+  justify-content: flex-start;
+}
+.content-title .name{
+  font-size: 32rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #333333;
+}
+.content-title .desc{
+  padding: 0 12rpx;
+	height: 33rpx;
+  line-height: 33rpx;
+	background-image: linear-gradient(90deg, 
+		#8ab2ff 0%, 
+		#5fcaff 100%);
+	border-radius: 4rpx;
+  font-size: 22rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #ffffff;
+  margin-left: 11rpx;
+}
+.person-content .tip{
+  font-size: 28rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #555555;
+  margin-top: 18rpx;
+  margin-bottom: 37rpx;
+  line-height: 40rpx;
+  width: 600rpx;
+}
+.like-con{
+  padding-right: 54rpx;
+}
+.like-con .left{
+  width: 385rpx;
+  height: 148rpx;
+  white-space: normal;
+  font-size: 26rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #777777;
+}
+.like-con .ewm{
+  width: 140rpx;
+  height: 140rpx;
+}
+.bot-person{
+  margin-top: 25rpx;
+}
+.bot-person .btn{
+  width: 314rpx;
+  height: 88rpx;
+  background: #ffb800;
+	border-radius: 8rpx;
+  text-align: center;
+  line-height: 88rpx;
+  font-size: 30rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #ffffff;
+}
+.bot-person .btn.btn-close{
+  background: #fff;
+  color: #333333;
+  margin: 0;
+}
+
+.chat-con{
+  position: fixed;
+  bottom:0rpx;
+  width: 100%;
+  background: #fff;
+  z-index: 99999;
+}
+.chat-list{
+  padding: 30rpx 20rpx 24rpx 46rpx;
+  border-bottom: 2rpx solid #eeeeee;
+}
+.chat-list .chat-left{
+  width: 550rpx;
+}
+.chat-name{
+  font-size: 32rpx;
+  line-height: 45rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #333333;
+}
+.chat-desc{
+  font-size: 26rpx;
+  line-height: 37rpx;
+  margin-top: 14rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #999999;
+}
+.chat-price{
+  font-size: 36rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #ff775f;
+  flex-grow: 1;
+  text-align: left
+}
+
+.center .list{
+  background: #fff;
+  padding: 0rpx 0rpx 10rpx;
+  margin-top: 12rpx;
+  border-bottom: 20rpx solid #f9f9f9;
+}
+.top-center{
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0 32rpx;
+  margin: 21rpx 0 35rpx 0;
+}
+.top-center .tip{
+  padding: 0 12rpx;
+  height: 34rpx;
+  text-align: center;
+  line-height: 34rpx;
+	background-color: #ffca41;
+	border-radius: 4rpx;
+  font-size: 22rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #ffffff;
+  margin-right: 11rpx;
+  position: relative;
+  top:4rpx;
+}
+.top-center .title{
+  width: 600rpx;
+  line-height: 40rpx;
+  font-size: 30rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #666666;
+}
+.center .content{
+  font-size: 32rpx;
+  line-height: 40rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #000000;
+  padding: 0 32rpx;
+  margin-bottom: 20rpx;
+}
+.bot-con{
+  width: 100%;
+  margin-top: 34rpx;
+  border-top:2rpx solid #f9f9f9;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-top: 10rpx!important;
+}
+.bot-con .btn{
+  text-align: center;
+	height: 56rpx;
+  background-color: #ff775f;
+	border-radius: 8rpx;
+  line-height: 56rpx;
+  padding: 0 15rpx;
+  margin-right: 56rpx;
+  font-size: 30rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #ffffff;
+}
+.bot-con .btn.has{
+  background-color: #eeeeee;
+  font-size: 30rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #999999;
+}

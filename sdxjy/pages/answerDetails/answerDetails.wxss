@@ -1,0 +1,151 @@
+/* pages/answerDetails/answerDetails.wxss */
+.common{
+  background: #fff;
+}
+scroll-view{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 111;
+}
+.totap-pl{
+  font-weight: bold;
+  margin-top: 30rpx;
+  margin-bottom: 10rpx;
+  padding-left: 30rpx;
+}
+.top-delete{
+  border-bottom: 2rpx solid #f3f3f3;
+  position: relative;
+}
+.top-delete image{
+  width: 55rpx;
+  height: 50rpx;
+  padding: 20rpx;
+}
+.top-tip{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: -1;
+}
+.pl-box scroll-view{
+  padding: 0 0rpx;
+}
+.pl-container{
+  padding: 0 30rpx;
+  align-items: flex-start;
+}
+.top-con{
+  padding: 20rpx 23rpx 30rpx 43rpx
+}
+.title{
+  font-size: 32rpx;
+	font-weight: bold;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #333333;
+  margin-bottom: 15rpx;
+}
+.content{
+  font-size: 30rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #555555;
+  width: 663rpx;
+}
+
+.answer-request{
+  border-top:2rpx solid #f3f3f3;  
+}
+.answer-request .request-item{
+  flex-grow: 1;
+  text-align: center;
+  justify-content: center;
+  height: 100rpx;
+}
+.center-line{
+  width: 2rpx;
+  height: 33rpx;
+  background: #ddd;
+}
+.request-item image{
+  width: 29rpx;
+  height: 29rpx;
+  margin-right: 17rpx;
+}
+.request-item.left image{
+  width: 26rpx;
+  height: 30rpx;
+}
+
+.answer-content{
+  height: 76rpx;
+  background-color: #f9f9f9;
+	opacity: 0.8;
+  margin-bottom: 15rpx;
+}
+.answer-content>view{
+  flex-grow: 1;
+  text-align: center;
+}
+.answer-sort{
+  justify-content: flex-end
+}
+.answer-sort image{
+  width: 26rpx;
+  height: 16rpx;
+  margin-left: 20rpx;
+  margin-right: 51rpx;
+}
+.answer-num{
+  text-align: left;
+}
+.item-con{
+  padding: 0 24rpx 0 39rpx;
+}
+.empty{
+  background: #fff;
+}
+.image-con .nums{
+  position: absolute;
+  top:9rpx;
+  left: 65rpx;
+  background: #ff775f;
+  color:#fff;
+  height: 23rpx;
+  line-height: 23rpx;
+  font-size: 20rpx;
+  padding: 0 10rpx;
+  border-radius: 15rpx;
+}
+.input{
+  width: 480rpx;
+}
+.input input{
+  flex-grow: 1;
+}
+
+.pl-box{
+  position: fixed;
+  bottom:100rpx;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 100rpx);
+  z-index: 10000;
+  padding: 0 0rpx;
+  background: #fff;
+  animation:move 500ms ease;
+  animation-fill-mode:forwards;
+}
+@keyframes move{
+  from{bottom:-1500rpx}
+  to{bottom:100rpx}
+}

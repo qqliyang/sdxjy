@@ -1,0 +1,94 @@
+<!--pages/articleDetails/articleDetails.wxml-->
+<import src="../../wxParse/wxParse.wxml"/>
+<import src="/pages/template/loading/loading.wxml"/>
+<import src="/pages/template/empty/empty.wxml"/>
+<import src="/pages/template/loadBox/loadBox.wxml"/>
+
+<template wx:if='{{loadBox}}' is="loadBox" />
+<scroll-view hidden='{{loadBox}}' bindscrolltolower='lower' scroll-into-view='{{scrollId}}' scroll-y class='articleDetails common'>
+    <view class='ceng' wx:if='{{height != 0}}'></view>
+    <view class='item-con pad' id='top'>
+        <view class='top-title head'>{{article.contentTitle}}</view>
+        <view class='time'>{{article.createdTime}}</view>
+
+        <view class='gz-con flex'>
+            <view class='headImg'><image src='{{article.cover}}'></image></view>
+            <view class='center'>
+                <view class='name'>{{article.author}}</view>
+                <view class='work overflow2'>{{personMess.job}}</view>
+            </view>
+            <view bindtap='Follow' data-isfollow='{{isFollow}}' class='{{isFollow == "true"?"btn opacity active":"btn opacity"}}'>{{isFollow == "true"?"已关注":"关注"}}</view>
+        </view>
+
+        <template is="wxParse" data="{{wxParseData:articles.nodes}}"/>
+    </view>
+
+    <!-- 相关推荐 -->
+    <view class='item-con other'>
+        <view class='top-title bot'>相关推荐</view>
+          
+    </view>
+
+    <view class='bot-scroll'>
+           <view wx:for='{{articleList}}' data-id='{{contentId}}' bindtap='seeDetails'class='bot-scroll-con flex'>
+                  <view class='left'>
+                        <image src='{{item.cover}}'></image>
+                        <view class='tag'>{{item.contentType}}</view>
+                    </view>
+                    <view class='right'>
+                        <view class='title overflow2'>{{item.contentTitle}}</view>
+                        <view class='right-conta flex'>
+                            <view class='conta-left overflow1'>{{item.author}}</view>
+                            <view class='conta-right flex'>
+                                <image src='/image/see.png'></image>
+                                <view class='nums'>{{item.viewCount}}</view>
+                                <image class='second' src='/image/pl.png'></image>
+                                <view class='nums'>{{item.commentCount}}</view>
+                            </view>
+                        </view>
+                  </view>
+            </view>
+      </view>
+          
+    <!-- 评论 -->
+    <view class='item-con pad' id='plid'>
+        <view class='top-title bot'>评论{{totalRow == 0?"":"（"+totalRowFormat+"）"}}</view>
+        <view class='pl-con flex' wx:for='{{plData}}'>
+             <view class='plHeadImg'><image src='{{item.wxPicurl}}'></image></view>
+             <view class='plCenter'>
+                  <view class='plName'>{{item.wxUname}}</view> 
+                  <view class='plContent'>{{item.comment}}</view>
+                  <view class='option'>{{item.createTime}}</view>
+             </view>
+             <view class='zan' data-ismypraise="{{item.myPraise}}" data-index='{{index}}' data-id='{{item.commentId}}' bindtap='plClickBtn'><image src='{{item.myPraise == "true"?"/image/zan2_2.png":"/image/zan2.png"}}'></image></view>
+             <view class='{{item.myPraise == "true"?"zanNums active":"zanNums"}}'>{{item.praiseCount==0?"":item.praiseCount}}</view>
+        </view> 
+
+        <template wx:if='{{isLoad}}' is="loading" />
+        <view class='noMoreData' wx:if='{{noMore}}'>没有更多的了--!</view>
+       
+        <template is="empty" wx:if='{{totalRow == 0}}' data="{{msg}}"/>
+    </view>
+    <view class='empty'></view>
+     <!-- 底部-->
+    <view class='{{autoFocus?"foot-btn flex active":"foot-btn  flex"}}' style='bottom:{{height}}px'>
+        <view class='input flex'>
+            <image src='/image/input.png'></image>
+
+            <input disabled='true' wx:if='{{!autoFocus}}' laceholder-class='placeholder' value='{{comment}}' placeholder='写点评论吧…' bindtap='setFocus'></input>           
+            <textarea  class='{{isAndroid?"active":""}}' focus='{{autoFocus}}'  value='{{comment}}' bindconfirm='commitPlData'  bindinput='commitPl' bindfocus='focus' show-confirm-bar='true'  bindblur='cancelEvent'  adjust-position="{{false}}"    placeholder-class='placeholder' placeholder='写点评论吧…'></textarea>
+        </view>
+        <view class='image-con' bindtap='plClick'>
+            <image class='pl' src='/image/pl2.png'></image>
+            <view class='nums' wx:if='{{totalRow != 0}}'>{{totalRowFormat}}</view>
+        </view>
+        <view class='image-con' data-ispraise="{{isPraise}}" bindtap='articleClick'>
+          <image class='pl' src='{{isPraise == "true"?"/image/zan2_2.png":"/image/zan2.png"}}'></image>
+      </view>
+        <button open-type='share' class='image-con'>
+          <image class='pl' src='/image/share.png'></image>
+      </button>
+    </view>
+
+</scroll-view>
+   

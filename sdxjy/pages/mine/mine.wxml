@@ -1,0 +1,96 @@
+<!--pages/mine/mine.wxml-->
+<view class='mine common'>
+    <!--家长端-->
+    <view class='parent' hidden='{{isTeacher}}'>
+        <view class='top-head'>
+            <image src='{{userInfo.avatarUrl}}'></image>
+            <view class='nickNmae'>{{userInfo.nickName}}</view>
+        </view>
+
+        <view class='mine-list flex btnactivegrey mine' bindtap='goMineCard'>
+            <image class='icon' src='/image/m1.png'></image>
+            <view class='mine-name'>我的名片</view>
+            <image class='right' src='/image/right.png'></image>
+        </view>
+
+        <view class='mine-list flex btnactivegrey' bindtap='goMineAsk'>
+            <image class='icon ic2' src='/image/m2.png'></image>
+            <view class='mine-name'>我的提问</view>
+            <image class='right' src='/image/right.png'></image>
+        </view>
+
+        <view class='mine-list flex btnactivegrey' bindtap='gomineAnswer'>
+            <image class='icon ic3' src='/image/m3.png'></image>
+            <view class='mine-name'>我的回答</view>
+            <image class='right' src='/image/right.png'></image>
+        </view>
+
+        <view class='mine-list flex btnactivegrey' bindtap='goMineAppointmentDetails'>
+            <image class='icon ic4' src='/image/m4.png'></image>
+            <view class='mine-name'>我的预约</view>
+            <image class='right' src='/image/right.png'></image>
+        </view>
+
+        <view class='mine-list flex btnactivegrey'>
+            <image class='icon ic5' src='/image/m5.png'></image>
+            <view class='mine-name'>我的关注</view>
+            <image class='right' src='/image/right.png'></image>
+        </view>
+
+        <view class='mine-list flex btnactivegrey'>
+            <image class='icon ic6' src='/image/m6.png'></image>
+            <view class='mine-name'>产品服务</view>
+            <image class='right' src='/image/right.png'></image>
+        </view>
+
+        <view class='mine-list flex btnactivegrey'>
+            <image class='icon ic7' src='/image/m7.png'></image>
+            <view class='mine-name'>关于圣达信</view>
+            <image class='right' src='/image/right.png'></image>
+        </view>
+    </view>
+
+    <!--老师端-->
+    <view class='teacher' wx:if='{{isTeacher}}'>
+        <view class='teacher-top-head flex'>
+            <image src='/image/person.png'></image>
+            <view class='right'>
+                <view class='top flex'>
+                    <view class='teacherName'>陈晨</view>
+                    <view class='tag'>2星专家</view>
+                </view>
+                <view class='tipName'>教育与职业顾问规划师</view>
+            </view>
+        </view>
+
+         <view class='mine-list flex btnactivegrey mine'>
+            <image class='icon' src='/image/m1.png'></image>
+            <view class='mine-name'>个人信息</view>
+            <image class='right' src='/image/right.png'></image>
+        </view>
+
+         <view class='mine-list flex btnactivegrey'>
+            <image class='icon ic3' src='/image/m3.png'></image>
+            <view class='mine-name'>我的回答</view>
+            <image class='right' src='/image/right.png'></image>
+        </view>
+
+        <view class='mine-list flex btnactivegrey'>
+            <image class='icon ic4' src='/image/m4.png'></image>
+            <view class='mine-name'>我的预约</view>
+            <image class='right' src='/image/right.png'></image>
+        </view>
+
+        <view class='mine-list flex btnactivegrey'>
+            <image class='icon ic6' src='/image/m6.png'></image>
+            <view class='mine-name'>产品服务</view>
+            <image class='right' src='/image/right.png'></image>
+        </view>
+
+        <view class='mine-list flex btnactivegrey'>
+            <image class='icon ic7' src='/image/m7.png'></image>
+            <view class='mine-name'>关于圣达信</view>
+            <image class='right' src='/image/right.png'></image>
+        </view>
+    </view>
+</view>

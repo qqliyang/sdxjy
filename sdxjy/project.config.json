@@ -1,0 +1,64 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.4.0",
+	"appid": "wx602b0ff40d50e9c8",
+	"projectname": "sdxjy",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 0,
+			"list": [
+				{
+					"id": 0,
+					"name": "22",
+					"pathName": "pages/index/index",
+					"query": "type=answer&contentId=1",
+					"scene": "1036",
+					"referrerInfo": {
+						"appId": ""
+					}
+				},
+				{
+					"id": 1,
+					"name": "分享",
+					"pathName": "pages/index/index",
+					"query": "teacherId=1111&type=personPage",
+					"scene": "1036",
+					"referrerInfo": {
+						"appId": ""
+					}
+				}
+			]
+		}
+	}
+}

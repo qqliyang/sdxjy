@@ -1,0 +1,146 @@
+<!--pages/answerDetails/answerDetails.wxml-->
+<import src="/pages/template/loading/loading.wxml"/>
+<import src="/pages/template/empty/empty.wxml"/>
+<import src="/pages/template/loadBox/loadBox.wxml"/>
+<import src="/pages/template/ceng/ceng.wxml"/>
+<template wx:if='{{loadBox}}' is="loadBox" />
+
+<template  wx:if='{{isCallback}}'is="ceng" />
+ <view class='ceng' wx:if='{{height != 0}}'></view>
+ <!--回复评论-->
+<view  wx:if='{{isCallback}}' class='pl-box'>
+    <scroll-view scroll-y   bindscrolltolower='lowerCallback'  scroll-into-view='{{scrollId}}'>
+        <view class='top-delete flex'>
+            <image src='/image/close.png'  bindtap='close' ></image>
+            <view class='top-tip'>{{totalRowNext==0?"暂无回复":totalRowNext+'条回复'}}</view>
+        </view>
+        <view class='pl-con' >
+            <view class='pl-container flex'>
+                <view class='plHeadImg'><image src='{{callBackObj.wxPicurl}}'></image></view>
+                <view class='plCenter'>
+                      <view class='plName'>{{callBackObj.wxUname}}</view> 
+                      <view class='plContent'>{{callBackObj.answerContent}}</view>
+                      <view class='option'>{{callBackObj.createTime}}</view>
+                </view>
+                <view class='zan'><image data-ismypraise="{{callBackObj.myPraise}}" data-index='{{index}}' data-id='{{callBackObj.answerId}}' bindtap='callBackplClickBtn' src='{{callBackObj.myPraise == "true"?"/image/zan2_2.png":"/image/zan2.png"}}'></image></view>
+                <view class='zanNums'>{{callBackObj.praiseCount==0?"":callBackObj.praiseCount}}</view>
+            </view>    
+        </view> 
+
+        <view class='totap-pl' id='callbackPlid'>全部评论</view>
+
+        <!--回复的评论-->
+        <view class='pl-con'  wx:for='{{callBacPlData}}'>
+            <view class='pl-container flex'>
+                <view class='plHeadImg'><image src='{{item.wxPicurl}}'></image></view>
+                <view class='plCenter'>
+                      <view class='plName'>{{item.wxUname}}</view> 
+                      <view class='plContent'>{{item.comment}}</view>
+                      <view class='option'>{{item.createTime}}</view>
+                </view>
+                <view class='zan'><image data-ismypraise="{{item.myPraise}}" data-index='{{index}}' data-id='{{item.commentId}}' bindtap='callBackZan' src='{{item.myPraise == "true"?"/image/zan2_2.png":"/image/zan2.png"}}'></image></view>
+                <view class='zanNums'>{{item.praiseCount==0?"":item.praiseCount}}</view>
+            </view>
+        </view> 
+        <template wx:if='{{isLoad}}' is="loading" />
+        <view class='noMoreData' wx:if='{{totalRowNext==0}}'>来抢个沙发吧！</view>
+        <view class='noMoreData' wx:if='{{noMore && totalRowNext!=0}}'>没有更多的了--!</view>
+    </scroll-view>
+    
+</view>
+
+
+
+<scroll-view hidden='{{loadBox}}' bindscrolltolower='lower' scroll-y scroll-into-view='{{scrollId}}' class='answerDetails common'>
+    <view class='top-con' id='top'>
+        <view class='title'>{{infoData.title}}</view>
+        <view class='content'>{{infoData.describe}}</view>
+    </view>
+  
+
+    <!--邀请回答-->
+    <view class='answer-request flex'>
+        <view bindtap='requestAnswer' class='request-item left flex btnactivegrey'>
+            <image src='/image/yaoqing.png'></image>
+            <view class='requestName'>邀请回答</view>
+        </view>
+        <view class='center-line'></view>
+        <view bindtap='Follow' data-isfollow='{{isFollow}}' class='request-item flex btnactivegrey'>
+            <image src='{{isFollow != "false"?"/image/star.png":"/image/guanzhu.png"}}'></image>
+            <view class='requestName'>{{isFollow != "false"?"已关注":"关注问题"}}</view>
+        </view>
+    </view>
+
+    <view class='answer-content flex'>
+        <view class='answer-num'>{{totalRow}}个回答</view>
+        <view class='answer-sort flex'>
+        <picker bindchange="bindPickerChange" range-key='value' value="{{index}}" range="{{array}}">
+          <view class="picker flex">
+            <view class='sort-name'>{{sortName}}</view>
+            <image src='/image/sort.png'></image>
+          </view>
+        </picker>
+            
+        </view>
+    </view>
+    <!-- 评论 -->
+    <view class='item-con pad' id='plid'>
+        <!-- <view class='top-title bot'>评论（99）</view> -->
+        <view class='pl-con flex' data-index='{{index}}' bindtap='callBack' data-obj='{{item}}' wx:for='{{plData}}'>
+             <view class='plHeadImg'><image src='{{item.wxPicurl}}'></image></view>
+             <view class='plCenter'>
+                  <view class='plName'>{{item.wxUname}}</view> 
+                  <view class='plContent'>{{item.answerContent}}</view>
+                  <view class='option-con flex'>
+                      <view class='option'>{{item.createTime}}</view>
+                      <view class='option-nums bg' wx:if='{{item.commentCount !=0}}'>{{item.commentCount}}回复</view>
+                      <view class='option-nums' wx:if='{{item.commentCount == 0}}'>回复</view>
+                  </view>
+             </view>
+             <view class='zan'><image data-ismypraise="{{item.myPraise}}" data-index='{{index}}' data-id='{{item.answerId}}' catchtap='plClickBtn' src='{{item.myPraise == "true"?"/image/zan2_2.png":"/image/zan2.png"}}'></image></view>
+             <view class='zanNums'>{{item.praiseCount==0?"":item.praiseCount}}</view>
+        </view> 
+
+        <template wx:if='{{isLoad}}' is="loading" />
+        <view class='noMoreData' wx:if='{{noMore}}'>没有更多的了--!</view>
+       
+        <template is="empty" wx:if='{{totalRow == 0}}' data="{{msg}}"/>
+    </view>
+    <view class='empty'></view>
+</scroll-view>
+<!-- 底部-->
+
+<view wx:if='{{!isCallback}}' class='{{autoFocus?"foot-btn flex active":"foot-btn  flex"}}' style='bottom:{{height}}px'>
+      <view class='input flex'>
+          <image src='/image/input.png'></image>
+
+          <input disabled='true' wx:if='{{!autoFocus}}' laceholder-class='placeholder' value='{{comment}}' placeholder='写点评论吧…' bindtap='setFocus'></input>           
+          <textarea  class='{{isAndroid?"active":""}}' focus='{{autoFocus}}'  value='{{comment}}' bindconfirm='commitPlData'  bindinput='commitPl' bindfocus='focus' show-confirm-bar='true'  bindblur='cancelEvent'  adjust-position="{{false}}"    placeholder-class='placeholder' placeholder='写点评论吧…'></textarea>
+      </view>
+      <view class='image-con' bindtap='plClick'>
+          <image class='pl' src='/image/pl2.png'></image>
+          <view class='nums' wx:if='{{totalRow != 0}}'>{{totalRowFormat}}</view>
+      </view>
+      <!-- <view class='image-con' data-ispraise="{{isPraise}}" bindtap='articleClick'>
+        <image class='pl' src='{{isPraise == "true"?"/image/zan2_2.png":"/image/zan2.png"}}'></image>
+    </view> -->
+      <button open-type='share' class='image-con'>
+        <image class='pl' src='/image/share.png'></image>
+    </button>
+</view>
+
+<view wx:if='{{isCallback}}' class='{{autoFocus?"foot-btn flex active":"foot-btn  flex"}}' style='bottom:{{height}}px'>
+      <view class='input flex'>
+          <image src='/image/input.png'></image>
+
+          <input disabled='true' wx:if='{{!autoFocus}}' laceholder-class='placeholder' value='{{comment}}' placeholder='回复{{callBackObj.wxUname}}' bindtap='setFocus'></input>           
+          <textarea  class='{{isAndroid?"active":""}}' focus='{{autoFocus}}'  value='{{comment}}' bindconfirm='commitCallbackPlData'  bindinput='commitPl' bindfocus='focus' show-confirm-bar='true'  bindblur='cancelEvent'  adjust-position="{{false}}"    placeholder-class='placeholder' placeholder='写点评论吧…'></textarea>
+      </view>
+      <view class='image-con' bindtap='plClick'>
+          <image class='pl' src='/image/pl2.png'></image>
+          <view class='nums' wx:if='{{totalRow != 0}}'>{{totalRowFormat}}</view>
+      </view>
+      <button open-type='share' class='image-con'>
+        <image class='pl' src='/image/share.png'></image>
+    </button>
+</view>

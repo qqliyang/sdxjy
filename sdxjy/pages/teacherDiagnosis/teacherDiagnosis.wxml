@@ -1,0 +1,67 @@
+<!--pages/teacherDiagnosis/teacherDiagnosis.wxml-->
+<import src="/pages/template/loading/loading.wxml"/>
+<import src="/pages/template/empty/empty.wxml"/>
+<import src="/pages/template/loadBox/loadBox.wxml"/>
+<import src='/pages/template/ceng/ceng.wxml' />
+<template is="ceng"  wx:if='{{ceng}}'></template>
+
+<view class='teacherDiagnosis common'>
+     
+      <!-- 一键约聊 -->
+      <view class='chat-con public-box' wx:if='{{ceng && chatBox}}'>
+          <view data-obj='{{item}}' bindtap='buyService' class='chat-list flex btnactivegrey' wx:for='{{serviceDetail}}'>
+              <view class='chat-left'>
+                  <view class='chat-name'>{{item.serviceTitle}}</view>
+                  <view class='chat-desc'>{{item.serviceContent}}</view>
+              </view>
+              <view class='chat-price'>￥{{item.servicePrice}}</view>
+          </view>
+      </view>
+
+      <view class='top-head flex'>
+          <view class='top-left flex' hidden bindtap='setCity'>
+              <image src='/image/location.png'></image>
+              <view class='cityName overflow1'>内蒙</view>
+          </view>
+          <view class='top-right flex'>
+              <image src='/image/search2.png'></image>
+              <input bindconfirm='startSearch' value='{{customerName}}' bindinput='setInput'  placeholder-class='placeholder' placeholder='输入关键词搜索'></input>
+          </view>      
+      </view> 
+
+      <view class='answer-con' wx:for='{{teacherData}}'>
+          <view class='answer-teacher flex'>
+                <view class='teacher-left'>
+                    <image class='headimg' data-id='{{item.customerId}}' bindtap='seePersonPage' src='{{item.wxPicurl}}'></image>
+                    <image data-index='{{index}}' data-id='{{item.customerId}}' bindtap='Follow' data-isfollow='{{item.myFollow}}' class='guanzhu' src='{{item.myFollow == "true" ?"/image/guanzhu2.png":"/image/guanzhu1.png"}}'></image>
+                    <view class='nums'>{{item.followCount}}</view>
+                </view>
+                <view class='right' >
+                    <view class='top flex' data-id='{{item.customerId}}' bindtap='seePersonPage'>
+                        <view class='name'>
+                            <searchHighlightTextView  
+                            class="result-item" 
+                            datasName='{{item}}' >
+                            </searchHighlightTextView>
+                        </view>
+                        <view class='desc overflow3'>                                                                                          <searchHighlightTextView  
+                            class="result-item"
+                            datas='{{item}}' >
+                            </searchHighlightTextView>
+                      </view>
+                    </view>
+                    <view class='{{item.brief.length>=78 && !item.totaggle?"content overflow3":"content"}}'>擅长：{{item.brief}}</view>
+                    <text class='totaggle' wx:if='{{!item.totaggle && item.brief.length>=78}}' catchtap='totaggle' data-index='{{index}}'>展开全部</text>
+                </view>
+            </view>
+
+          <view class='answer-bot'>
+                <view class='btn opacity' data-id='{{item.customerId}}' bindtap='startYy'>立即抢约</view>
+          </view>
+      </view>
+
+      <template wx:if='{{isLoad}}' is="loading" />
+      <view class='noMoreData' wx:if='{{noMore}}'>没有更多的了--!</view>
+       
+      <template is="empty" wx:if='{{totalRow == 0}}' data="{{msg}}"/>             
+</view>

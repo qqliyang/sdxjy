@@ -1,0 +1,190 @@
+/* pages/teacherDiagnosis/teacherDiagnosis.wxss */
+.top-head{
+  padding:27rpx 32rpx  20rpx 32rpx;
+  background: #fff;
+  border-bottom: 2rpx solid #eee;
+}
+.bgceng{
+  background: rgba(0,0,0,0.3);
+}
+.top-left{
+  padding-left:33rpx;
+  justify-content: flex-start;
+  margin-right: 59rpx;
+}
+.top-left image{
+  width: 27rpx;
+  height: 31rpx;
+  display: block;
+}
+.top-left .cityName{
+  font-size: 26rpx;
+  line-height: 28rpx;
+	font-weight: bold;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #999999;
+  margin-left: 7rpx;
+  max-width: 150rpx;
+  text-align: left;
+}
+.top-right{
+  flex-grow: 1;
+	height: 70rpx;
+	background-color: #f8faff;
+	border-radius: 35rpx;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+.top-right image{
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 20rpx;
+}
+.top-right input{
+  padding-left: 16rpx;
+  padding-right: 16rpx;
+  flex-grow: 1;
+}
+
+
+.answer-teacher{
+  padding-top: 20rpx;
+  background: #fff;
+  align-items: flex-start;
+}
+.answer-teacher .headimg{
+  width: 104rpx;
+  height: 104rpx;
+  border-radius: 50%;
+  display: block;
+  overflow: hidden;
+}
+.guanzhu{
+  width: 30rpx;
+  height: 27rpx;
+  display: block;
+  margin: 0 auto;
+  padding: 24rpx 33rpx 6rpx 30rpx;
+}
+.teacher-left{
+  padding-left: 37rpx;
+}
+.teacher-left .nums{
+  text-align: center;
+  line-height: 37rpx;
+  font-size: 26rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #999999;
+}
+.answer-teacher .right{
+  padding-left: 31rpx;
+  padding-top: 30rpx;
+  flex-grow: 1;
+}
+.top{
+  justify-content: flex-start;
+  align-items: flex-start
+}
+.top .name{
+  margin-right: 12rpx;
+}
+.top .name text{
+  font-size: 32rpx;
+	font-weight: bold;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #333333;
+  position: relative;
+  line-height: 40rpx;
+}
+
+.top .desc{
+  line-height: 40rpx;
+  font-size: 28rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #555555;
+  width: 470rpx;
+}
+.content{
+  font-size: 28rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #777777;
+  margin-top: 31rpx;
+  margin-bottom: 28rpx;
+  width: 547rpx;
+}
+.answer-bot{
+  background: #fff;
+  text-align: right;
+  border-top:2rpx solid #eeeeee;
+  padding-top: 16rpx;
+  padding-bottom: 20rpx;
+  margin-bottom: 17rpx;
+}
+.answer-bot .btn{
+  display: inline-block;
+  width: 151rpx;
+  height: 56rpx;
+  border-radius: 8rpx;
+  background: #ff775f;
+  line-height: 56rpx;
+  text-align: center;
+  font-size: 30rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #ffffff;
+  margin-right: 43rpx;
+}
+.btn.has{
+  background: #eeeeee;
+  color: #999999;
+}
+
+.chat-con{
+  position: fixed;
+  bottom:0rpx;
+  width: 100%;
+  background: #fff;
+  z-index: 99999;
+}
+.chat-list{
+  padding: 30rpx 20rpx 24rpx 46rpx;
+  border-bottom: 2rpx solid #eeeeee;
+}
+.chat-list .chat-left{
+  width: 550rpx;
+}
+.chat-name{
+  font-size: 32rpx;
+  line-height: 45rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #333333;
+}
+.chat-desc{
+  font-size: 26rpx;
+  line-height: 37rpx;
+  margin-top: 14rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #999999;
+}
+.chat-price{
+  font-size: 36rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #ff775f;
+  flex-grow: 1;
+  text-align: left
+}

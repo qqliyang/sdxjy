@@ -1,0 +1,127 @@
+/* pages/mine/mine.wxss */
+.common{
+  background: #fff;
+}
+.top-head{
+  width: 100%;
+  height: 275rpx;
+  padding-top: 30rpx;
+}
+.top-head image{
+  width: 138rpx;
+  height: 138rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  display: block;
+  margin: 0 auto;
+}
+.nickNmae{
+  font-size: 32rpx;
+  line-height: 45rpx;
+  margin-top: 24rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #333333;
+  text-align: center;
+}
+
+.mine-list{
+  width: 100%;
+  height: 104rpx;
+}
+.mine-list.mine{
+  border-top:8rpx solid #f3f3f3;
+  border-bottom:8rpx solid #f3f3f3;
+}
+.mine-list .icon{
+  width: 31rpx;
+  height: 26rpx;
+  margin-right: 0;
+  margin-left: 38rpx;
+}
+.icon.ic2{
+  width: 31rpx;
+  height: 31rpx;
+}
+.icon.ic3{
+  width: 31rpx;
+  height: 23rpx;
+}
+.icon.ic4{
+  width: 32rpx;
+  height: 32rpx;
+}
+.icon.ic5{
+  width: 32rpx;
+  height: 32rpx;
+}
+.icon.ic6{
+  width: 31rpx;
+  height: 32rpx;
+}
+.icon.ic7{
+  width: 32rpx;
+  height: 32rpx;
+}
+.mine-list .mine-name{
+  flex-grow: 1;
+  padding-left: 42rpx;
+  font-size: 30rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #333333;
+}
+.mine-list image{
+  width: 16rpx;
+  height: 28rpx;
+  margin-right: 35rpx;
+}
+
+.teacher-top-head{
+  width: 100%;
+  padding-top: 50rpx;
+  height: 245rpx;
+  justify-content: center;
+  align-items: flex-start
+}
+.teacher-top-head .right{
+  padding-top: 16rpx;
+}
+.teacher-top-head image{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 72rpx;
+} 
+.teacher-top-head .top{
+  flex-grow: 1;
+  text-align: left;
+  justify-content: flex-start;
+}
+.tag{
+  background-image: linear-gradient(90deg, 
+		#8ab2ff 0%, 
+		#5fcaff 100%);
+	border-radius: 4px;
+  height: 33rpx;
+  line-height: 33rpx;
+  padding: 0 12rpx;
+  font-size: 22rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #ffffff;
+  margin-left: 12rpx;
+}
+.tipName{
+  font-size: 28rpx;
+  line-height: 40rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #555555;
+  margin-top: 18rpx;
+}

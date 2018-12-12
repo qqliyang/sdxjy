@@ -1,0 +1,80 @@
+<!--pages/headmaster/headmaster.wxml-->
+<import src="/pages/template/loadBox/loadBox.wxml"/>
+<import src="/pages/template/empty/empty.wxml"/>
+<template wx:if='{{loadBox}}' is="loadBox" />
+<view hidden="{{loadBox}}"  class='headmaster common'>
+      <view class='top-head flex'>
+          <!-- <view class='top-left flex' bindtap='setCity'>
+              <image src='/image/location.png'></image>
+              <view class='cityName overflow1'>内蒙</view>
+          </view> -->
+          <view class='top-right flex'>
+              <image src='/image/search2.png'></image>
+              <input bindconfirm='search' bindinput='setName'  placeholder-class='placeholder' value='{{orgName}}' placeholder='请搜索机构名称'></input>
+          </view>
+
+      </view> 
+      <view class='org-box' wx:for='{{topData}}'>
+          <!--总部-->
+          <view  data-obj='{{item}}' class='headmaster-con' bindtap='seeDetails'>
+              <view class='headmaster-top flex'>
+                  <view class='headImg'><image src='{{item.mainImg}}'></image></view>
+                  <view class='head-right'>
+                      <view class='head-top flex'>
+                          <view class='name'> 
+                              <searchHighlightTextView 
+                              class="result-item" 
+                              dataOrg='{{item}}'>
+                              </searchHighlightTextView>
+                          </view>
+                          <view class='desc'>总部</view>
+                      </view>
+                  <view class='time'>成立时间:2012年</view>
+                </view>
+             </view>
+            <swiper class="swiper-box" indicator-dots="{{indicatorDots}}"
+        autoplay="{{autoplay}}" indicator-active-color='{{selColor}}' indicator-color='{{color}}' interval="{{interval}}" duration="{{duration}}">
+                <block wx:for="{{item.orgImgs}}" wx:for-item='items'>
+                    <swiper-item class='top-swiper'>
+                          <image src="{{items}}" class="slide-image" />
+                    </swiper-item>
+                </block>
+            </swiper> 
+            <view class='address'>{{item.orgAddr}}</view>
+        </view>
+      </view>
+      <view class='org-box' wx:for='{{nextData}}'>
+          <!--分部-->
+          <view  class='headmaster-con other' data-obj='{{item}}' bindtap='seeDetails' >
+              <view class='headmaster-top flex'>
+                    <view class='headImg'><image src='{{item.mainImg}}'></image></view>
+                    <view class='head-right'>
+                        <view class='head-top flex'>
+                            <view class='name'> 
+                                <searchHighlightTextView 
+                                class="result-item" 
+                                dataOrg='{{item}}'>
+                                </searchHighlightTextView>
+                              </view>
+                            <view class='desc'>分部</view>
+                        </view>
+                        <view class='other-desc'>地址：{{item.orgAddr}}</view>
+                        <view class='other-desc'>办事处：{{item.locationName}}</view>
+                    </view>
+              </view>
+
+              <view class='bot-con flex'>
+                    <view class='bot-item flex btnactivegrey'>
+                        <image class='head' src='/image/head.png'></image>
+                        <view class='teacherName'>{{item.contactMan}}</view>
+                    </view>
+                    <view class='bot-item flex btnactivegrey'>
+                        <image class='phone' src='/image/phone.png'></image>
+                        <view class='phoneNum' data-phone='{{item.contactPhone}}' catchtap='phone'>{{item.contactPhone}}</view>
+                    </view>
+              </view>        
+          </view>
+      </view>
+       <template wx:if='{{isLoad}}' is="loading" />
+       <template is="empty" wx:if='{{totalRow == 0}}' data="{{msg}}"/>
+</view>

@@ -1,0 +1,21 @@
+<!--pages/higherLearning/higherLearning.wxml-->
+<view class='higherLearning common'>
+    <textarea bindinput='setTextarea' value='{{textareaVal}}' placeholder-class='placeholder' placeholder='请详细描述您所在的中学班级信息，成绩排名，奖项情况，便于老师更精准的分析。'></textarea>
+    <view class='bot-con'>
+        <view class='nums'>{{canInputLen}}/{{maxInputLen}}</view>
+        <view class='upload-name'>上传相关图片（成绩单、资质奖项等，最多{{maxFileCount}}张）</view>
+        <view class='upload-con'>
+            <view class='imgCon' hidden='{{noImgUrl == item}}' wx:for='{{pics}}' data-index='{{index}}' bindtap='previewImg' >
+                <image src='selImg' src='{{item}}'></image>
+                <image class='delete' data-index='{{index}}' catchtap='deleteImg' src='/image/delete.png'></image>
+            </view>
+            <image src='/image/add.png' bindtap='choose'></image>
+        </view>
+    </view>
+
+    <button class='submit' bindtap='commitQuestion'>提交问题</button>
+    <view class='bot-tip flex'>
+        <image src='/image/save.png'></image>
+        <view class='tip'>圣达信会保证您和孩子的隐私安全</view>
+    </view>
+</view>

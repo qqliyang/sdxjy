@@ -1,0 +1,66 @@
+<!--pages/mineAppointmentDetails/mineAppointmentDetails.wxml-->
+<view class='mineAppointmentDetails common'>
+
+    <view class='top flex'>
+        <image src='/image/mingpian.png'></image>
+        <view>TA的名片</view>
+    </view>
+    <view class='top-head flex'>
+          <image src='/image/person.png'></image>
+          <view class='right'>
+              <view class='top-con flex'>
+                   <view class='name'>谢敏</view>
+              </view>
+              <view class='desc'>18199005566</view>
+              <view class='desc'>江西省南昌市西湖街道江西省南昌市西湖街道江西省南昌市西湖街道江西省南昌市西湖街道</view>
+          </view>
+    </view>
+
+    <view class='content-con'>
+          <view class='title left'>他请教的问题</view>
+          <view class='question-con left'>
+              <view class='content'>我的孩子学习成绩一般，不是一个简单的个人问题，而是一个很复杂的社会性问题，它混杂着基因设置、社会文化、学习成绩不好，不知道选择什么学校和专业。</view>
+              <view class='imgcon flex'>
+                  <image src='/image/banner.png'/>
+                  <image src='/image/banner.png'/>
+                  <image src='/image/banner.png'/>
+              </view>
+          </view>
+    </view>
+
+    <view class='mine-request'>
+          <view class='title'>预约反馈</view>
+          <view class='item flex'>
+                <view class='leftName'>是否应约</view>
+                <view class='right flex'>
+                      <image src='/image/radio2.png'></image>
+                      <view>接受</view>
+                      <image class='last' src='/image/radio1.png'></image>
+                      <view>取消</view>
+                </view>
+          </view>
+
+          <view class='item flex'>
+                <view class='leftName'>预约时间</view>
+                <view class='right flex'>
+                    <picker class='{{startDate == "请选择日期"?"time-picker active":"time-picker"}} ' mode="multiSelector" bindchange="bindStartMultiPickerChange" bindtap='pickerTap' bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">{{startDate}}</picker>
+                </view>
+          </view>
+
+          <view class='item flex'>
+                <view class='leftName'>地点</view>
+                <view class='right flex'>
+                    <input placeholder-class='placeholder' placeholder='请输入预约地点'></input>
+                </view>
+          </view>
+
+          <view class='item flex bot'>
+                <view class='leftName'>备注</view>
+          </view>     
+
+          <textarea maxlength='-1' placeholder-class='placeholder' placeholder="给对方留言说点什么吧…"></textarea>
+    </view>
+
+    <button class='commit'>提交</button>
+</view>
+

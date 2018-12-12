@@ -1,0 +1,229 @@
+/* pages/mineAppointmentDetails/mineAppointmentDetails.wxss */
+.common{
+  padding-bottom: 50rpx;
+}
+.top{
+  background: #fff;
+  padding-left: 58rpx;
+  justify-content: flex-start;
+}
+.top image{
+  width: 30rpx;
+  height: 23rpx;
+  margin-right: 18rpx;
+}
+.top view{
+  font-size: 28rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #777777;
+}
+.top-head{
+  background: #fff;
+  padding: 44rpx 0rpx 44rpx 137rpx;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.top-head image{
+  width: 104rpx;
+  height: 104rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.top-head .right{
+  width: 500rpx;
+  padding-top: 8rpx;
+  padding-left: 30rpx;
+}
+.top-con{
+  justify-content: flex-start;
+}
+.top-con .name{
+  margin-right: 11rpx;
+  font-size: 32rpx;
+  line-height: 40rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #000000;
+}
+.top-con .tip{
+  padding: 0 12rpx;
+  height: 33rpx;
+	background-image: linear-gradient(90deg, 
+		#8ab2ff 0%, 
+		#5fcaff 100%);
+	border-radius: 4rpx;
+  line-height: 33rpx;
+  text-align: center;
+  font-size: 22rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #ffffff;
+}
+.right .desc{
+  margin-top: 16rpx;
+  font-size: 28rpx;
+  line-height: 40rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #555555;
+}
+
+.content-con{
+  margin-top: 12rpx;
+  background: #fff;
+}
+.content-con .left{
+  padding-left: 39rpx!important;
+}
+.content-con .title{
+  line-height: 42rpx;
+  padding: 24rpx 0 22rpx 39rpx;
+  border-bottom: 2rpx solid #eeeeee;
+}
+.question-con{
+  padding-top: 32rpx;
+  padding-bottom: 35rpx;
+}
+.content{
+  font-size: 30rpx;
+  line-height: 40rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #555555;
+}
+.imgcon{
+  justify-content: flex-start;
+  margin: 28rpx 0 0rpx 0;
+}
+.imgcon image{
+  width: 154rpx;
+  height: 154rpx;
+  border-radius: 4rpx;
+  overflow: hidden;
+  margin-right: 16rpx;
+}
+.bot-desc{
+  margin-top: 12rpx;
+  background: #fff;
+  padding: 35rpx 35rpx 15rpx 39rpx;
+}
+.bot-desc .item{
+  font-size: 28rpx;
+  line-height: 40rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #777777;
+  margin-bottom: 30rpx;
+}
+
+.goPj{
+  position: fixed;
+  bottom: 0rpx;
+  width: 100%;
+  height: 125rpx;
+  background: #fff;
+  padding: 0 44rpx 0 25rpx;
+  border-top: 2rpx solid #f3f3f3;
+}
+.goPj .left{
+  font-size: 28rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #777777;
+}
+.goPj .btn{
+  width: 126rpx;
+	height: 56rpx;
+	border-radius: 4rpx;
+  text-align: center;
+  line-height: 56rpx;
+	border: solid 2rpx #ff775f;
+  font-size: 30rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #ff775f;
+}
+.goPj .btn:active{
+  color: #fff;
+  background: #ff775f;
+}
+.mine-request{
+  background: #fff;
+  margin-top: 12rpx;
+  padding-top: 40rpx;
+}
+.mine-request .title{
+  padding-left: 42rpx;
+  font-size: 30rpx;
+  line-height: 42rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #333333;
+  margin-bottom: 71rpx;
+}
+.leftName{
+  font-size: 28rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #555555;
+}
+.mine-request .item{
+  margin-bottom: 71rpx;
+  padding: 0 42rpx 0 42rpx;
+}
+.mine-request .item.bot{
+  margin-bottom: 30rpx;
+}
+.mine-request .right{
+  flex-grow: 1;
+  justify-content: flex-end;
+}
+.mine-request .right image{
+  width: 30rpx;
+  height: 30rpx;
+}
+.mine-request .right image.last{
+  margin-left: 78rpx;
+}
+.mine-request .right view{
+  font-size: 28rpx;
+  padding-left: 12rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #777777;
+}
+picker.time-picker{
+  font-size: 28rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #333333;
+}
+.time-picker.active{
+  color:#ACACAC;
+  font-size: 28rpx;
+}
+.mine-request .right input{
+  flex-grow: 1;
+  text-align: right;
+}
+textarea{
+  width: 671rpx;
+  margin-left: 49rpx;
+}
+.commit{
+  width: 671rpx;
+  margin-top: 50rpx;
+}

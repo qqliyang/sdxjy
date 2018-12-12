@@ -1,0 +1,37 @@
+<!--pages/mineAppointmentDetails/mineAppointmentDetails.wxml-->
+<view class='mineAppointmentDetails common'>
+    <view class='top-head flex'>
+          <image src='/image/person.png'></image>
+          <view class='right'>
+              <view class='top-con flex'>
+                   <view class='name'>谢敏</view>
+                   <view class='tip'>2星专家</view>
+              </view>
+              <view class='desc overflow2'>教育与职业顾问规划师教育与职业顾问规划师教育与职业顾问规划师教育与职业顾问规划师教育与职业顾问规划师教育与职业顾问规划师</view>
+          </view>
+    </view>
+
+    <view class='content-con'>
+          <view class='title left'>我请教的问题</view>
+          <view class='question-con left'>
+              <view class='content'>我的孩子学习成绩一般，不是一个简单的个人问题，而是一个很复杂的社会性问题，它混杂着基因设置、社会文化、学习成绩不好，不知道选择什么学校和专业。</view>
+              <view class='imgcon flex'>
+                  <image src='/image/banner.png'/>
+                  <image src='/image/banner.png'/>
+                  <image src='/image/banner.png'/>
+              </view>
+          </view>
+    </view>
+
+    <view class='bot-desc left'>
+          <view class='time item'>预约时间：12月22日 下午</view>
+          <view class='address item'>地点：南昌市西湖路780号南昌市西湖路780号南昌市西湖路780号南昌市西湖路780号南昌市西湖路780号</view>
+          <view class='bz item'>备注：请带上孩子近期的考试成绩单请带上孩子近期的考试成绩单请带上孩子近期的考试成绩单请带上孩子近期的考试成绩单请带上孩子近期的考试成绩单</view>
+    </view>
+
+
+    <view class='goPj flex'>
+        <view class='left'>对老师的服务满意吗？赶快去评价一下吧</view>
+        <view class='btn'>去评价</view>
+    </view>
+</view>

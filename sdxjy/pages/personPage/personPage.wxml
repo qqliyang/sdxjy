@@ -1,0 +1,188 @@
+<!--pages/personPage/personPage.wxml-->
+<import src='/pages/template/ceng/ceng.wxml' />
+<template is="ceng"  wx:if='{{ceng}}'></template>
+<import src="/pages/template/loading/loading.wxml"/>
+<import src="/pages/template/empty/empty.wxml"/>
+<import src="/pages/template/loadBox/loadBox.wxml"/>
+
+<template wx:if='{{loadBox}}' is="loadBox" />
+<view hidden='{{loadBox}}' class='personPage common'>
+    <!-- 头部背景 -->
+    <view class='top-head'>
+        <image src='/image/banner.png'></image>
+
+         <view class='head-box'>
+              <view class='head-con flex'>
+                    <view class='headname'>{{TeacherBaseData.customerName}}</view>
+                    <view class='headtip'>{{TeacherBaseData.customerLevel}}星专家</view>
+              </view>
+
+              <view class='head-score'>
+                  <view class='score-right'>
+                      <view class='tip' >{{TeacherBaseData.job}}</view>
+                      <view class='location'>
+                          <image src='/image/location.png'></image>
+                          {{TeacherBaseData.locationName}} 距您{{isOpen?km:"--"}}<text bindtap='openAuthSetting' wx:if='{{!isOpen}}'>打开定位授权</text></view>
+                  </view>
+              </view>
+        </view>
+    </view>
+
+    <!-- 个人分享名片 -->
+    <view class='person-share-con public-box' wx:if='{{ceng && personMp}}'>
+          <view class='top-person'>
+              <view class='img-con'>
+                   <image src='/image/meizi.png'></image>
+              </view>
+              <view class='person-content'>
+                  <view class='content-title flex'>
+                      <view class='name'>{{TeacherBaseData.wxUname}}</view>
+                      <view class='desc'>高考专家</view>
+                  </view>
+                  <view class='tip overflow1'>{{TeacherBaseData.job}}</view>
+                  <view class='like-con flex'>
+                      <scroll-view scroll-y class='left'>{{TeacherBaseData.brief}}</scroll-view>
+                      <image class='ewm' src='/image/ewm.png'></image>
+                  </view>
+              </view>
+          </view>
+          <view class='bot-person flex'>
+              <button open-type='share'  bindtap='share' class='btn-close btn opacity'>分享给好友（群）</button>
+              <view bindtap='share' class='btn-save-share btn opacity'>保存分享朋友圈</view>
+          </view>
+    
+    </view>
+
+    <!-- 一键约聊 -->
+    <view class='chat-con public-box' wx:if='{{ceng && chatBox}}'>
+        <view class='chat-list flex btnactivegrey'>
+            <view class='chat-left'>
+                <view class='chat-name'>电话聊</view>
+                <view class='chat-desc'>通话时长约1-2小时</view>
+            </view>
+            <view class='chat-price'>￥39</view>
+        </view>
+         <view class='chat-list flex btnactivegrey'>
+            <view class='chat-left'>
+                <view class='chat-name'>电话聊</view>
+                <view class='chat-desc'>通话时长约1-2小时</view>
+            </view>
+            <view class='chat-price'>￥3119</view>
+        </view>
+         <view class='chat-list flex btnactivegrey'>
+            <view class='chat-left'>
+                <view class='chat-name'>电话聊</view>
+                <view class='chat-desc'>通话时长约1-2小时</view>
+            </view>
+            <view class='chat-price'>￥39</view>
+        </view>
+    </view>
+    
+    <!--介绍区域-->
+    <view class='center-con'>
+        <view class='head-item flex'>
+            <view class='item-name'><text>{{TeacherBaseData.praiseCount}}</text>赞</view>
+            <view class='item-name'><text>{{TeacherBaseData.followCount}}</text>关注</view>
+            <view class='item-name'><text>{{TeacherBaseData.meetsCount}}</text>人见过</view>
+        </view>
+
+
+        <!--底部tab切换-->
+        <scroll-view class='{{scroll?"active flex":"flex"}}'>
+            <view class='tab-con' bindtap='setIndex' data-index='{{index}}' wx:for='{{tabArr}}'>
+                <view  class='{{indexs == index?"tab-name active":"tab-name"}}'>{{item}}</view>
+                <view wx:if='{{indexs == index}}' class='bot-line'></view>
+            </view>
+        </scroll-view>
+
+        <!--约聊区域-->
+        <view class='tab-container' wx:if='{{indexs == 0}}'>
+            <view class='content-con'>
+                <view class='product'>{{TeacherBaseData.brief}}
+                </view>
+            </view>
+
+            <!--擅长内容-->
+            <view class='mine-sc'>
+                  <view class='type-list-name left'>擅长领域</view>
+                  <view bindtap='expertClick' data-title='{{item.title}}' data-content='{{item.content}}' class='type-list-con flex btnactivegrey' wx:for='{{teacherSpecialityData}}'>
+                      <view class='type-list-name '>·{{item.title}}</view>
+                      
+                      <image src='/image/right.png' class='rightImg'></image>
+                      
+                  </view>
+            </view>
+
+              <!--评论内容-->
+              <view class='pl-title'>用户评价({{totalRow==0?"":totalRow}})</view>
+              <view class='pl-con flex' wx:for='{{meetCommentData}}'>
+                <view class='leftimg'><image src='{{item.wxPicurl}}'></image></view>
+                <view class='center'>
+                    <view class='top flex'>
+                        <view class='name'>{{item.wxUname}}</view>
+                        <view class='time'>{{item.createTime}}</view>
+                    </view>
+                    <view class='content'>{{item.comment}}</view>
+                </view>
+              </view>
+              <template wx:if='{{isLoad}}' is="loading" />
+              <template is="empty" wx:if='{{totalRow == 0}}' data="{{msg}}"/>
+              <view class='noMoreData' wx:if='{{noMore}}'>没有更多的了--!</view>
+            </view>
+
+        <!--案例区域-->
+        <view class='tab-container' wx:if='{{indexs == 1}}'> 
+              <view wx:for='{{contentData}}' data-id='{{item.contentId}}' bindtap='seeDetails' class='bot-scroll-con flex'>
+                  <view class='left'>
+                      <image src='{{item.cover}}'></image>
+                      <view class='tag'>{{item.contentType}}</view>
+                  </view>
+                  <view class='right'>
+                      <view class='title overflow2'>{{item.contentTitle}}</view>
+                      <view class='right-conta flex'>
+                          <view class='conta-left overflow1'>{{item.author}}</view>
+                          <view class='conta-right flex'>
+                              <image src='/image/see.png'></image>
+                              <view class='nums'>{{item.viewCount}}</view>
+                              <image class='second' src='/image/pl.png'></image>
+                              <view class='nums'>{{item.commentCount}}</view>
+                          </view>
+                      </view>
+                  </view>
+              </view>
+              <template wx:if='{{isLoad}}' is="loading" />
+              <template is="empty" wx:if='{{totalRow == 0}}' data="{{msg}}"/>
+              <view class='noMoreData' wx:if='{{noMore}}'>没有更多的了--!</view>
+        </view>
+        <view class='tab-container' wx:if='{{indexs == 3}}'>
+              <view class='center'>
+                  <view class='list' wx:for='{{answerData}}'>
+                     
+                       <view class='{{item.answerContent.length>=62 && !item.totaggle?"content overflow3":"content"}}'>{{item.answerContent}}</view>
+                       <text class='totaggle' wx:if='{{!item.totaggle&&item.answerContent.length>=62}}' catchtap='totaggle' data-index='{{index}}'>展开全部</text>
+                       <view class='top-center flex'>
+                          <view class='tip' wx:if='{{item.payFlag ==0}}'>付费</view>
+                          <view class='title'>{{item.questionTitle}}</view>
+              
+                      </view>
+                    
+                      <view class='bot-con content right'>来自于{{item.locationName}}的网友{{item.wxUname}}提出的问题</view>
+
+                      <view class='content right'>{{item.questionTime}}</view>
+
+                  
+                  </view>
+                  
+              </view>
+        </view>
+
+    </view>
+   
+    <view class='share-btn flex' wx:if='{{indexs == 0}}'>
+        <view  class='flex opacity btn' bindtap='share'>
+            <image src='/image/share.png'></image>
+            <view class='share-name'>分享</view>
+        </view>
+        <view class='chat opacity' bindtap='chact'>一键约聊</view>
+    </view>
+</view>

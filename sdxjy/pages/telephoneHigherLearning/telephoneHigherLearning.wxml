@@ -1,0 +1,41 @@
+<!--pages/higherLearning/higherLearning.wxml-->
+<view class='higherLearning common'>
+    <textarea bindinput='setTextarea' value='{{textareaVal}}' placeholder-class='placeholder' placeholder='请详细描述您所在的中学班级信息，成绩排名，奖项情况，便于老师更精准的分析。'></textarea>
+    <view class='bot-con'>
+        <view class='nums'>{{canInputLen}}/{{maxInputLen}}</view>
+        <view class='upload-name'>上传相关图片（成绩单、资质奖项等，最多{{maxFileCount}}张）</view>
+        <view class='upload-con'>
+            <view class='imgCon' hidden='{{noImgUrl == item}}' wx:for='{{pics}}' data-index='{{index}}' bindtap='previewImg' >
+                <image src='selImg' src='{{item}}'></image>
+                <image class='delete' data-index='{{index}}' catchtap='deleteImg' src='/image/delete.png'></image>
+            </view>
+            <image src='/image/add.png' bindtap='choose'></image>
+        </view>
+    </view>
+
+    <view class='telphone-person'>
+        <view class='top-con flex'>
+            <view class='left flex'>
+                <image src='/image/mingpian.png'></image>
+                <view class='top-name'>我的名片信息</view>
+            </view>
+            <image bindtap='updateMess' src='/image/edit2.png'></image>
+        </view>
+
+        <view class='center-con flex'>
+            <image class='center-left' src='{{userData.wxPicurl}}'></image>
+            <view class='center-right'>
+                <view class='name'>{{userData.wxUname}}</view>
+                <view class='phone'>{{userData.phone}}</view>
+                <view class='address'>{{userData.address}}</view>
+            </view>
+        </view>
+    </view>
+
+    <button class='submit'>￥{{data.servicePrice}} 立即预约</button>
+    <view class='bot-tip flex'>
+        <view class='tip'>咨询师超过48小时未确认将全额退款。</view>
+        
+    </view>
+    <view class='about tip'>关于电话沟通</view>
+</view>

@@ -1,0 +1,42 @@
+/* pages/mineCard/mineCard.wxss */
+.center{
+  background: #fff;
+}
+.head{
+  height: 218rpx;
+}
+.head image{
+  width: 138rpx;
+  height: 138rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 82rpx;
+}
+.left{
+  padding-left: 56rpx;
+}
+.card-list{
+  border-top:2rpx solid #f9f9f9;
+  padding-bottom: 31rpx;
+}
+.card-list .title{
+  font-size: 26rpx;
+  line-height: 37rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #999999;
+  margin: 46rpx 0 31rpx 0;
+}
+.card-val{
+  font-size: 32rpx;
+  line-height: 45rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #333333;
+}
+.save{
+  width: 671rpx;
+  margin-top: 118rpx;
+}

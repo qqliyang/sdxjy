@@ -1,0 +1,38 @@
+/* pages/mineAsk/mineAsk.wxss */
+.ask-list{
+  background: #fff;
+  padding: 37rpx 42rpx 0;
+  margin-top:12rpx;
+}
+.ask-list .title{
+  font-size: 32rpx;
+  line-height: 45rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #000000;
+  margin-bottom: 14rpx;
+}
+.ask-list .content{
+  font-size: 30rpx;
+  line-height: 40rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #666666;
+}
+.bot-con{
+  padding: 38rpx 27rpx 32rpx 0;
+  justify-content: flex-end;
+}
+.bot-item{
+  font-size: 30rpx;
+  line-height: 42rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #333333;
+}
+.bot-item.fir{
+  margin-right: 91rpx;
+}

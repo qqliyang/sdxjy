@@ -1,0 +1,4 @@
+<!--pages/userMessage/userMessage.wxml-->
+<view class='userMessage common'>
+    <view></view>
+</view>

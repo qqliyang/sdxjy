@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "searchHighlightTextView": "/pages/component/searchHighlightTextView/searchHighlightTextView"
+  },
+  "navigationBarTitleText": "搜索",
+  "enablePullDownRefresh": false
+}

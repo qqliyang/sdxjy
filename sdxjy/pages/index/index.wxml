@@ -1,0 +1,97 @@
+<!--index.wxml-->
+<!-- <image style='width:400rpx;height:300rpx' src='/image/loading1.gif'></image> -->
+<import src="/pages/template/loading/loading.wxml"/>
+<import src="/pages/template/empty/empty.wxml"/>
+<import src="/pages/template/loadBox/loadBox.wxml"/>
+
+<template wx:if='{{loadBox}}' is="loadBox" />
+<view wx:if='{{!loadBox}}' class="index common">
+   <view class='top-con'>
+      <!--头部区域-->
+      <view class='top-head flex'>
+          <view class='top-left flex' bindtap='setCity'>
+              <image src='/image/location.png'></image>
+              <view class='cityName overflow1'>{{cityName}}</view>
+          </view>
+         <view class='top-right flex' bindtap='search'>
+              <image src='/image/search2.png'></image>
+              <input  disabled='true' placeholder-class='placeholder' placeholder='请搜索机构名称'></input>
+        </view>
+     </view>
+     <!--轮播-->
+     <swiper class="swiper-box" indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}"  indicator-color='{{color}}' interval="{{interval}}" duration="{{duration}}">
+          <block wx:for="{{bannerData}}">
+              <swiper-item class='top-swiper'>
+                    <image src="{{item.href}}" class="slide-image" />
+              </swiper-item>
+          </block>
+      </swiper>  
+      
+      <!--中心按钮区域-->
+      <view class='center-btn flex'>
+          <view class='btn-item btnactivegrey' bindtap='ask'>
+              <image class='btn1' src='/image/indexBtn1.png'></image>
+              <view class='btnName'>升学·问</view>
+          </view>
+
+          <view class='btn-item btnactivegrey' bindtap='teacher'>
+              <image class='btn2'  src='/image/indexBtn2.png'></image>
+              <view class='btnName'>老师·诊</view>
+          </view>
+
+          <view class='btn-item btnactivegrey' bindtap='headmaster'>
+              <image class='btn3'  src='/image/indexBtn3.png'></image>
+              <view class='btnName'>机构·帮</view>
+          </view>
+      </view>     
+      <!--资讯区域--> 
+      <swiper class='notice-con'>
+          <swiper-item>
+              <view class='notice-item flex'>
+                  <view class='notice-left'>直播资讯</view>
+                  <view class='line'></view>
+                  <view class='notice-center'>
+                        <view class='title overflow1'>不浪费一分填报志愿不浪费一分填报志愿不浪费一分填报志愿</view>
+                        <view class='desc'>8月18日 8:00开始</view>
+                  </view>
+                  <view class='notice-btn opacity'>去看看</view>
+              </view>
+          </swiper-item>
+      </swiper>
+     </view>  
+
+     <!--滑动区域--> 
+      <scroll-view class='{{scroll?"top-scroll active":"top-scroll"}}' scroll-x>
+          <view bindtap='setSelIndex' data-index='{{index}}' class='scroll-item' wx:for='{{scrollData}}'>
+              <view class='{{selindex == index?"scroll-name active":"scroll-name"}}'>{{item}}</view>
+              <view class='bot-line' wx:if='{{selindex == index}}'></view>
+          </view>
+      </scroll-view>
+
+      <view class='bot-scroll'>
+         
+         <view wx:for='{{articleList}}' data-id='{{item.contentId}}' bindtap='seeDetails' class='bot-scroll-con flex'>
+              <view class='left'>
+                  <image src='{{item.cover}}'></image>
+                  <view class='tag'>{{item.contentType}}</view>
+              </view>
+              <view class='right'>
+                  <view class='title overflow2'>{{item.contentTitle}}</view>
+                  <view class='right-conta flex'>
+                      <view class='conta-left overflow1'>{{item.author}}</view>
+                      <view class='conta-right flex'>
+                          <image src='/image/see.png'></image>
+                          <view class='nums'>{{item.viewCount}}</view>
+                          <image class='second' src='/image/pl.png'></image>
+                          <view class='nums'>{{item.commentCount}}</view>
+                      </view>
+                  </view>
+              </view>
+          </view>
+      </view>
+
+      <template wx:if='{{isLoad}}' is="loading" />
+      <view class='noMoreData' wx:if='{{noMore}}'>没有更多的了--!</view>
+      <template is="empty" wx:if='{{totalRow == 0}}' data="{{msg}}"/>
+</view>

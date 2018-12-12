@@ -1,0 +1,160 @@
+<!--pages/headmasterDetails/headmasterDetails.wxml-->
+<import src="/pages/template/loading/loading.wxml"/>
+<import src="/pages/template/empty/empty.wxml"/>
+<import src="/pages/template/loadBox/loadBox.wxml"/>
+
+<template wx:if='{{loadBox}}' is="loadBox" />
+<view  hidden='{{loadBox}}' class='headmasterDetails common'>
+      <map longitude="{{longitude}}" latitude="{{latitude}}"  wx:if='{{map}}' id="map"  scale="18" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location style="width: 100%; height: 456rpx;">
+          <cover-view class='con opacity' bindtap='setMap'>
+              <cover-image src='/image/pic2.png'></cover-image>
+              <cover-view class='name'>显示图片</cover-view>
+          </cover-view>
+      </map>
+   
+      <view class='top-img' wx:if='{{!map}}'>
+           <!--轮播-->
+            <swiper class="swiper-box" indicator-dots="{{indicatorDots}}"
+        autoplay="{{autoplay}}" indicator-active-color='{{selColor}}' indicator-color='{{color}}' interval="{{interval}}" duration="{{duration}}">
+                <block wx:for="{{baseData.orgImgs}}">
+                    <swiper-item class='top-swiper'>
+                          <image src="{{item}}" class="slide-image" />
+                          <view bindtap='setMap' class='bot-btn opacity flex'>
+                              <image src='/image/pic1.png'></image>
+                              <view class='name'>显示地图</view>
+                          </view>
+                    </swiper-item>
+                </block>
+            </swiper> 
+      </view>
+
+      <view class='headmaster-top flex'>
+                <view class='headImg'><image src='{{baseData.mainImg}}'></image></view>
+                <view class='head-right'>
+                    <view class='head-top flex'>
+                        <view class='name'>{{baseData.orgName}}</view>
+                        <view class='{{baseData.orgLevel =="总部"?"active desc":"desc"}}'>{{baseData.orgLevel}}</view>
+                    </view>
+                    <view class='other-desc flex'>
+                        <image src='/image/location.png'></image>
+                        <view class='descName'>{{baseData.orgAddr}}</view>
+                    </view>
+                   
+                </view>
+          </view>
+
+       <!--底部tab切换-->
+        <scroll-view class='{{scroll?"active flex":"flex"}}'>
+            <view class='tab-con' bindtap='setIndex' data-index='{{index}}' wx:for='{{tabArr}}'>
+                <view  class='{{indexs == index?"tab-name active":"tab-name"}}'>{{item}}</view>
+                <view wx:if='{{indexs == index}}' class='bot-line'></view>
+            </view>
+        </scroll-view>
+        
+     
+        <!--团队-->
+        <view class='content-container' wx:if='{{indexs == 0}}'>
+            <view  class='content-cen flex' wx:for='{{teamData}}'>
+                  <image bindtap='seePersonPage' data-id='{{item.customerId}}' class='content-left' src='{{item.dailyPicurl}}'> </image>
+                  <view class='content-right'>
+                      <view class='top-con flex' bindtap='seePersonPage' data-id='{{item.customerId}}'>
+                          <view class='name'>{{item.customerName}}</view>
+                          <view class='desc overflow5'>{{item.job}}</view>
+                      </view>
+
+                      <view class='{{item.brief.length>=50 && !item.totaggle?"content overflow3":"content"}}'>{{item.brief}}</view>
+                      <text class='totaggle' wx:if='{{!item.totaggle && item.brief.length>=50}}' catchtap='totaggle' data-index='{{index}}'>展开全部</text>
+                  </view>
+            </view>
+            
+       </view>
+
+        <!--案例-->
+         <view class='content-container' wx:if='{{indexs == 1}}'>
+               <view class='bot-scroll'>
+                  <view data-id='{{item.contentId}}' bindtap='seeDetails' wx:for='{{exampleData}}' data-id='{{item.contentId}}' bindtap='seeDetails' class='bot-scroll-con flex'>
+                            <view class='left'>
+                                <image src='{{item.cover}}'></image>
+                                <view class='tag'>{{item.contentType}}</view>
+                            </view>
+                            <view class='right'>
+                                <view class='title overflow2'>{{item.contentTitle}}</view>
+                                <view class='right-conta flex'>
+                                    <view class='conta-left overflow1'>{{item.author}}</view>
+                                    <view class='conta-right flex'>
+                                        <image src='/image/see.png'></image>
+                                        <view class='nums'>{{item.viewCount}}</view>
+                                        <image class='second' src='/image/pl.png'></image>
+                                        <view class='nums'>{{item.commentCount}}</view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                  </view>
+         </view>
+
+         <!--讲座-->
+         <view class='content-container' wx:if='{{indexs == 2}}'>
+              <view data-id='{{item.lectureId}}'  class='jz-list' bindtap='seeJzDetails' wx:for='{{hdArr1}}'>
+                  <view class='top-jz'>
+                      <image src='{{item.mainImg}}'></image>
+                      <view class='title overflow2'>{{item.lectureTitle}}</view>
+                     
+                      <view class='date'>主讲人：{{item.customerName}}</view>
+                      <view class='date'>时间：{{item.lectureTime}}</view>
+                      <view class='address'>地点：{{item.locationName}}</view>
+                  </view>
+                  <view class='jz-btn'>
+                      <view data-index='{{index}}' data-id='{{item.lectureId}}' data-status='{{item.myOrder}}' class='{{item.myOrder == 1?"btn opacity has":"btn opacity"}}' catchtap='startEnroll'>{{item.myOrder == 1?"已报名":"立即报名"}}</view>
+                  </view>
+              </view>
+
+              <view hidden='{{hdArr2.length == 0}}' class='last-jz flex'>
+                   <view class='border'></view>
+                   <view class='name'>往期讲座</view>
+                   <view class='border'></view>
+              </view>
+
+              <view data-id='{{item.lectureId}}' class='jz-list' bindtap='seeJzDetails'  wx:for='{{hdArr2}}'>
+                  <view class='top-jz'>
+                      <image src='{{item.mainImg}}'></image>
+                      <view class='title overflow2'>{{item.lectureTitle}}</view>
+                     
+                      <view class='date'>主讲人：{{item.customerName}}</view>
+                      <view class='date'>时间：{{item.lectureTime}}</view>
+                      <view class='address'>地点：{{item.locationName}}</view>
+                  </view>
+                  <view class='jz-btn'>
+                      <view bindtap='seeJzDetails' data-id='{{item.lectureId}}' class='btn has opacity'>查看详情</view>
+                  </view>
+              </view>
+         </view>
+
+        <!--活动-->
+         <view class='content-container' wx:if='{{indexs == 3}}'>
+              <view data-id='{{item.contentId}}' bindtap='seeDetails' class='hd-list'  wx:for='{{activity}}'>
+                    <view class='title overflow2'>{{item.contentTitle}}</view>
+                    <scroll-view scroll-x class='hd-imgcon'>
+                        <image wx:for='{{item.coverArr}}' wx:for-item='items' src='{{items}}'></image>
+                    </scroll-view>
+              </view>      
+         </view>
+
+        <!--办事处-->
+         <view class='content-container' wx:if='{{indexs == 4}}'>
+              <view class='address-list' wx:for='{{addressData}}'>
+                    <view class='address-top flex'>
+                        <view class='name'>{{item.orgName}}</view>
+                        <view class='{{item.orgLevel =="总部"?"active tip":"tip"}}'>{{item.orgLevel}}</view>
+                    </view>
+                    <view class='address'>{{item.orgAddr}}</view>
+                    <view class='name'>联系人：{{item.contactMan}}</view>
+                    <view class='phone' data-phone='{{item.contactPhone}}' bindtap='phone'>电话：{{item.contactPhone}}</view>
+              </view>
+         </view>
+
+         <template wx:if='{{isLoad}}' is="loading" />
+         <!--办事处会默认带入之前的-->
+         <template is="empty" wx:if='{{totalRow == 0 && indexs!=4}}' data="{{msg}}"/>
+         <view class='noMoreData' wx:if='{{noMore}}'>没有更多的了--!</view>
+</view>
