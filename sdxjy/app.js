@@ -174,9 +174,9 @@ App({
     customerId:'1270d2d3e35c47ae824e49600b3d49a6',//会员id
     paddingTop:'',
     recodeArr:[], //搜索记录 保留五条
-    requestUrl:'http://47.93.178.23:8081/sdx-edu/',
+    //requestUrl:'http://47.93.178.23:8081/sdx-edu/',
     imgUrl: 'http://47.93.178.23:8081/sdx-edu',
-    //requestUrl: 'http://192.168.31.141:8081/sdx-edu/',
+    requestUrl: 'http://192.168.31.141:8081/sdx-edu/',
     userId:'',  //用户id
     backTwo: false,
     phoneNumber:'phoneNumber', //手机号

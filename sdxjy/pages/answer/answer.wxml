@@ -4,7 +4,8 @@
       <view class='top-head flex'>
           <view class='top-search flex'>
               <image src='/image/search.png'></image>
-              <input placeholder-class='placeholder' placeholder='请搜索您感兴趣的内容'></input>
+              <input type='search' bindconfirm='search' bindinput='setSearchKey' value='{{searchKey}}' placeholder-class='placeholder' placeholder='请搜索您感兴趣的内容'></input>
+              <image wx:if='{{showDel}}' class='delete' bindtap='deleteInput' src='/image/delete.png'></image>
           </view>
           <view class='right flex opacity' bindtap='ask'>
               <image src='/image/edit.png'></image>
@@ -45,7 +46,7 @@
       </view>
 
       <!--滑动区域--> 
-      <scroll-view class='{{scroll?"top-scroll active":"top-scroll"}}' scroll-x>
+      <scroll-view wx:if='{{scrollBox}}' class='{{scroll?"top-scroll active":"top-scroll"}}' scroll-x>
           <view bindtap='setSelIndex' data-index='{{index}}' class='scroll-item' wx:for='{{scrollData}}'>
               <view class='{{selindex == index?"scroll-name active":"scroll-name"}}'>{{item}}</view>
               <view  class='bot-line' wx:if='{{selindex == index}}'></view>

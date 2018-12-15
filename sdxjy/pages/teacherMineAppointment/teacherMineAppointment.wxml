@@ -34,32 +34,32 @@
           <view class='item flex'>
                 <view class='leftName'>是否应约</view>
                 <view class='right flex'>
-                      <image src='/image/radio2.png'></image>
-                      <view>接受</view>
-                      <image class='last' src='/image/radio1.png'></image>
-                      <view>取消</view>
+                      <image bindtap='setMeetStatus' data-val='1' src='{{meetStatus==1?"/image/radio2.png":"/image/radio1.png"}}'></image>
+                      <view bindtap='setMeetStatus' data-val='1' class='fir'>改约</view>
+                      <image bindtap='setMeetStatus' data-val='3' class='last' src='{{meetStatus==3?"/image/radio2.png":"/image/radio1.png"}}'></image>
+                      <view bindtap='setMeetStatus' data-val='3'>取消</view>
                 </view>
           </view>
 
-          <view class='item flex'>
+          <view wx:if='{{meetStatus == 1}}' class='item flex'>
                 <view class='leftName'>预约时间</view>
                 <view class='right flex'>
                     <picker class='{{startDate == "请选择日期"?"time-picker active":"time-picker"}} ' mode="multiSelector" bindchange="bindStartMultiPickerChange" bindtap='pickerTap' bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">{{startDate}}</picker>
                 </view>
           </view>
 
-          <view class='item flex'>
+          <view wx:if='{{meetStatus == 1}}' class='item flex'>
                 <view class='leftName'>地点</view>
                 <view class='right flex'>
                     <input bindinput='setMeetAddr' value='{{meetAddr}}' placeholder-class='placeholder' placeholder='请输入预约地点'></input>
                 </view>
           </view>
 
-          <view class='item flex bot'>
+          <view wx:if='{{meetStatus == 1}}' class='item flex bot'>
                 <view class='leftName'>备注</view>
           </view>     
 
-          <textarea bindinput='setMeetMemo' value='{{meetMemo}}' maxlength='-1' placeholder-class='placeholder' placeholder="给对方留言说点什么吧…"></textarea>
+          <textarea wx:if='{{meetStatus == 1}}' bindinput='setMeetMemo' value='{{meetMemo}}' maxlength='-1' placeholder-class='placeholder' placeholder="给对方留言说点什么吧…"></textarea>
     </view>
 
     <!--非待预约情况 -->
@@ -107,25 +107,25 @@
                 </view>
           </view>
 
-          <view class='item flex'>
+          <view  wx:if='{{meetStatus == 1}}' class='item flex'>
                 <view class='leftName'>预约时间</view>
                 <view class='right flex'>
                     <picker class='{{startDate == "请选择日期"?"time-picker active":"time-picker"}} ' mode="multiSelector" bindchange="bindStartMultiPickerChange" bindtap='pickerTap' bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">{{startDate}}</picker>
                 </view>
           </view>
 
-          <view class='item flex'>
+          <view wx:if='{{meetStatus == 1}}' class='item flex'>
                 <view class='leftName'>地点</view>
                 <view class='right flex'>
                     <input bindinput='setMeetAddr' value='{{meetAddr}}' placeholder-class='placeholder' placeholder='请输入预约地点'></input>
                 </view>
           </view>
 
-          <view class='item flex bot'>
+          <view wx:if='{{ meetStatus == 1}}' class='item flex bot'>
                 <view class='leftName'>备注</view>
           </view>     
 
-          <textarea bindinput='setMeetMemo' maxlength='-1' value='{{meetMemo}}' placeholder-class='placeholder' placeholder="给对方留言说点什么吧…"></textarea>
+          <textarea wx:if='{{meetStatus == 1}}' bindinput='setMeetMemo' maxlength='-1' value='{{meetMemo}}' placeholder-class='placeholder' placeholder="给对方留言说点什么吧…"></textarea>
     </view>
     
     <button bindtap='commit' class='commit' wx:if='{{details.orderStatus == "待预约"||showBtn}}' >提交</button>

@@ -15,6 +15,10 @@ Page({
     answerList:[],
     noMore:false,
     totalPage:'',
+    searchKey:'',
+    scrollBox:true,
+    showDel:false,
+    tag:'',
   },
   /**
    * 生命周期函数--监听页面加载
@@ -31,14 +35,53 @@ Page({
       }, '', function (res) {
         let data = res.data.questionTag;
         data = data.split(',');
-        that.getTagContentList(data[0]);
+       
         that.setData({
-          scrollData: data
+          scrollData: data,
+          tag: data[0]
+        },function(){
+          that.getTagContentList();
         })
       });
   },
+  setSearchKey:function(e){
+      this.setData({
+        searchKey:e.detail.value
+      })
+  },
+  search:function(){
+    var that = this;
+    if (this.data.searchKey==''){
+      wx.showToast({
+        title: '请输入关键字',
+        icon:'none'
+      })
+      return
+    }
+    that.setData({
+      answerList:[],
+      scrollBox:false,
+      tag:'热榜'
+    },function(){
+      that.getTagContentList()
+    })
+  },
+  deleteInput:function(){
+      var that = this;
+      that.setData({
+        showDel:false,
+        page:1,
+        scrollBox:true,
+        answerList:[],
+        searchKey: '',
+        selindex: 0,
+        tag:that.data.scrollData[0]
+      },function(){
+        that.getTagContentList()
+      })
+  },
   //获取标签内容
-  getTagContentList: function (tag) {
+  getTagContentList: function () {
     var that = this;
     that.setData({
       isLoad: true,
@@ -46,12 +89,18 @@ Page({
     })
     network.requestLoading('GET', app.globalData.requestUrl + 'question/list',
       {
-        titleTag:tag,
+        titleTag: that.data.tag,
         customerId: app.globalData.customerId,
         page: that.data.page,
+        searchKey: that.data.searchKey,
         pageSize: that.data.pageSize
       }, '', function (res) {
         let data = res.data.list;
+        if ((that.data.searchKey).length>0){
+          that.setData({
+            showDel: true
+          })
+        }
         for(let i in data){
           data[i].answerCount = nums.numFormat(data[i].answerCount);
           data[i].followCount = nums.numFormat(data[i].followCount);
@@ -75,7 +124,6 @@ Page({
       });
   },
   onReachBottom: function () {
-    console.log(9999)
     var that = this;
     //最后一页不请求
     if (that.data.totalPage == that.data.page) {
@@ -87,7 +135,6 @@ Page({
       that.getTagContentList();
     })
   },
-
   onPageScroll: function (e) {
     if (e.scrollTop >= 150) {
       this.setData({
@@ -109,6 +156,7 @@ Page({
     this.setData({
       selindex: index,
       answerList:[],
+      tag:that.data.scrollData[index],
       page:1
     },function(){
       that.getTagContentList(that.data.scrollData[index]);

@@ -88,6 +88,11 @@
 .scroll-item{
   padding-right: 138rpx;
 }
+.top-head .left image.delete{
+  width: 28rpx;
+  height: 29rpx;
+  padding: 16.5rpx 20rpx;
+}
 
 .answer-con{
   padding: 28rpx;

@@ -70,6 +70,7 @@ Page({
   },
   commit:function(){
     var that = this;
+    let data;
     //同意必须传时间地点
     if (that.data.meetStatus == 1){
         if (that.data.startDate == '请选择日期') {
@@ -86,16 +87,23 @@ Page({
           })
           return
         }
+        data = {
+          meetId: that.data.details.meetId,
+          meetStatus: that.data.meetStatus,
+          meetTime: that.data.startDate == '请选择日期' ? "" : that.data.startDate,
+          meetAddr: that.data.meetAddr,
+          meetMemo: that.data.meetMemo,
+        }
+    }
+    else{
+        data = {
+          meetId: that.data.details.meetId,
+          meetStatus: that.data.meetStatus,
+        }
     }
     
     network.requestLoading('POST', app.globalData.requestUrl + 'meetRecord/update',
-      {
-        meetId: that.data.details.meetId,
-        meetStatus: that.data.meetStatus,
-        meetTime: that.data.startDate,
-        meetAddr: that.data.meetAddr,
-        meetMemo: that.data.meetMemo,
-      }, '', function (res) {
+      data, '', function (res) {
         wx.showToast({
           title: '提交成功',
           duration: 3000
