@@ -8,12 +8,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    maxFileCount:12,
+    maxFileCount:9,
     pics:[],
     maxInputLen:500,
     canInputLen:500,
     textareaVal:'',
     tapTime:'',
+    isCheck: false,
   },
    
   /**
@@ -22,7 +23,11 @@ Page({
   onLoad: function (options) {
 
   },
-
+  change: function (e) {
+    this.setData({
+      isCheck: e.detail.value
+    })
+  },
   //输入的字数
   setTextarea:function(e){
       if (this.data.canInputLen == 0){
@@ -108,7 +113,7 @@ Page({
       title: '',
       customerId: app.globalData.customerId,
       describe: that.data.textareaVal,
-      isOpen: 0,
+      isOpen: that.data.isCheck?1:0,
       isTop: 0
     }
     if(that.data.pics.length == 0){

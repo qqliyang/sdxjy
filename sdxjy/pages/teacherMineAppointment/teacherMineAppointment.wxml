@@ -6,29 +6,30 @@
         <view>TA的名片</view>
     </view>
     <view class='top-head flex'>
-          <image src='/image/person.png'></image>
+          <image src='{{details.wxPicurl}}'></image>
           <view class='right'>
               <view class='top-con flex'>
-                   <view class='name'>谢敏</view>
+                   <view class='name'>{{details.wxUname}}</view>
               </view>
-              <view class='desc'>18199005566</view>
-              <view class='desc'>江西省南昌市西湖街道江西省南昌市西湖街道江西省南昌市西湖街道江西省南昌市西湖街道</view>
+              <view class='desc'>{{details.phone}}</view>
+              <view class='desc'>{{details.locationName}}</view>
           </view>
     </view>
-
+    
+   
     <view class='content-con'>
           <view class='title left'>他请教的问题</view>
           <view class='question-con left'>
-              <view class='content'>我的孩子学习成绩一般，不是一个简单的个人问题，而是一个很复杂的社会性问题，它混杂着基因设置、社会文化、学习成绩不好，不知道选择什么学校和专业。</view>
+              <view class='content'>{{details.studentQuestion}}</view>
               <view class='imgcon flex'>
-                  <image src='/image/banner.png'/>
-                  <image src='/image/banner.png'/>
-                  <image src='/image/banner.png'/>
+                  <image bindtap='previewImg'  data-index='{{index}}' wx:for='{{details.meetFile}}' src='{{item}}'/>
               </view>
           </view>
     </view>
 
-    <view class='mine-request'>
+    
+    <!--待预约-->
+    <view class='mine-request' wx:if='{{details.orderStatus == "待预约"}}'>
           <view class='title'>预约反馈</view>
           <view class='item flex'>
                 <view class='leftName'>是否应约</view>
@@ -50,7 +51,7 @@
           <view class='item flex'>
                 <view class='leftName'>地点</view>
                 <view class='right flex'>
-                    <input placeholder-class='placeholder' placeholder='请输入预约地点'></input>
+                    <input bindinput='setMeetAddr' value='{{meetAddr}}' placeholder-class='placeholder' placeholder='请输入预约地点'></input>
                 </view>
           </view>
 
@@ -58,9 +59,75 @@
                 <view class='leftName'>备注</view>
           </view>     
 
-          <textarea maxlength='-1' placeholder-class='placeholder' placeholder="给对方留言说点什么吧…"></textarea>
+          <textarea bindinput='setMeetMemo' value='{{meetMemo}}' maxlength='-1' placeholder-class='placeholder' placeholder="给对方留言说点什么吧…"></textarea>
     </view>
 
-    <button class='commit'>提交</button>
+    <!--非待预约情况 -->
+    <view class='mine-request' wx:if='{{details.meetStatus > 0 && !showBtn}}'>
+          <view class='top-box flex'>
+               <view class='title'>预约反馈</view>
+               <image bindtap='setbtn' wx:if='{{details.meetStatus ==1}}' src='/image/edit.png'></image>
+          </view>
+          <view class='item flex'>
+                <view class='item-con'>
+                     <view class='leftName'>是否应约</view>
+                </view>
+                <view class='right flex leftName'>{{details.meetStatus==3?"取消":"接收"}}</view>
+          </view>
+          <view class='item flex'>
+                <view class='item-con'>
+                     <view class='leftName'>预约时间</view>
+                </view>
+                <view class='right flex leftName'>{{details.meetTime}}</view>
+          </view>
+          <view class='item flex'>
+                <view class='item-con'>
+                     <view class='leftName'>地点</view>
+                </view>
+                <view class='right flex leftName'>{{details.meetAddr}}</view>
+          </view>
+          <view class='item flex last'>
+                <view class='item-con'>
+                     <view class='leftName'>备注</view>
+                </view>
+          </view>
+          <view class='bz-con'>{{details.meetMemo}}</view>
+    </view>
+     
+     <!--非待预约情况修改 -->
+    <view class='mine-request' wx:if='{{showBtn}}'>
+          <view class='title'>预约反馈</view>
+          <view class='item flex'>
+                <view class='leftName'>是否应约</view>
+                <view class='right flex'>
+                      <image bindtap='setMeetStatus' data-val='1' src='{{meetStatus==1?"/image/radio2.png":"/image/radio1.png"}}'></image>
+                      <view bindtap='setMeetStatus' data-val='1' class='fir'>改约</view>
+                      <image bindtap='setMeetStatus' data-val='3' class='last' src='{{meetStatus==3?"/image/radio2.png":"/image/radio1.png"}}'></image>
+                      <view bindtap='setMeetStatus' data-val='3'>取消</view>
+                </view>
+          </view>
+
+          <view class='item flex'>
+                <view class='leftName'>预约时间</view>
+                <view class='right flex'>
+                    <picker class='{{startDate == "请选择日期"?"time-picker active":"time-picker"}} ' mode="multiSelector" bindchange="bindStartMultiPickerChange" bindtap='pickerTap' bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">{{startDate}}</picker>
+                </view>
+          </view>
+
+          <view class='item flex'>
+                <view class='leftName'>地点</view>
+                <view class='right flex'>
+                    <input bindinput='setMeetAddr' value='{{meetAddr}}' placeholder-class='placeholder' placeholder='请输入预约地点'></input>
+                </view>
+          </view>
+
+          <view class='item flex bot'>
+                <view class='leftName'>备注</view>
+          </view>     
+
+          <textarea bindinput='setMeetMemo' maxlength='-1' value='{{meetMemo}}' placeholder-class='placeholder' placeholder="给对方留言说点什么吧…"></textarea>
+    </view>
+    
+    <button bindtap='commit' class='commit' wx:if='{{details.orderStatus == "待预约"||showBtn}}' >提交</button>
 </view>
 

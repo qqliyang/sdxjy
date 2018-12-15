@@ -8,6 +8,6 @@
         <view class='content'>此界面文案待定此界面文案待定此界面文案待定，咨询师接受提问后，会主动与您联系。咨询师超过48小时未确认将全额退款。文案待确认。
 
         </view>
-        <button>我知道了</button>
+        <button bindtap='back'>我知道了</button>
     </view>
 </view>

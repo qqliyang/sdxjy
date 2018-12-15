@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    maxFileCount: 12,
+    maxFileCount: 9,
     pics: [],
     maxInputLen: 500,
     canInputLen: 500,
@@ -16,6 +16,7 @@ Page({
     noImgUrl: '/image/ewm.png',
     tapTime: '',
     title:'',
+   
   },
 
   /**
@@ -24,7 +25,7 @@ Page({
   onLoad: function (options) {
 
   },
-
+ 
   //输入的字数
   setTextarea: function (e) {
     if (this.data.canInputLen == 0) {
@@ -138,7 +139,7 @@ Page({
       path: that.data.pics,//这里是选取的图片的地址数组
       formData: formData,//其他的参数
     });
-    that.setData({ 'tapTime': nowTime, pics:[]});
+    that.setData({ 'tapTime': nowTime});
   },
 
   //没有图片上传

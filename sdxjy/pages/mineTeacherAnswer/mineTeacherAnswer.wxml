@@ -1,0 +1,59 @@
+<!--pages/mineAnswer/mineAnswer.wxml-->
+<view class='mineAnswer common'>
+      <view class='top-head flex'>
+        <view  bindtap='setCurrent' data-index='0' class='{{current == "0"?"tab-btnname active":"tab-btnname"}}'>待回答</view>
+        <view bindtap='setCurrent' data-index='1' class='{{current == "1"?"tab-btnname active":"tab-btnname"}}'>已回答</view>
+      </view>
+  
+      <swiper current='{{current}}' bindchange='current' style='height:calc(100% - 70rpx)'>
+
+          <swiper-item>
+              <scroll-view scroll-y bindscrolltolower='lower'>
+                  <view class='center'>
+                      <view class='list opacity' wx:for='{{askData}}'>
+                          <view class='top-center flex'>
+                              <view class='tip'>{{item.servicePrice}}</view>
+                              <view class='title overflow2'>{{item.title}}</view>
+                          </view>
+
+                          <view class='content overflow5'>{{item.describe}}</view>
+
+                          <view class='bot-con'>
+                              <view data-inviteid='{{item.inviteId}}' data-id='{{item.questionId}}' bindtap='goAnswer' class='btn  opacity'>去回答</view>
+                          </view>
+                      </view>
+                      <template wx:if='{{isLoad}}' is="loading" />
+                      <view class='noMoreData' wx:if='{{noMore}}'>没有更多的了--!</view>
+                      <template is="empty" wx:if='{{totalRow == 0}}' data="{{msg}}"/>
+                    
+                  </view>
+              </scroll-view>
+          </swiper-item>
+        
+          <swiper-item class='next'>
+               <scroll-view scroll-y bindscrolltolower='lower'>
+                   <view class='center'>
+                        <view bindtap='seeDetails' data-id='{{item.questionId}}' class='list opacity' wx:for='{{askData}}'>
+                            <view class='top-center flex'>
+                                <view class='title overflow'>{{item.answerContent}}</view>
+                            </view>
+                            
+                            <view class='box-con'>
+
+                                  <view class='title overflow3'>{{item.questionTitle}}</view>
+                                
+                                  <view class='content overflow3'>{{item.questionDiscribe}}</view>
+                                  <view class='perview-image flex'>
+                                      <image wx:for='{{item.questionFile}}' wx:for-item="items" src='{{items}}'> </image>
+                                  </view>
+                            </view>
+                        </view>
+
+                        <template wx:if='{{isLoad}}' is="loading" />
+                        <view class='noMoreData' wx:if='{{noMore}}'>没有更多的了--!</view>
+                        <template is="empty" wx:if='{{totalRow == 0}}' data="{{msg}}"/>
+                    </view>
+               </scroll-view>
+          </swiper-item>
+      </swiper>
+</view>

@@ -103,10 +103,10 @@
                       <view class='date'>主讲人：{{item.customerName}}</view>
                       <view class='date'>时间：{{item.lectureTime}}</view>
                       <view class='address'>地点：{{item.locationName}}</view>
-                  </view>
-                  <view class='jz-btn'>
+
                       <view data-index='{{index}}' data-id='{{item.lectureId}}' data-status='{{item.myOrder}}' class='{{item.myOrder == 1?"btn opacity has":"btn opacity"}}' catchtap='startEnroll'>{{item.myOrder == 1?"已报名":"立即报名"}}</view>
                   </view>
+                
               </view>
 
               <view hidden='{{hdArr2.length == 0}}' class='last-jz flex'>
@@ -123,10 +123,9 @@
                       <view class='date'>主讲人：{{item.customerName}}</view>
                       <view class='date'>时间：{{item.lectureTime}}</view>
                       <view class='address'>地点：{{item.locationName}}</view>
-                  </view>
-                  <view class='jz-btn'>
                       <view bindtap='seeJzDetails' data-id='{{item.lectureId}}' class='btn has opacity'>查看详情</view>
                   </view>
+                  
               </view>
          </view>
 

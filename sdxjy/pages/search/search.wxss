@@ -50,6 +50,7 @@
 }
 .result-con{
   padding-left: 35rpx;
+  overflow: hidden;
 }
 .search-result{
   max-width: 700rpx;
@@ -64,8 +65,9 @@
   background-color: #f8f8f8;
 	border-radius: 35rpx;
   display: inline-block;
-  margin-top: 34rpx;
+  margin-top: 30rpx;
   margin-right: 32rpx;
+  float:left;
 }
 .item-con{
   margin-top: 44rpx;

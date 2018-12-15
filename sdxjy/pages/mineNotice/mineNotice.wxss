@@ -1,0 +1,142 @@
+/* pages/mineNotice/mineNotice.wxss */
+swiper{
+  position: fixed;
+  width: 100%;
+  top:70rpx;
+}
+scroll-view{
+  height: 100%;
+}
+.top-head{
+  height: 70rpx;
+  line-height: 70rpx;
+  justify-content: center;
+  background: #fff;
+  position: fixed;
+  top:0rpx;
+  width: 100%;
+}
+.tab-btnname{
+  position: relative;
+  padding: 0 43rpx;
+  font-size: 28rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #7f8389;
+  text-align: center;
+  box-sizing: content-box;
+}
+.tab-btnname.active{
+  color: #ffb800;
+}
+.tab-btnname.active::after{
+  content:'';
+  position: absolute;
+  bottom:0rpx;
+  width: 120rpx;
+	height: 1rpx;
+  left: 50%;
+  margin-left: -60rpx;
+  background:#ffb800;
+  border-radius: 4rpx;
+	border: solid 3rpx #ffb800;
+  box-sizing: border-box;
+}
+
+.notice-list:first-child{
+  margin-top: 10rpx;
+}
+.notice-list{
+  padding: 35rpx 25rpx 39rpx 37rpx;
+  background: #fff;
+  border-bottom: 2rpx solid #f9f9f9;
+}
+.notice-list image{
+  width: 104rpx;
+  height: 104rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.notice-list .center{
+  width: 420rpx;
+  padding-left:29rpx;
+}
+.notice-list .btn{
+  width: 120rpx;
+  height: 56rpx;
+  border-radius: 10rpx;
+  border:2rpx solid #ddd;
+  line-height: 56rpx;
+  text-align: center;
+  color: #737373;
+}
+.notice-list .btn.active{
+  border:2rpx solid #ff775f;
+  background: #ff775f;
+  color: #fff;
+}
+.name{
+  font-size: 32rpx;
+  line-height: 32rpx;
+	font-weight: bold;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #000000;
+  margin-bottom: 15rpx;
+}
+.desc{
+  font-size: 28rpx;
+  line-height: 35rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #999999;
+}
+
+
+.answer-con{
+  padding: 28rpx;
+  border-top:4rpx solid #f3f3f3;
+  background: #fff;
+}
+.answer-con .title{
+  line-height: 45rpx;
+  width: 694rpx;
+  font-size: 32rpx;
+	font-weight: bold;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #333333;
+}
+.answer-con .answer-content{
+  font-size: 30rpx;
+  line-height: 40rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #555555;
+  margin-top: 14rpx;
+}
+.answer-bot{
+  justify-content: flex-start;
+  margin-top: 32rpx;
+}
+.answer-bot .nums{
+  margin-right: 14rpx;
+  font-size: 28rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #333333;
+}
+.answer-bot .gz{
+  margin-left: 65rpx;
+}
+.answer-bot .bot-name{
+  font-size: 28rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #999999;
+}

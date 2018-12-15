@@ -305,6 +305,7 @@ scroll-view.active{
 }
 .top-jz{
   padding: 0 40rpx;
+  position: relative;
 }
 .jz-list image{
   width:670rpx;
@@ -359,7 +360,7 @@ scroll-view.active{
   height: 88rpx;
   margin-top: 31rpx;
 }
-.jz-btn .btn{
+.btn{
   width:151rpx;
   height:56rpx;
   background:rgba(255,119,95,1);
@@ -371,11 +372,14 @@ scroll-view.active{
   font-family:PingFang-SC-Medium;
   font-weight:500;
   color:rgba(255,255,255,1);
+  position: absolute;
+  right: 60rpx;
+  top:290rpx;
 }
-.jz-btn .btn.has{
+.btn.has{
   border-radius:8rpx;
   border:1rpx solid;
-  background: #fff;
+  background: rgba(255,255,255,1);
   font-size:30rpx;
   font-weight:500;
   color:rgba(151,151,151,1);

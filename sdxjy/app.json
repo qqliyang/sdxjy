@@ -1,33 +1,39 @@
 {
   "pages": [  
     "pages/index/index",
+    "pages/mineAbout/mineAbout",
+    "pages/mineService/mineService",
+    "pages/teacherMineAppointment/teacherMineAppointment",
+    "pages/beingEvaluated/beingEvaluated",
+    "pages/mineAppointment/mineAppointment",
+    "pages/mineAppointmentDetails/mineAppointmentDetails",
+    "pages/mineTeacherAnswer/mineTeacherAnswer",
+  
+    "pages/mine/mine",
+    "pages/mineAnswer/mineAnswer",
+    "pages/mineNotice/mineNotice",
+    "pages/headmaster/headmaster",
+    "pages/search/search",
+    "pages/aboutPhoneChat/aboutPhoneChat",
+    "pages/expert/expert",
+   
+  
+    "pages/higherLearning/higherLearning",
+    "pages/ask/ask",
+    "pages/mineAsk/mineAsk",
     "pages/mineCard/mineCard",
     "pages/authority/authority",
     "pages/requestAnswer/requestAnswer",
-    "pages/headmaster/headmaster",
     "pages/jzDetails/jzDetails",
     "pages/answerDetails/answerDetails",
     "pages/answer/answer",
-    "pages/mine/mine",
     "pages/teacherDiagnosis/teacherDiagnosis",
     "pages/headmasterDetails/headmasterDetails",
     "pages/personPage/personPage",
     "pages/telephoneHigherLearning/telephoneHigherLearning",
     "pages/citySel/citySel",
-    "pages/search/search",
-    "pages/teacherMineAppointment/teacherMineAppointment",
     "pages/articleDetails/articleDetails",
-    "pages/higherLearning/higherLearning",
-    "pages/mineAppointmentDetails/mineAppointmentDetails",
-    "pages/beingEvaluated/beingEvaluated",
-    "pages/mineAppointment/mineAppointment",
-    "pages/mineAnswer/mineAnswer",
-    "pages/mineAsk/mineAsk",
-   
-    "pages/ask/ask",
-    "pages/userMessage/userMessage",
-    "pages/aboutPhoneChat/aboutPhoneChat",         
-    "pages/expert/expert"
+    "pages/userMessage/userMessage"
   ],
   "requiredBackgroundModes": [
     "audio"

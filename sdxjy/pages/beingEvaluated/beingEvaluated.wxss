@@ -18,11 +18,12 @@ page{
 }
 .star-con{
   justify-content: center;
+  margin-top: 100rpx;
 }
 .star-con image{
   width: 34rpx;
   height: 32rpx;
-  margin-right: 39rpx;
+  padding: 0 20rpx;
 }
 .star-con image:last-child{
   margin: 0;

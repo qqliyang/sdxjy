@@ -5,10 +5,7 @@ const app = getApp()
 
 Page({
   data: {
-    imgUrls: [
-      '/image/banner.png',
-      '/image/banner.png'
-    ],
+    imgUrls: [],
     indicatorDots: true,
     autoplay: true,
     interval: 10000,
@@ -97,7 +94,11 @@ Page({
               }
             }
           })     
-     }) 
+     })
+  },
+  //formId埋点
+  formSubmit:function(e){
+      console.log(e.detail.formId)
   },
   //保存信息
   saveMineMess: function (userinfo,city) {
@@ -109,10 +110,7 @@ Page({
         wxPicurl: userinfo.avatarUrl,
         wxUname: userinfo.nickName,
       }, '', function (res) {
-        //res就是我们请求接口返回的数据
-        wx.switchTab({
-          url: '/pages/index/index',
-        })
+        
       })
   },
   //根据省份城市获取组织id

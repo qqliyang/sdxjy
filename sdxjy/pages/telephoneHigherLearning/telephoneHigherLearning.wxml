@@ -32,10 +32,10 @@
         </view>
     </view>
 
-    <button class='submit'>￥{{data.servicePrice}} 立即预约</button>
+    <button class='submit' bindtap='commitQuestion'>￥{{data.servicePrice}} 立即预约</button>
     <view class='bot-tip flex'>
         <view class='tip'>咨询师超过48小时未确认将全额退款。</view>
         
     </view>
-    <view class='about tip'>关于电话沟通</view>
+    <view class='about tip' bindtap='about'>关于电话沟通</view>
 </view>

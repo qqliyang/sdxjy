@@ -32,7 +32,7 @@
       <view class='answer-con' wx:for='{{teacherData}}'>
           <view class='answer-teacher flex'>
                 <view class='teacher-left'>
-                    <image class='headimg' data-id='{{item.customerId}}' bindtap='seePersonPage' src='{{item.wxPicurl}}'></image>
+                    <image class='headimg' data-id='{{item.customerId}}' bindtap='seePersonPage' src='{{item.workPicurl}}'></image>
                     <image data-index='{{index}}' data-id='{{item.customerId}}' bindtap='Follow' data-isfollow='{{item.myFollow}}' class='guanzhu' src='{{item.myFollow == "true" ?"/image/guanzhu2.png":"/image/guanzhu1.png"}}'></image>
                     <view class='nums'>{{item.followCount}}</view>
                 </view>

@@ -30,20 +30,24 @@
       
       <!--中心按钮区域-->
       <view class='center-btn flex'>
-          <view class='btn-item btnactivegrey' bindtap='ask'>
-              <image class='btn1' src='/image/indexBtn1.png'></image>
-              <view class='btnName'>升学·问</view>
-          </view>
-
-          <view class='btn-item btnactivegrey' bindtap='teacher'>
-              <image class='btn2'  src='/image/indexBtn2.png'></image>
-              <view class='btnName'>老师·诊</view>
-          </view>
-
-          <view class='btn-item btnactivegrey' bindtap='headmaster'>
-              <image class='btn3'  src='/image/indexBtn3.png'></image>
-              <view class='btnName'>机构·帮</view>
-          </view>
+           <form class='btn-item btnactivegrey' bindtap='ask' bindsubmit="formSubmit" report-submit='true'>    
+                  <button formType='submit'>
+                      <image class='btn1' src='/image/indexBtn1.png'></image>
+                      <view class='btnName'>升学·问</view>
+                  </button>  
+           </form>
+           <form class='btn-item btnactivegrey' bindtap='teacher' bindsubmit="formSubmit" report-submit='true'>    
+                  <button formType='submit'>
+                      <image class='btn2' src='/image/indexBtn2.png'></image>
+                      <view class='btnName'>老师·诊</view>
+                  </button>  
+          </form>
+          <form class='btn-item btnactivegrey' bindtap='headmaster' bindsubmit="formSubmi3" report-submit='true'>    
+                  <button formType='submit'>
+                      <image class='btn3' src='/image/indexBtn3.png'></image>
+                      <view class='btnName'>机构·帮</view>
+                  </button>  
+          </form>
       </view>     
       <!--资讯区域--> 
       <swiper class='notice-con'>

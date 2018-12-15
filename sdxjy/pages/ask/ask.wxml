@@ -11,5 +11,6 @@
             <image src='/image/add.png' bindtap='choose'></image>
         </view>
     </view>
+  
     <button class='submit' bindtap='commitQuestion'>提交问题</button>
 </view>

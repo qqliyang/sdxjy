@@ -94,7 +94,6 @@ App({
       })
     })
   },
-
   //通过微信内置获取地理位置信息，然后通过百度API获取省份名
   setProvince: function () {
     var that = this;
@@ -154,6 +153,19 @@ App({
     })
     return promise;
   },
+  //保存formId
+  sendFromId: function () {
+    wx.request({
+      url: app.globalData.requestUrl + '/saveformidlist.jspx',
+      data: {
+        openid: app.globalData.openid,
+        formidlist: JSON.stringify(that.globalData.formIdArr),
+      },
+      success: function (res) {
+          console.log('保存成功')
+      },
+    })
+  },
   globalData: {
     topHeight:'',
     lineHeight:'',
@@ -173,5 +185,7 @@ App({
     ask:false, //提问过问答刷新
     indexFresh:false,//首页是否刷新
     userInfo:'',
+    appoint:false,
+    appId:'wx602b0ff40d50e9c8',
   }
 })

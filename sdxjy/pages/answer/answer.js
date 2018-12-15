@@ -25,7 +25,7 @@ Page({
   //获取标签名
   getTagList:function(){
     var that = this;
-    network.requestLoading('POST', app.globalData.requestUrl + 'question/getTagList',
+    network.requestLoading('GET', app.globalData.requestUrl + 'question/getTagList',
       {
         
       }, '', function (res) {
@@ -44,7 +44,7 @@ Page({
       isLoad: true,
       noMore: false
     })
-    network.requestLoading('POST', app.globalData.requestUrl + 'question/list',
+    network.requestLoading('GET', app.globalData.requestUrl + 'question/list',
       {
         titleTag:tag,
         customerId: app.globalData.customerId,
@@ -53,8 +53,9 @@ Page({
       }, '', function (res) {
         let data = res.data.list;
         for(let i in data){
-          data[i].answerCount = nums.numFormat(data[i].answerCount)
-          data[i].followCount = nums.numFormat(data[i].followCount)
+          data[i].answerCount = nums.numFormat(data[i].answerCount);
+          data[i].followCount = nums.numFormat(data[i].followCount);
+          data[i].file = data[i].file ? data[i].file.split('@') : [];
         }
         that.setData({
           answerList: that.data.answerList.concat(data),
@@ -126,7 +127,6 @@ Page({
         url: '/pages/answerDetails/answerDetails?contentId='+id,
       })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -9,16 +9,13 @@ Page({
   data: {
     isTeacher:null,  //家长还是老师端  0家长 1是老师
     userInfo:'',
+    loadBox:true,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let userInfo = app.globalData.userInfo;
-    this.setData({
-      userInfo: userInfo
-    })
     this.getIsTeacher();
   },
   //判断老师端 还是家长端
@@ -29,7 +26,10 @@ Page({
         customerId: app.globalData.customerId,
       }, '', function (res) {
         that.setData({
-          isTeacher: res.data.isTeacher
+          // isTeacher: res.data.isTeacher,
+          isTeacher: 1,
+          userInfo:res.data,
+          loadBox:false,
         })
       })
   },
@@ -51,28 +51,40 @@ Page({
       url: '/pages/mineAnswer/mineAnswer',
     })
   },
+  //老师端我的回答
+  gomineTeacherAnswer:function(){
+    wx.navigateTo({
+      url: '/pages/mineTeacherAnswer/mineTeacherAnswer',
+    })
+  },
   //我的预约
   goMineAppointmentDetails: function () {
     wx.navigateTo({
-      url: '/pages/mineAppointment/mineAppointment',
+      url: '/pages/mineAppointment/mineAppointment?isTeacher=' + this.data.isTeacher,
     })
   },
   //我的关注
-  goMineCard: function () {
+  goMineNotice: function () {
     wx.navigateTo({
-      url: '/pages/mineCard/mineCard',
+      url: '/pages/mineNotice/mineNotice',
     })
   },
   //产品服务
-  goMineCard: function () {
+  goMineService: function () {
     wx.navigateTo({
-      url: '/pages/mineCard/mineCard',
+      url: '/pages/mineService/mineService',
     })
   },
   //关于圣达信
-  goMineCard: function () {
+  goMineAbout: function () {
     wx.navigateTo({
-      url: '/pages/mineCard/mineCard',
+      url: '/pages/mineAbout/mineAbout',
+    })
+  },
+  //老师的预约
+  goTeacherMineAppointment:function(){
+    wx.navigateTo({
+      url: '/pages/teacherMineAppointment/teacherMineAppointment',
     })
   },
   /**

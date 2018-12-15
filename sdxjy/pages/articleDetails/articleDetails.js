@@ -188,7 +188,6 @@ Page({
           data[i].createTime = (data[i].createTime).replace(/-/g, '/'); 
           data[i].createTime = time.timestampFormat(Date.parse(data[i].createTime) / 1000)
         }
-      
         that.setData({
           plData:that.data.plData.concat(data),
           isLoad:false,
@@ -224,27 +223,29 @@ Page({
           return
       }
       that.setData({
-        plData:[]
+        plData:[], 
+        page:1,
+      },function(){
+        network.requestLoading('POST', app.globalData.requestUrl + '/comment/addComment',
+          {
+            comment: that.data.comment,
+            isOpen: 1,
+            contentId: that.data.contentId,
+            customerId: app.globalData.customerId,
+          }, '', function (res) {
+            that.getPlList();
+            //置空
+            that.setData({
+              comment: '',
+            })
+            //导航到评论顶部
+            setTimeout(function () {
+              that.setData({
+                scrollId: 'plid'
+              })
+            }, 500)
+          });
       })
-      network.requestLoading('POST', app.globalData.requestUrl + '/comment/addComment',
-      {
-        comment: that.data.comment,
-        isOpen: 1,
-        contentId: that.data.contentId,
-        customerId: app.globalData.customerId,
-      }, '', function (res) {
-        that.getPlList();
-        //置空
-        that.setData({
-          comment:'',
-        })
-        //导航到评论顶部
-        setTimeout(function () {
-          that.setData({
-            scrollId: 'plid'
-          })
-        }, 500)
-      });
   },
   // 
   articleClick:function(e){

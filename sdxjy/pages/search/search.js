@@ -21,7 +21,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-     
+    this.getSearchContent();
   },
   setInput:function(e){
       this.setData({
@@ -30,7 +30,10 @@ Page({
   },
   deleteInput:function(){
       this.setData({
-        contentDesc:''
+        contentDesc:'',
+        isResult:false,
+        articleList:[],
+        page:1,
       })
   },
   startSearch:function(){
@@ -41,6 +44,31 @@ Page({
       },function(){
          that.search();
       })
+  },
+  //获取热搜和历史搜索
+  getSearchContent:function(){
+    var that = this;
+    network.requestLoading('GET', app.globalData.requestUrl + 'hotword/list',
+      {
+        sourceType: 'a',//搜索来源[a-圣达信教育 b-新高考 c-自主招生] 
+        sourceSubType: 'a',//来源子栏目[a-资讯搜索 b-课程搜索 c-问答搜索] 
+        customerId:app.globalData.customerId,
+      }, '', function (res) {
+        that.setData({
+          searchData:res.data
+        })
+      })
+  },
+  setSearchVal:function(e){
+    let val = e.currentTarget.dataset.val;
+    var that = this;
+    this.setData({
+      articleList: [],
+      page: 1,
+      contentDesc:val,
+    }, function () {
+      that.search();
+    })
   },
   //搜索
   search:function(){
@@ -56,6 +84,7 @@ Page({
         pageSize: that.data.pageSize,
         contentDesc: that.data.contentDesc
       }, '', function (res) {
+        that.saveSearchContent();
         that.setData({
           articleList: that.data.articleList.concat(res.data.list),
           isLoad:false,
@@ -81,6 +110,51 @@ Page({
           isLoad:false
         })
       });         
+  },
+  //保存历史搜索
+  saveSearchContent: function () {
+    var that = this;
+    network.requestLoading('post', app.globalData.requestUrl + 'hotword/save',
+      {
+        scopeType:0,
+        sourceType: 'a',//搜索来源[a-圣达信教育 b-新高考 c-自主招生] 
+        sourceSubType: 'a',//来源子栏目[a-资讯搜索 b-课程搜索 c-问答搜索] 
+        searchWord:that.data.contentDesc,
+        customerId: app.globalData.customerId,
+      }, '', function (res) {
+        that.getSearchContent();
+      })
+  },
+  //删除热搜和历史搜索
+  deleteSearchContent: function () {
+    var that = this;
+    network.requestLoading('GET', app.globalData.requestUrl + 'hotword/delete',
+      {
+        sourceType: 'a',//搜索来源[a-圣达信教育 b-新高考 c-自主招生] 
+        sourceSubType: 'a',//来源子栏目[a-资讯搜索 b-课程搜索 c-问答搜索] 
+        customerId: app.globalData.customerId,
+      }, '', function (res) {
+         that.data.searchData.history=[];
+         that.setData({
+           searchData: that.data.searchData
+         })
+      })
+  },
+  //删除历史搜索
+  delete:function(){
+      var that = this;
+      wx.showModal({
+        title: '提示',
+        content: '是否删除历史搜索',
+        success:function(res){
+          if(res.confirm){
+             that.deleteSearchContent();
+          }
+          else{
+              console.log('取消删除')
+          }
+        }
+      })
   },
   //查看详情
   seeDetails: function (e) {

@@ -1,0 +1,4 @@
+<!--pages/mineAbout/mineAbout.wxml-->
+<import src="/pages/template/loadBox/loadBox.wxml"/>
+<template wx:if='{{loadBox}}' is="loadBox" />
+<image hidden='{{loadBox}}' src='{{aboutData}}' style='height:{{height}}px;width:100%' bindload='change'></image>

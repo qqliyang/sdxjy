@@ -4,7 +4,7 @@
 <import src="/pages/template/empty/empty.wxml"/>
 <import src="/pages/template/loadBox/loadBox.wxml"/>
 
-<template wx:if='{{loadBox}}' is="loadBox" />
+<template wx:if='{{loadBox}}' is="loadBox"/>
 <scroll-view hidden='{{loadBox}}' bindscrolltolower='lower' scroll-into-view='{{scrollId}}' scroll-y class='articleDetails common'>
     <view class='ceng' wx:if='{{height != 0}}'></view>
     <view class='item-con pad' id='top'>

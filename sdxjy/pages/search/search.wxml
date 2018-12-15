@@ -15,22 +15,16 @@
         <view  class='item-con'>
             <view class='total'>大家都在搜</view>
             <view class='result-con'>
-                <view class='search-result overflow1'>2019高考指南</view>
-                <view class='search-result overflow1'>新高考改革新高考改革新高考改革新高考改革新高考改革新高考改革新高考改革</view>
-                <view class='search-result overflow1'>学渣如何变学霸</view>
-                <view class='search-result overflow1'>权威媒体聊升学</view>
+                <view bindtap='setSearchVal' data-val='{{item.searchWord}}'  class='search-result overflow1' wx:for='{{searchData.hotword}}'>{{item.searchWord}}</view>
             </view>
         </view>
         <view  class='item-con'>
             <view class='top-item flex'>
-                <view class='total'>历史搜索</view>
-                <image class='delete' src='/image/delete2.png'></image>
+                <view hidden='{{!searchData.history||searchData.history.length==0}}' class='total'>历史搜索</view>
+                <image hidden='{{!searchData.history||searchData.history.length==0}}' bindtap='delete' class='delete' src='/image/delete2.png'></image>
             </view>
             <view class='result-con'>
-                <view class='search-result overflow1'>2019高考指南</view>
-                <view class='search-result overflow1'>新高考改革新高考改革新高考改革新高考改革新高考改革新高考改革新高考改革</view>
-                <view class='search-result overflow1'>学渣如何变学霸</view>
-                <view class='search-result overflow1'>权威媒体聊升学</view>
+                <view bindtap='setSearchVal' data-val='{{item.searchWord}}' class='search-result overflow1' wx:for='{{searchData.history}}'>{{item.searchWord}}</view>
             </view>
         </view>
     </view>

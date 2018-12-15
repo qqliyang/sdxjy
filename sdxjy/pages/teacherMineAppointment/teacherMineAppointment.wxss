@@ -122,6 +122,15 @@
 	color: #777777;
   margin-bottom: 30rpx;
 }
+.mine-request .item.last{
+  margin-bottom: 10rpx;
+}
+.bz-con{
+  width: 668rpx;
+  margin: 0 auto;
+  color:#555555;
+  padding-bottom: 20rpx;
+}
 
 .goPj{
   position: fixed;
@@ -170,6 +179,9 @@
 	letter-spacing: 0px;
 	color: #333333;
   margin-bottom: 71rpx;
+}
+.mine-request .top-box .title{
+  margin-bottom: 0;
 }
 .leftName{
   font-size: 28rpx;
@@ -226,4 +238,12 @@ textarea{
 .commit{
   width: 671rpx;
   margin-top: 50rpx;
+}
+.top-box{
+  margin-bottom: 71rpx;
+}
+.top-box image{
+  width: 30rpx;
+  height: 30rpx;
+  padding:0 42rpx;
 }

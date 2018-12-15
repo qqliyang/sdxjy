@@ -1,69 +1,29 @@
 <!--pages/mineAnswer/mineAnswer.wxml-->
-<view class='mineAnswer common'>
-      <view class='top-head flex'>
-        <view bindtap='setCurrent' data-index='0' class='{{current == "0"?"tab-btnname active":"tab-btnname"}}'>待回答</view>
-        <view bindtap='setCurrent' data-index='1' class='{{current == "1"?"tab-btnname active":"tab-btnname"}}'>已回答</view>
-      </view>
-  
-      <swiper current='{{current}}' bindchange='current' style='height:calc(100% - 70rpx)'>
+<import src="/pages/template/loading/loading.wxml"/>
+<import src="/pages/template/empty/empty.wxml"/>
+<import src="/pages/template/loadBox/loadBox.wxml"/>
+<template wx:if='{{loadBox}}' is="loadBox" />
 
-          <swiper-item>
-              <view class='center'>
-                  <view class='list'>
-                      <view class='top-center flex'>
-                          <view class='tip'>付费</view>
-                          <view class='title overflow2'>迷上游戏，您觉要怎么补救？迷上游戏，您觉要怎么补救？迷上游戏，您觉要怎么补救？迷上游戏，您觉要怎么补救？</view>
-                      </view>
+<view hidden='{{loadBox}}' class='mineAnswer common'>
+    <view class='center'>
+        <view bindtap='seeDetails' data-id='{{item.questionId}}' class='list opacity' wx:for='{{askData}}'>
+            <view class='top-center flex'>
+                <view class='title overflow'>{{item.answerContent}}</view>
+            </view>
+            
+            <view class='box-con'>
 
-                      <view class='content'>拖延症问题，不是一个简单的个人问题，而是一个很复杂的社会性问题，它混杂着基因设置、社会文化、你们觉得拖延症晚期，还有救吗？</view>
-
-                      <view class='bot-con'>
-                          <view class='btn  opacity'>去回答</view>
-                      </view>
+                  <view class='title overflow3'>{{item.questionTitle}}</view>
+                
+                  <view class='content overflow3'>{{item.questionDiscribe}}</view>
+                  <view class='perview-image flex'>
+                      <image wx:for='{{item.questionFile}}' wx:for-item="items" src='{{items}}'> </image>
                   </view>
-                   <view class='list'>
-                      <view class='top-center flex'>
-                          <view class='tip' hidden>付费</view>
-                          <view class='title overflow2'>迷上游戏，您觉要怎么补救？迷上游戏，您觉要怎么补救？迷上游戏，您觉要怎么补救？迷上游戏，您觉要怎么补救？</view>
-                      </view>
+            </view>
+        </view>
 
-                      <view class='content'>拖延症问题，不是一个简单的个人问题，而是一个很复杂的社会性问题，它混杂着基因设置、社会文化、你们觉得拖延症晚期，还有救吗？</view>
-
-                      <view class='bot-con'>
-                          <view class='btn  opacity'>去回答</view>
-                      </view>
-                  </view>
-              </view>
-          </swiper-item>
-        
-          <swiper-item>
-              <view class='center'>
-                  <view class='list'>
-                      <view class='top-center flex'>
-                          <view class='tip'>付费</view>
-                          <view class='title overflow2'>迷上游戏，您觉要怎么补救？迷上游戏，您觉要怎么补救？迷上游戏，您觉要怎么补救？迷上游戏，您觉要怎么补救？</view>
-                      </view>
-
-                      <view class='content'>拖延症问题，不是一个简单的个人问题，而是一个很复杂的社会性问题，它混杂着基因设置、社会文化、你们觉得拖延症晚期，还有救吗？</view>
-
-                      <view class='bot-con'>
-                          <view class='btn has opacity'>已回答</view>
-                      </view>
-                  </view>
-                  
-                   <view class='list'>
-                      <view class='top-center flex'>
-                          <view class='tip' hidden>付费</view>
-                          <view class='title overflow2'>迷上游戏，您觉要怎么补救？迷上游戏，您觉要怎么补救？迷上游戏，您觉要怎么补救？迷上游戏，您觉要怎么补救？</view>
-                      </view>
-
-                      <view class='content'>拖延症问题，不是一个简单的个人问题，而是一个很复杂的社会性问题，它混杂着基因设置、社会文化、你们觉得拖延症晚期，还有救吗？</view>
-
-                      <view class='bot-con'>
-                          <view class='btn has opacity'>已回答</view>
-                      </view>
-                  </view>
-              </view>
-          </swiper-item>
-      </swiper>
+        <template wx:if='{{isLoad}}' is="loading" />
+        <view class='noMoreData' wx:if='{{noMore}}'>没有更多的了--!</view>
+        <template is="empty" wx:if='{{totalRow == 0}}' data="{{msg}}"/>
+    </view>
 </view>

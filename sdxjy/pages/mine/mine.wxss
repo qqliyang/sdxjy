@@ -82,19 +82,21 @@
 .teacher-top-head{
   width: 100%;
   padding-top: 50rpx;
-  height: 245rpx;
+  min-height: 245rpx;
   justify-content: center;
-  align-items: flex-start
+  align-items: flex-start;
+  padding-bottom: 30rpx;
 }
 .teacher-top-head .right{
   padding-top: 16rpx;
+  width: 500rpx;
 }
 .teacher-top-head image{
   width: 120rpx;
   height: 120rpx;
   border-radius: 50%;
   overflow: hidden;
-  margin-right: 72rpx;
+  margin-right: 30rpx;
 } 
 .teacher-top-head .top{
   flex-grow: 1;

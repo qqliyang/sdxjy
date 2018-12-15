@@ -46,6 +46,7 @@ scroll-view{
 .list{
   margin-top: 12rpx;
   background: #fff;
+  padding-bottom: 20rpx;
 }
 .top-center{
  padding: 39rpx 38rpx 0 47rpx;
@@ -146,7 +147,7 @@ scroll-view{
 	color: #ff775f;
 	border: solid 2rpx #ff775f;
 }
-.bot-con .btn:active{
+.bot-con .btn.active:active{
   color: #fff;
   background: #ff775f;
 }

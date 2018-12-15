@@ -433,7 +433,7 @@ input{
 .scroll-name{
   font-size: 30rpx;
   line-height: 42rpx;
-	font-weight: normal;
+	font-weight: bold;
 	font-stretch: normal;
 	letter-spacing: 0px;
   text-align: center;
@@ -702,4 +702,14 @@ input{
   height: 150rpx;
   padding:10rpx 10rpx;
   display: block;
+}
+/*回答图片模块*/
+.perview-image{
+  justify-content: flex-start;
+}
+.perview-image image{
+  width: 100rpx;
+  height: 100rpx;
+  margin-top:20rpx;
+  margin-right: 20rpx;
 }

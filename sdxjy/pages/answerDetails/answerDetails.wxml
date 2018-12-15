@@ -55,6 +55,9 @@
     <view class='top-con' id='top'>
         <view class='title'>{{infoData.title}}</view>
         <view class='content'>{{infoData.describe}}</view>
+        <view class='perview-image flex'>
+                  <image  bindtap='previewImg' wx:for-index='indexs' data-index='{{indexs}}' wx:for='{{infoData.file}}' wx:for-item="items" src='{{items}}'> </image>
+         </view>
     </view>
   
 
@@ -138,7 +141,7 @@
       </view>
       <view class='image-con' bindtap='plClick'>
           <image class='pl' src='/image/pl2.png'></image>
-          <view class='nums' wx:if='{{totalRow != 0}}'>{{totalRowFormat}}</view>
+          <view class='nums' wx:if='{{totalRowNext != 0}}'>{{totalRowFormatNext}}</view>
       </view>
       <button open-type='share' class='image-con'>
         <image class='pl' src='/image/share.png'></image>

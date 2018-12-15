@@ -26,8 +26,10 @@ Page({
     totalPage:'',
     page:1,
     pageSize:10,
+    shareImg:'',
     loadBox: true,
     msg:'暂无相关内容',
+    serviceDetail:'',
   },
 
   /**
@@ -40,8 +42,8 @@ Page({
       this.setData({
         teacherId: id
       },function(){
-       
         that.getTeacherBaseMess();
+        that.getShareImg();
       })
   },
 
@@ -102,6 +104,7 @@ Page({
       }
     })
   },
+
   //获取老师基本信息
   getTeacherBaseMess: function (city) {
     var that = this;
@@ -268,6 +271,7 @@ Page({
         meetCommentData:[],
         contentData:[],
         answerData:[],
+        totalRow:null,
       },function(){
        
         //约聊
@@ -303,6 +307,43 @@ Page({
         url: '/pages/expert/expert?content=' + content+'&title='+title,
       })
   },
+  //获取分享名片
+  getShareImg:function(){
+    var that = this;
+    network.requestLoading('GET', app.globalData.requestUrl + 'member/getSPCode',
+      {
+        customerId: that.data.teacherId,
+      }, '', function (res) {
+        that.setData({
+          shareImg: res.data
+        })
+      });
+  },
+  saveImg:function(){
+    var that = this;
+    console.log(that.data.shareImg)
+    wx.downloadFile({
+      url: that.data.shareImg,     //仅为示例，并非真实的资源
+      success: function (res) {
+        // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
+        if (res.statusCode === 200) {
+          wx.saveImageToPhotosAlbum({
+            filePath: res.tempFilePath,
+            success(res) {
+              wx.showToast({
+                title: '图片已保存相册！',
+              })
+            },
+            fail(res) {
+              wx.showToast({
+                title: '保存失败！',
+              })
+            }
+          })
+        }
+      }
+    })
+  },
   share:function(){
       this.setData({
         ceng:!this.data.ceng,
@@ -321,6 +362,32 @@ Page({
         ceng: !this.data.ceng,
         chatBox: !this.data.chatBox
       })
+    this.getServicePrice();
+  },
+  //获取预约服务价格详情
+  getServicePrice: function () {
+    var that = this;
+    network.requestLoading('GET', app.globalData.requestUrl + 'meetPrice/list',
+      {
+        customerId: that.data.TeacherBaseData.customerId,
+      }, '', function (res) {
+        that.setData({
+          serviceDetail: res.data.list,
+          ceng: true,
+          chatBox: true,
+        })
+      });
+  },
+  //去购买
+  buyService: function (e) {
+    let obj = JSON.stringify(e.currentTarget.dataset.obj);
+    wx.navigateTo({
+      url: '/pages/telephoneHigherLearning/telephoneHigherLearning?data=' + obj,
+    })
+    this.setData({
+      ceng: false,
+      chatBox: false
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -397,7 +464,7 @@ Page({
    */
   onShareAppMessage: function () {
     return {
-      title: '您的高考专家（'+this.data.TeacherBaseData.wxUname+'）',
+      title: '您的高考专家（' + this.data.TeacherBaseData.customerName+'）',
       path: '/pages/index/index?type=personPage' + "&teacherId=" + this.data.teacherId,
       success: (res) => {
         console.log("转发成功", res);

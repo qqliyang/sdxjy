@@ -8,7 +8,7 @@ Page({
    */
   data: {
     data:'',
-    maxFileCount: 12,
+    maxFileCount: 9,
     pics: [],
     maxInputLen: 500,
     canInputLen: 500,
@@ -22,14 +22,12 @@ Page({
    */
   onLoad: function (options) {
       let data = JSON.parse(options.data)
-      console.log(data)
       this.setData({
         data:data
       })
       wx.setNavigationBarTitle({
         title: data.serviceTitle
       })
-      this.getUserMess();
   },
   //输入的字数
   setTextarea: function (e) {
@@ -44,10 +42,16 @@ Page({
       canInputLen: this.data.maxInputLen - e.detail.cursor
     })
   },
+  //
+  about:function(){
+      wx.navigateTo({
+        url: '/pages/aboutPhoneChat/aboutPhoneChat',
+      })
+  },
   //修改个人信息
   updateMess:function(){
       wx.navigateTo({
-        url: '/pages/mineCard/mineCard',
+        url: '/pages/mineCard/mineCard?isChart=true',
       })
   },
   // 图片
@@ -115,7 +119,7 @@ Page({
         })
       });
   },
-  //提交评价
+  //立即预约
   commitQuestion: function () {
     var that = this;
     var nowTime = new Date();
@@ -130,11 +134,14 @@ Page({
       return
     }
     var formData = {
-      title: '',
-      customerId: app.globalData.customerId,
-      describe: that.data.textareaVal,
-      isOpen: 0,
-      isTop: 0
+      meetType:1,
+      meetStatus: 0,
+      payStatus:0,
+      wxpushStatus:0,
+      studentQuestion: that.data.textareaVal,
+      serviceId: that.data.data.serviceId, //服务id
+      fromCustomerid:app.globalData.customerId, //
+      toCustomerid: that.data.data.customerId, //预约谁的id
     }
     if (that.data.pics.length == 0) {
       that.commitContent(formData)
@@ -142,27 +149,75 @@ Page({
     }
     //这一步就是调用方法
     uploadImg.uploadimg({
-      url: app.globalData.requestUrl + 'question/addQuestion',//这里是你图片上传的接口
+      url: app.globalData.requestUrl + 'meetRecord/save',//这里是你图片上传的接口
       path: that.data.pics,//这里是选取的图片的地址数组
       formData: formData,//其他的参数
+    },false).then(function(res){
+      that.taskPay(res);
     });
-    that.setData({ 'tapTime': nowTime, pics: [] });
+    that.setData({ 'tapTime': nowTime});
   },
-
   //没有图片上传
   commitContent: function (data) {
-    var that = this;
-    network.requestLoading('POST', app.globalData.requestUrl + 'question/addQuestion', data, '', function (res) {
-      wx.showToast({
-        title: '预约成功',
-        duration: 3000
-      });
-      setTimeout(function () {
-        wx.navigateBack({
-          delta: 1
-        })
-      }, 2000);
+      var that = this;
+      network.requestLoading('POST', app.globalData.requestUrl + 'meetRecord/save', data, '', function (res) {
+      that.taskPay(res.data.meetId);
     });
+  },
+  //发起支付
+  taskPay: function (id) {
+    var that = this;
+    network.requestLoading('GET', app.globalData.requestUrl + 'meetRecord/payRequest',
+      {
+        payMethod: '3',
+        orderId: id,
+        openId: app.globalData.openId,
+        appId: app.globalData.appId,
+        returnUrl: '',
+      }, '', function (res) {
+        let data = res.data.orderResponseWx;
+        wx.requestPayment({
+          'timeStamp': data.timeStamp,
+          'nonceStr': data.nonceStr,
+          'signType': data.signType,
+          'paySign': data.paySign,
+          'package': data.package,
+          'success': function (res) {
+            if (res.statusCode == 500) {
+              wx.showToast({
+                title: '服务器异常',
+              })
+              return;
+            }
+            wx.showToast({
+              title: '预约成功',
+            })
+            that.notify(id, data.paySign);
+          },
+          'fail': function (res) {
+            wx.showToast({
+              title: '支付失败',
+            })
+          }
+        })
+      })
+  },
+  //支付成功回调
+  notify: function (id, sign) {
+    var that = this;
+    network.requestLoading('GET', app.globalData.requestUrl + 'answerInvite/notify',
+      {
+        orderId: id,
+        payFlag: 2,
+        orderType: 5,
+        sign: sign
+      }, '', function (res) {
+        setTimeout(function () {
+          wx.navigateBack({
+            delta: 1
+          })
+        }, 2000);
+      });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -175,7 +230,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+     this.getUserMess();
   },
 
   /**

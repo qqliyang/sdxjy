@@ -32,7 +32,8 @@ Page({
     callBackObj:'',
     callBackIndex:'',//回复的第几个人
     callBacPlData:[],
-    array: [{ name: 'byTime', value: '按时间排序' }, { name: 'byPraise', value: '按点赞数排序' }, { name: 'byCommente', value: '按回复数排序' }]
+    array: [{ name: 'byTime', value: '按时间排序' }, { name: 'byPraise', value: '按点赞数排序' }, { name: 'byCommente', value: '按回复数排序' }],
+    inviteId:'',//邀请id
   },
 
   /**
@@ -40,9 +41,17 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+
+    
     this.setData({
       contentId: options.contentId
     }, function () {
+      //是否是老师回答问题
+      if (options.inviteId) {
+        that.setData({
+          inviteId: options.inviteId
+        })
+      }
       that.getInfo();
       that.getPlList();
     })
@@ -67,12 +76,29 @@ Page({
         questionId: that.data.contentId,
         sourceId:app.globalData.customerId
       }, '', function (res) {
+        let data =res.data;
+        data.file = data.file ? (data.file.substring(0, data.file.length - 1)).split('@') : [];
         that.setData({
-          infoData: res.data,
-          isFollow: res.data.myFollow,
+          infoData: data,
+          isFollow: data.myFollow,
           loadBox:false
         })
       });
+  },
+  // 预览图片
+  previewImg: function (e) {
+    //获取当前图片的下标
+    var index = e.currentTarget.dataset.index;
+    //所有图片
+    var pics = this.data.infoData.file;
+    console.log(index)
+    console.log(pics)
+    wx.previewImage({
+      //当前显示图片
+      current: pics[index],
+      //所有图片
+      urls: pics
+    })
   },
   Follow: function (e) {
     //禁止连续点击
@@ -198,7 +224,7 @@ Page({
           isLoad: false,
           totalPageNext: Math.ceil(res.data.totalRow / that.data.pageSize),
           totalRowNext: res.data.totalRow,
-          totalRowFormat: time.numFormat(res.data.totalRow),
+          totalRowFormatNext: time.numFormat(res.data.totalRow),
         }, function () {
 
           if (that.data.page == that.data.totalPage) {
@@ -218,6 +244,22 @@ Page({
       comment: e.detail.value
     })
   },
+  //老师确认回答问题
+  teacherAnswer:function(){
+      var that = this;
+    network.requestLoading('POST', app.globalData.requestUrl + 'member/updateInviteInfo',
+        {
+          inviteId: that.data.inviteId,
+          inviteStatus: 1,
+      }, '', function (res) {
+          wx.showToast({
+            title: '回答该问题成功',
+          })
+          that.setData({
+            inviteId:'',
+          })
+      })
+  },
   //提交评论
   commitPlData: function (id) {
     var that = this;
@@ -229,27 +271,35 @@ Page({
       return
     }
     that.setData({
-      plData: []
-    })
-    network.requestLoading('POST', app.globalData.requestUrl + 'answer/save',
-      {
-        answerContent: that.data.comment,
-        questionId: that.data.contentId,
-        customerId: app.globalData.customerId,
-      }, '', function (res) {
-        that.getPlList();
-        //置空
-        that.setData({
-          comment: '',
-        })
-        //导航到评论顶部
-        setTimeout(function () {
+      plData: [],
+      page:1,
+    },function(){
+      network.requestLoading('POST', app.globalData.requestUrl + 'answer/save',
+        {
+          answerContent: that.data.comment,
+          questionId: that.data.contentId,
+          customerId: app.globalData.customerId,
+          inviteId:that.data.inviteId,
+        }, '', function (res) {
+          that.getPlList();
+          //置空
           that.setData({
-            scrollId: 'plid'
+            comment: '',
           })
-        }, 500)
-      });
-  },
+          
+          if(that.data.inviteId !=''){
+            that.teacherAnswer();
+          }
+
+          //导航到评论顶部
+          setTimeout(function () {
+            that.setData({
+              scrollId: 'plid'
+            })
+          }, 500)
+        });
+    })
+   },
   //提交回复评论
   commitCallbackPlData: function (id) {
     var that = this;
@@ -261,31 +311,34 @@ Page({
       return
     }
     that.setData({
-      callBacPlData: []
-    })
-    network.requestLoading('POST', app.globalData.requestUrl + 'answerComment/save',
-      {
-        comment: that.data.comment,
-        answerId: that.data.callBackObj.answerId,
-        customerId: app.globalData.customerId,
-      }, '', function (res) {
-        that.getCallbackPlList();
-        //置空
+      callBacPlData: [],
+      pageNext:1
+    },function(){
+      network.requestLoading('POST', app.globalData.requestUrl + 'answerComment/save',
+        {
+          comment: that.data.comment,
+          answerId: that.data.callBackObj.answerId,
+          customerId: app.globalData.customerId,
+        }, '', function (res) {
+          that.getCallbackPlList();
+          //置空
 
-        //评论列表个数加一
-        that.data.plData[that.data.callBackIndex].commentCount+=1;
-        that.setData({
-          comment: '',
-          plData: that.data.plData
-        })
-        //导航到评论顶部
-        setTimeout(function () {
+          //评论列表个数加一
+          that.data.plData[that.data.callBackIndex].commentCount += 1;
           that.setData({
-            scrollId: 'callbackPlid'
+            comment: '',
+            plData: that.data.plData
           })
-        }, 500)
-      });
-  },
+          //导航到评论顶部
+          setTimeout(function () {
+            that.setData({
+              scrollId: 'callbackPlid'
+            })
+          }, 500)
+        });
+
+    })
+    },
   // 
   articleClick: function (e) {
     //禁止连续点击

@@ -1,0 +1,5 @@
+/* pages/mineService/mineService.wxss */
+image{
+  display: block;
+  margin: 0 auto;
+}

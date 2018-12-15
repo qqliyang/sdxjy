@@ -41,7 +41,7 @@
 }
 
 .top-btn{
-  padding: 53rpx 0 29rpx 0;
+  padding: 53rpx 0 0rpx 0;
 }
 .btn-item{
   flex-grow: 1;
@@ -83,6 +83,7 @@
 .top-scroll{
   padding-left: 44rpx;
   margin-bottom:12rpx;
+  padding-top:29rpx;
 }
 .scroll-item{
   padding-right: 138rpx;

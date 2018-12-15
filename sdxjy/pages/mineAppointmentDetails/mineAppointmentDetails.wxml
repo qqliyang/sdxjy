@@ -1,37 +1,40 @@
 <!--pages/mineAppointmentDetails/mineAppointmentDetails.wxml-->
 <view class='mineAppointmentDetails common'>
     <view class='top-head flex'>
-          <image src='/image/person.png'></image>
+          <image src='{{details.wxPicurl}}'></image>
           <view class='right'>
               <view class='top-con flex'>
-                   <view class='name'>谢敏</view>
-                   <view class='tip'>2星专家</view>
+                   <view class='name'>{{details.customerName}}</view>
+                   <view class='tip'>{{details.customerLevel}}星专家</view>
               </view>
-              <view class='desc overflow2'>教育与职业顾问规划师教育与职业顾问规划师教育与职业顾问规划师教育与职业顾问规划师教育与职业顾问规划师教育与职业顾问规划师</view>
+              <view class='desc overflow2'>{{details.job}}</view>
           </view>
     </view>
 
     <view class='content-con'>
           <view class='title left'>我请教的问题</view>
           <view class='question-con left'>
-              <view class='content'>我的孩子学习成绩一般，不是一个简单的个人问题，而是一个很复杂的社会性问题，它混杂着基因设置、社会文化、学习成绩不好，不知道选择什么学校和专业。</view>
-              <view class='imgcon flex'>
-                  <image src='/image/banner.png'/>
-                  <image src='/image/banner.png'/>
-                  <image src='/image/banner.png'/>
+              <view class='content'>{{details.meetTitle}}</view>
+              <view class='desc'>{{details.studentQuestion}}</view>
+              <view class='imgcon flex' >
+                 <image  bindtap='previewImg'  data-index='{{index}}' wx:for='{{details.meetFile}}' src='{{item}}'> </image>
               </view>
           </view>
     </view>
 
     <view class='bot-desc left'>
-          <view class='time item'>预约时间：12月22日 下午</view>
-          <view class='address item'>地点：南昌市西湖路780号南昌市西湖路780号南昌市西湖路780号南昌市西湖路780号南昌市西湖路780号</view>
-          <view class='bz item'>备注：请带上孩子近期的考试成绩单请带上孩子近期的考试成绩单请带上孩子近期的考试成绩单请带上孩子近期的考试成绩单请带上孩子近期的考试成绩单</view>
+          <view class='item'>预约状态：<text>{{details.payStatus==0?"未支付":details.orderStatus}}</text></view>
+          <view class='time item'>预约时间：{{details.meetTime}}</view>
+          <view class='address item'>地点：{{details.meetAddr}}</view>
+          <view class='bz item'>备注：{{details.meetMemo}}</view>
+          <view class='item'>预约价格：{{details.meetPrice}}</view>
+          <view class='item' bindtap='copyTBL'>订单号：{{details.meetNo}}</view>
     </view>
 
+    <button class='pay' data-id='{{details.meetId}}' bindtap='taskPay' wx:if='{{details.payStatus == 0}}'>去支付 ¥{{details.meetPrice}}</button>
 
-    <view class='goPj flex'>
+    <view class='goPj flex' wx:if='{{details.meetStatus == 1}}'>
         <view class='left'>对老师的服务满意吗？赶快去评价一下吧</view>
-        <view class='btn'>去评价</view>
+        <view class='btn' bindtap='sendPj' data-id='{{details.meetId}}'>去评价</view>
     </view>
 </view>

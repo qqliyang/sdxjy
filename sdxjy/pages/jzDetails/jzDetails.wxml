@@ -4,7 +4,8 @@
 
 <template wx:if='{{loadBox}}' is="loadBox" />
 <view hidden='{{loadBox}}' class='jzDetails common'>
-    <swiper>
+    <swiper indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}"  indicator-color='{{color}}' interval="{{interval}}" duration="{{duration}}">
         <swiper-item wx:for='{{jzData.lectureImgs}}'><image class='top-img' src='{{item}}'></image></swiper-item>
     </swiper>
     <view class='pad'><template is="wxParse" data="{{wxParseData:articles.nodes}}"/></view>
@@ -13,6 +14,6 @@
               <image src='/image/share.png'></image>
               <view class='btnName'>分享</view>
           </button>
-          <view bindtap='startEnroll'  data-id='{{jzData.lectureId}}' data-status='{{jzData.myOrder}}' class='{{jzData.myOrder==1?"left-bm opacity has":"left-bm opacity"}}'>{{jzData.myOrder == 1?"已预约":"立即预约"}}</view>
+          <view bindtap='startEnroll'  data-id='{{jzData.lectureId}}' data-status='{{jzData.myOrder}}' class='{{jzData.myOrder==1?"left-bm opacity has":"left-bm opacity"}}'>{{jzData.myOrder == 1?"已报名":"立即报名"}}</view>
     </view>
 </view>

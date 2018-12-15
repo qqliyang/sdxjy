@@ -12,7 +12,7 @@
             <image src='/image/add.png' bindtap='choose'></image>
         </view>
     </view>
-
+    <switch style='zoom:.9;' checked='{{isCheck}}' bindchange='change'>{{isCheck?"已公开":"未公开"}}</switch>
     <button class='submit' bindtap='commitQuestion'>提交问题</button>
     <view class='bot-tip flex'>
         <image src='/image/save.png'></image>

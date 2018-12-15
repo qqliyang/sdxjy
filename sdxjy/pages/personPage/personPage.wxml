@@ -32,12 +32,12 @@
     <view class='person-share-con public-box' wx:if='{{ceng && personMp}}'>
           <view class='top-person'>
               <view class='img-con'>
-                   <image src='/image/meizi.png'></image>
+                   <image src='{{TeacherBaseData.workPicurl}}'></image>
               </view>
               <view class='person-content'>
                   <view class='content-title flex'>
-                      <view class='name'>{{TeacherBaseData.wxUname}}</view>
-                      <view class='desc'>高考专家</view>
+                      <view class='name'>{{TeacherBaseData.customerName}}</view>
+                      <view class='desc'>{{TeacherBaseData.customerLevel}}星专家</view>
                   </view>
                   <view class='tip overflow1'>{{TeacherBaseData.job}}</view>
                   <view class='like-con flex'>
@@ -48,35 +48,21 @@
           </view>
           <view class='bot-person flex'>
               <button open-type='share'  bindtap='share' class='btn-close btn opacity'>分享给好友（群）</button>
-              <view bindtap='share' class='btn-save-share btn opacity'>保存分享朋友圈</view>
+              <view bindtap='saveImg' data-img='{{}}' class='btn-save-share btn opacity'>保存分享朋友圈</view>
           </view>
     
     </view>
 
     <!-- 一键约聊 -->
     <view class='chat-con public-box' wx:if='{{ceng && chatBox}}'>
-        <view class='chat-list flex btnactivegrey'>
-            <view class='chat-left'>
-                <view class='chat-name'>电话聊</view>
-                <view class='chat-desc'>通话时长约1-2小时</view>
-            </view>
-            <view class='chat-price'>￥39</view>
-        </view>
-         <view class='chat-list flex btnactivegrey'>
-            <view class='chat-left'>
-                <view class='chat-name'>电话聊</view>
-                <view class='chat-desc'>通话时长约1-2小时</view>
-            </view>
-            <view class='chat-price'>￥3119</view>
-        </view>
-         <view class='chat-list flex btnactivegrey'>
-            <view class='chat-left'>
-                <view class='chat-name'>电话聊</view>
-                <view class='chat-desc'>通话时长约1-2小时</view>
-            </view>
-            <view class='chat-price'>￥39</view>
-        </view>
-    </view>
+          <view data-obj='{{item}}' bindtap='buyService' class='chat-list flex btnactivegrey' wx:for='{{serviceDetail}}'>
+              <view class='chat-left'>
+                  <view class='chat-name'>{{item.serviceTitle}}</view>
+                  <view class='chat-desc'>{{item.serviceContent}}</view>
+              </view>
+              <view class='chat-price'>￥{{item.servicePrice}}</view>
+          </view>
+      </view>
     
     <!--介绍区域-->
     <view class='center-con'>
@@ -157,21 +143,29 @@
         <view class='tab-container' wx:if='{{indexs == 3}}'>
               <view class='center'>
                   <view class='list' wx:for='{{answerData}}'>
-                     
-                       <view class='{{item.answerContent.length>=62 && !item.totaggle?"content overflow3":"content"}}'>{{item.answerContent}}</view>
-                       <text class='totaggle' wx:if='{{!item.totaggle&&item.answerContent.length>=62}}' catchtap='totaggle' data-index='{{index}}'>展开全部</text>
-                       <view class='top-center flex'>
-                          <view class='tip' wx:if='{{item.payFlag ==0}}'>付费</view>
-                          <view class='title'>{{item.questionTitle}}</view>
-              
-                      </view>
-                    
-                      <view class='bot-con content right'>来自于{{item.locationName}}的网友{{item.wxUname}}提出的问题</view>
-
-                      <view class='content right'>{{item.questionTime}}</view>
-
-                  
+                        <view class='answer-top flex'>
+                            <image class='head' src='{{item.wxPicurl}}'></image>
+                            <view class='right'>
+                                <view class='right-top flex'>
+                                    <view class='name'>{{item.wxUname}}</view>
+                                    <view class='tag'>付费</view>
+                                    <view class='time'>{{item.questionTime}}</view>
+                                </view>
+                               
+                                <view class='answer-qustion'><text>问：</text>{{item.questionTitle}}</view>
+                                <image class='xia' src='/image/xia.png'></image>
+                                <view class='answer-con'>  
+                                    <view class='{{item.answerContent.length>=50 && !item.totaggle?"answer-content overflow3":"answer-content"}}'><text>答：</text>{{item.answerContent}}</view>
+                                    <text class='totaggle' wx:if='{{!item.totaggle&&item.answerContent.length>=50}}' catchtap='totaggle' data-index='{{index}}'>展开全部</text>
+                                </view>
+                            </view>
+                        </view>
                   </view>
+
+                  <template wx:if='{{isLoad}}' is="loading" />
+                  <template is="empty" wx:if='{{totalRow == 0}}' data="{{msg}}"/>
+                  <view class='noMoreData' wx:if='{{noMore}}'>没有更多的了--!</view>
+                  
                   
               </view>
         </view>
@@ -183,6 +177,6 @@
             <image src='/image/share.png'></image>
             <view class='share-name'>分享</view>
         </view>
-        <view class='chat opacity' bindtap='chact'>一键约聊</view>
+        <view class='chat opacity'   bindtap='chact'>一键约聊</view>
     </view>
 </view>

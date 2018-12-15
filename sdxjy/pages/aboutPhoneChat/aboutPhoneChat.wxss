@@ -6,18 +6,18 @@
   padding: 41rpx 45rpx;
 }
 button{
-  background-color: rgba(255,184,0,0.11);
+  background-color: rgba(255,106,0,0.10);
 	border-radius: 8rpx;
   height: 84rpx;
   line-height: 84rpx;
-  color: #ffb800;
+  color: #FF6A00;
   width: 598rpx;
   margin-top: 150rpx;
 }
 .button-hover{
-  background-color: rgba(255,184,0,0.09);
+  background-color: rgba(255,106,0,0.08);
 	border-radius: 8rpx;
-  color: #ffb800;
+  color: #FF6A00;
   height: 84rpx;
   line-height: 84rpx;
 }

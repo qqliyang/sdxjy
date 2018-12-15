@@ -1,0 +1,57 @@
+<!--pages/mineNotice/mineNotice.wxml-->
+<import src="/pages/template/loading/loading.wxml"/>
+<import src="/pages/template/empty/empty.wxml"/>
+<import src="/pages/template/loadBox/loadBox.wxml"/>
+
+<template wx:if='{{loadBox}}' is="loadBox" />
+<view hidden='{{loadBox}}' class='mineNotice common'>
+     <view class='top-head flex'>
+        <view bindtap='setCurrent' data-index='0' class='{{current == "0"?"tab-btnname active":"tab-btnname"}}'>老师</view>
+        <view bindtap='setCurrent' data-index='1' class='{{current == "1"?"tab-btnname active":"tab-btnname"}}'>问题</view>
+      </view>
+
+      <swiper current='{{current}}' bindchange='current' style='height:calc(100% - 70rpx)'>
+          <swiper-item > 
+              <scroll-view scroll-y>
+                   <view bindtap='seePersonPage' data-id='{{item.customerId}}' class='notice-list flex opacity' wx:for='{{noticeList}}'>
+                        <image src='{{item.workPicurl}}'></image>
+                        <view class='center'>
+                            <view class='name'>{{item.customerName}}</view>
+                            <view class='desc'>{{item.job}}</view>
+                        </view>
+                        <view class='{{item.myFollow=="true"?"btn active":"btn"}}' catchtap='Follow' data-index='{{index}}' data-id='{{item.customerId}}'  data-isfollow='{{item.myFollow}}'>{{item.myFollow=='true'?"已关注":"关注"}}</view>
+                  </view>
+                  <template wx:if='{{isLoad}}' is="loading" />
+                  <view class='noMoreData' wx:if='{{noMore}}'>没有更多的了--!</view>
+                  <template is="empty" wx:if='{{totalRow == 0}}' data="{{msg}}"/>
+              </scroll-view>
+          </swiper-item>
+           <swiper-item > 
+              <scroll-view scroll-y>
+                    <view class='answer-con opacity' wx:for='{{noticeList}}' bindtap='seeDetails' data-id='{{item.questionId}}'>
+                        <view class='anwer-list'>
+                            <view class='title overflow2'>{{item.title}}</view>
+                            <view class='answer-content  overflow3'>{{item.describe}}</view>
+                            <view class='perview-image flex'>
+                                <image wx:for='{{item.file}}' wx:for-item="items" src='{{items}}'> </image>
+                            </view>
+                            <view class='answer-bot flex'>
+                                <view class='answer flex'>
+                                    <view class='nums'>{{item.answerCount}}</view>
+                                    <view class='bot-name'>回答</view>
+                                </view>
+                                <view class='gz flex'>
+                                    <view class='nums'>{{item.followCount}}</view>
+                                    <view class='bot-name'>关注</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>  
+                    <template wx:if='{{isLoad}}' is="loading" />
+                    <view class='noMoreData' wx:if='{{noMore}}'>没有更多的了--!</view>
+                    <template is="empty" wx:if='{{totalRow == 0}}' data="{{msg}}"/>
+              </scroll-view>
+          </swiper-item>
+      </swiper>
+   
+</view>

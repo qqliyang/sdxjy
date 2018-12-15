@@ -13,7 +13,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.4.0",
 	"appid": "wx602b0ff40d50e9c8",
-	"projectname": "sdxjy",
+	"projectname": "sdxjy1",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 1,
 			"list": [
 				{
 					"id": 0,
@@ -52,7 +52,7 @@
 					"id": 1,
 					"name": "分享",
 					"pathName": "pages/index/index",
-					"query": "teacherId=1111&type=personPage",
+					"query": "teacherId=0f868414354c40c9bf849e0b74f6e4c2&type=personPage",
 					"scene": "1036",
 					"referrerInfo": {
 						"appId": ""

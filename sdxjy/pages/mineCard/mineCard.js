@@ -17,9 +17,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+      //来自讲座报名
       if (options.jz) {
           this.setData({
             fromJz:true 
+          })
+      }
+      //来自约聊
+      if (options.isChart){
+          this.setData({
+            fromJz: true
           })
       }
 

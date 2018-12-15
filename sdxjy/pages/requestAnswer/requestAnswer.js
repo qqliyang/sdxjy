@@ -20,12 +20,11 @@ Page({
   onLoad: function (options) {
       var that = this;
       this.setData({
-        id: 1
+        id: options.id,
       },function(){
         that.getTotalTeacher();
       })
   },
-  //
   lower:function(){
       var that = this;
       //最后一页不请求
@@ -62,6 +61,10 @@ Page({
         if(that.data.current ==0){
            that.inviteTask(id,index);
         }
+        //付费邀请
+        else{
+          that.invitePayTask(id, index);
+        }
       }
   },
   inviteTask:function(id,index){
@@ -86,6 +89,84 @@ Page({
             teacherData: that.data.teacherData,
             tapTime: nowTime
         })
+      });
+  },
+  //付费邀请
+  invitePayTask: function (id, index) {
+      var that = this;
+      //禁止连续点击
+      var nowTime = new Date();
+      if (nowTime - this.data.tapTime < 1000) {
+        return;
+      }
+      network.requestLoading('POST', app.globalData.requestUrl + 'answerInvite/save',
+        {
+        questionId: that.data.id,
+        inviteType: that.data.type,
+        fromCustomerId: app.globalData.customerId,
+        toCustomerId: id,
+        serviceId: that.data.teacherData[index].serviceId,
+      }, '', function (res) {
+        that.taskPay(res.data.inviteId, index);
+        that.setData({
+          tapTime: nowTime
+        })
+      });
+  },
+  //发起支付
+  taskPay:function(id,index){
+      var that = this;
+      network.requestLoading('GET', app.globalData.requestUrl + 'answerInvite/payRequest',
+        {
+          payMethod:'3',
+          orderId:id,
+          openId: app.globalData.openId,
+          appId: app.globalData.appId,
+          returnUrl:'',
+        }, '', function (res) {
+          console.log(999,res)
+          let data = res.data.orderResponseWx;
+          wx.requestPayment({
+            'timeStamp': data.timeStamp,
+            'nonceStr': data.nonceStr,
+            'signType': data.signType,
+            'paySign': data.paySign,
+            'package': data.package,
+            'success': function (res) {
+              if (res.statusCode == 500) {
+                wx.showToast({
+                  title: '服务器异常',
+                })
+                return;
+              }
+              that.data.teacherData[index].myInvite = 1;
+              that.setData({
+                teacherData: that.data.teacherData,
+              })
+              wx.showToast({
+                title: '支付成功',
+              })
+              that.notify(id, data.paySign);
+            },
+            'fail': function (res) {
+              wx.showToast({
+                title: '支付失败',
+              })
+            }
+          })
+      })
+  },
+  //支付成功回调
+  notify:function(id,sign){
+      var that = this;
+      network.requestLoading('GET', app.globalData.requestUrl + 'answerInvite/notify',
+      {
+        orderId:id,
+        payFlag:2,
+        orderType:5,
+        sign: sign
+      }, '', function (res) {
+        console.log(res);
       });
   },
   Follow: function (e) {

@@ -1,6 +1,6 @@
 /* pages/personPage/personPage.wxss */
 .common{
-  padding-bottom: 50rpx;
+  padding-bottom: 100rpx;
 }
 .top-head{
   width: 100%;
@@ -20,7 +20,6 @@
 .center-con{
   position: relative;
   z-index: 111;
-  background: #fff;
 }
 .head-con{
   justify-content: flex-start;
@@ -176,6 +175,9 @@ scroll-view{
   padding: 34rpx 25rpx;
   background: #fff;
 }
+.mine-sc{
+  background: #fff;
+}
 .product{
   font-size: 30rpx;
 	font-weight: normal;
@@ -221,13 +223,14 @@ scroll-view{
 	font-stretch: normal;
 	letter-spacing: 0px;
 	color: #333333;
-  padding-left: 35rpx;
-  margin: 40rpx 0 20rpx;
+  padding: 40rpx 0 20rpx 35rpx;
+  background: #fff
 }
 .pl-con{
   padding: 27rpx 28rpx 31rpx 35rpx;
   border-bottom: 2rpx solid #eeeeee;
   align-items: flex-start;
+  background: #fff;
 }
 .pl-con:last-child{
   border-bottom: none
@@ -322,7 +325,7 @@ scroll-view{
 .share-btn .chat{
   flex-grow: 1;
   text-align: center;
-  background-color: rgba(255, 184, 0, 0.8);
+  background-color:#ff775f;
   height: 100%;
   line-height: 100rpx;
   font-size: 30rpx;
@@ -495,8 +498,7 @@ scroll-view{
 .center .list{
   background: #fff;
   padding: 0rpx 0rpx 10rpx;
-  margin-top: 12rpx;
-  border-bottom: 20rpx solid #f9f9f9;
+  border-bottom: 10rpx solid #f9f9f9;
 }
 .top-center{
   justify-content: flex-start;
@@ -569,4 +571,96 @@ scroll-view{
 	font-stretch: normal;
 	letter-spacing: 0px;
 	color: #999999;
+}
+.answer-top{
+  padding: 20rpx 42rpx 15rpx 41rpx;
+  align-items: flex-start;
+}
+.answer-top image.head{
+  width: 59rpx;
+  height: 59rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  border:2rpx solid rgba(245,245,245,1)
+}
+.answer-top .right{
+  width: 595rpx;
+  margin-left: 14rpx;
+}
+.answer-top .right-top{
+  justify-content: flex-start;
+  position: relative;
+}
+.answer-top .name{
+  font-size: 30rpx;
+  line-height: 42rpx;
+	font-weight: bold;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #333333;
+  margin-right: 11rpx;
+}
+.answer-top .tag{
+  width: 60rpx;
+  height: 34rpx;
+  text-align: center;
+  line-height: 34rpx;
+  border-radius: 8rpx;
+  font-size: 22rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #ff7834;
+  background: rgba(255,120,52,0.12)
+}
+.answer-top .time{
+  font-size: 20rpx;
+  line-height: 25rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #999999;
+  position: absolute;
+  right: 0rpx;
+}
+.answer-top .answer-qustion text{
+  font-size: 30rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #999999;
+}
+
+.answer-top .answer-qustion{
+  font-size: 30rpx;
+  line-height: 40rpx;
+	font-weight: normal;
+	letter-spacing: 0px;
+	color: #000000;
+  margin-top: 20rpx;
+}
+.answer-top .answer-con{
+  padding: 22rpx 25rpx;
+  background: #F5F5F5;
+  font-size: 30rpx;
+  line-height: 40rpx;
+	font-weight: normal;
+	letter-spacing: 0px;
+	color: #666666;
+  border-radius: 8rpx;
+}
+.answer-top .answer-con text{
+  font-size: 30rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #999999;
+}
+.answer-top image.xia{
+  width: 40rpx;
+  height: 22rpx;
+  display: block;
+  border-radius: 0;
+  margin-left: 100rpx;
+  margin-top: 10rpx;
 }

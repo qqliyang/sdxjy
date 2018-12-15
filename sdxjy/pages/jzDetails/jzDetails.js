@@ -10,7 +10,11 @@ Page({
   data: {
       id:'',
       loadBox:true,
-      jzData:''
+      jzData:'',
+      indicatorDots: true,
+      autoplay: true,
+      interval: 10000,
+      duration: 1000,
   },
 
   /**

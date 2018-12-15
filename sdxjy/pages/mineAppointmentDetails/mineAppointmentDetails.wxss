@@ -75,6 +75,15 @@
 .content{
   font-size: 30rpx;
   line-height: 40rpx;
+	font-weight: bold;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #555555;
+  margin-bottom: 10rpx;
+}
+.question-con .desc{
+  font-size: 26rpx;
+  line-height: 35rpx;
 	font-weight: normal;
 	font-stretch: normal;
 	letter-spacing: 0px;
@@ -104,6 +113,9 @@
 	letter-spacing: 0px;
 	color: #777777;
   margin-bottom: 30rpx;
+}
+.bot-desc .item text{
+  color: #ff775f;
 }
 .goPj{
   position: fixed;
@@ -137,4 +149,8 @@
 .goPj .btn:active{
   color: #fff;
   background: #ff775f;
+}
+.pay{
+  width: 680rpx;
+  margin: 70rpx auto 0;
 }

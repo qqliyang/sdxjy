@@ -180,3 +180,11 @@
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 } */
+form button{
+  background-color: transparent;
+  height: auto;
+}
+form .button-hover{
+  background-color: transparent;
+  height: auto;
+}

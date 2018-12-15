@@ -64,7 +64,7 @@ Page({
   //获取预约服务价格详情
   getServicePrice:function(id){
     var that = this;
-    network.requestLoading('POST', app.globalData.requestUrl + 'meetPrice/list',
+    network.requestLoading('GET', app.globalData.requestUrl + 'meetPrice/list',
       {
         customerId:id,
       }, '', function (res) {

@@ -1,29 +1,113 @@
 // pages/teacherMineAppointment/teacherMineAppointment.js
-
+const app = getApp();
+var network = require("../../utils/request.js")
 var date = new Date();
 var currentHours = date.getHours();
 var currentMinute = date.getMinutes();
 var maxDay = 60; //最大预约天数
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-
     startDate: "请选择日期",
-
     multiArray: [['今天', '明天', '3-2', '3-3', '3-4', '3-5'], [0, 1, 2, 3, 4, 5, 6], [0, 10, 20]],
     multiIndex: [0, 0, 0],
+    showBtn:false,
+    meetAddr:'',
+    meetMemo:'',
+    meetStatus:1,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      let data = decodeURIComponent(options.obj);
+      data = JSON.parse(data);
+      data.meetFile = data.meetFile ? (data.meetFile.substring(0, data.meetFile.length - 1)).split('@') : [];
+      console.log(data)
+      this.setData({
+        details: data,
+        meetAddr: data.meetAddr,
+        meetMemo: data.meetMemo,
+      })
   },
+  setbtn:function(){
+      this.setData({
+        showBtn:true
+      })
+  },
+  setMeetStatus:function(e){
+      let val = e.currentTarget.dataset.val;
+      this.setData({
+          meetStatus:val
+      })
+  },
+  // 预览图片
+  previewImg: function (e) {
+    //获取当前图片的下标
+    var index = e.currentTarget.dataset.index;
+    //所有图片
+    var pics = this.data.details.meetFile;
 
+    wx.previewImage({
+      //当前显示图片
+      current: pics[index],
+      //所有图片
+      urls: pics
+    })
+  },
+  setMeetMemo:function(e){
+    this.setData({
+      meetMemo:e.detail.value
+    })
+  },
+  setMeetAddr: function (e) {
+    this.setData({
+      meetAddr: e.detail.value
+    })
+  },
+  commit:function(){
+    var that = this;
+    //同意必须传时间地点
+    if (that.data.meetStatus == 1){
+        if (that.data.startDate == '请选择日期') {
+          wx.showToast({
+            title: '请选择日期',
+            icon: 'none'
+          })
+          return
+        }
+        if (that.data.meetAddr == '') {
+          wx.showToast({
+            title: '请选择地点',
+            icon: 'none'
+          })
+          return
+        }
+    }
+    
+    network.requestLoading('POST', app.globalData.requestUrl + 'meetRecord/update',
+      {
+        meetId: that.data.details.meetId,
+        meetStatus: that.data.meetStatus,
+        meetTime: that.data.startDate,
+        meetAddr: that.data.meetAddr,
+        meetMemo: that.data.meetMemo,
+      }, '', function (res) {
+        wx.showToast({
+          title: '提交成功',
+          duration: 3000
+        });
+        setTimeout(function () {
+          app.globalData.appoint=true;
+          wx.navigateBack({
+            delta: 1
+          })
+        }, 2000);
+      });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -90,12 +174,10 @@ Page({
       var md = (date1.getMonth() + 1) + "-" + date1.getDate();
       monthDay.push(md);
     }
-
     var data = {
       multiArray: this.data.multiArray,
       multiIndex: this.data.multiIndex
     };
-
     if (data.multiIndex[0] === 0) {
       if (data.multiIndex[1] === 0) {
         this.loadData(hours, minute);
@@ -105,7 +187,7 @@ Page({
     } else {
       this.loadHoursMinute(hours, minute);
     }
-
+   
     data.multiArray[0] = monthDay;
     data.multiArray[1] = hours;
     data.multiArray[2] = minute;
@@ -121,7 +203,7 @@ Page({
 
     var that = this;
 
-    var monthDay = ['今天', '明天'];
+    var monthDay = [];
     var hours = [];
     var minute = [];
 
@@ -217,7 +299,7 @@ Page({
         hours.push(i);
       }
       // 分
-      for (var i = minuteIndex; i < 60; i += 10) {
+      for (var i = minuteIndex; i <= 60; i += 10) {
         minute.push(i);
       }
     }
@@ -229,7 +311,7 @@ Page({
       hours.push(i);
     }
     // 分
-    for (var i = 0; i < 60; i += 10) {
+    for (var i = 0; i <= 60; i += 10) {
       minute.push(i);
     }
   },
@@ -262,7 +344,7 @@ Page({
       }
     }
     // 分
-    for (var i = 0; i < 60; i += 10) {
+    for (var i = 0; i <= 60; i += 10) {
       minute.push(i);
     }
   },
@@ -276,19 +358,21 @@ Page({
     if (monthDay === "今天") {
       var month = date.getMonth() + 1;
       var day = date.getDate();
-      monthDay = month + "月" + day + "日";
     } else if (monthDay === "明天") {
       var date1 = new Date(date);
       date1.setDate(date.getDate() + 1);
-      monthDay = (date1.getMonth() + 1) + "月" + date1.getDate() + "日";
-
     } else {
       var month = monthDay.split("-")[0]; // 返回月
       var day = monthDay.split("-")[1]; // 返回日
-      monthDay = month + "月" + day + "日";
     }
-
-    var startDate = monthDay + " " + hours + ":" + minute;
+    let nowDate = new Date;
+    let nowYear = date.getFullYear();
+    let nowMonth = date.getMonth() + 1;
+    if (month < nowMonth){
+      nowYear = nowYear+1;
+    }
+    monthDay = nowYear + "-" + (month < 10 ? '0' + month : month) + "-" + (day < 10 ? '0' + day : day) +' ';
+    var startDate = monthDay + (hours < 10 ? '0' + hours : hours) + ":" + (minute < 10 ? '0' + minute : minute)+':00';
     that.setData({
       startDate: startDate
     })
