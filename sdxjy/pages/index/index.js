@@ -29,6 +29,7 @@ Page({
   },
   onLoad: function (options) {
      var that = this;
+     that.getMessageList();
      app.getOpenId().then(function(){ 
           wx.getSetting({
             success: function (res) {
@@ -96,9 +97,20 @@ Page({
           })     
      })
   },
+  //获取消息列表
+  getMessageList: function (userinfo, city) {
+    var that = this;
+    network.requestLoading('GET', app.globalData.requestUrl + 'message/getMessageList',
+      {
+        source:'c'
+      }, '', function (res) {
+        console.log(res)
+      })
+  },
   //formId埋点
   formSubmit:function(e){
-      console.log(e.detail.formId)
+      let formId = e.detail.formId
+      app.sendFromId(formId);
   },
   //保存信息
   saveMineMess: function (userinfo,city) {
@@ -282,6 +294,7 @@ Page({
         articleList:[],
         page:1,
         bannerData:[],
+        selindex:0,
       })
       that.getCityId(app.globalData.cityName);
     }

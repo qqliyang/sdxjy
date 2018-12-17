@@ -42,7 +42,7 @@
                       <view class='btnName'>老师·诊</view>
                   </button>  
           </form>
-          <form class='btn-item btnactivegrey' bindtap='headmaster' bindsubmit="formSubmi3" report-submit='true'>    
+          <form class='btn-item btnactivegrey' bindtap='headmaster' bindsubmit="formSubmit" report-submit='true'>    
                   <button formType='submit'>
                       <image class='btn3' src='/image/indexBtn3.png'></image>
                       <view class='btnName'>机构·帮</view>

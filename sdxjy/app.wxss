@@ -706,6 +706,7 @@ input{
 /*回答图片模块*/
 .perview-image{
   justify-content: flex-start;
+  flex-flow:wrap;
 }
 .perview-image image{
   width: 100rpx;

@@ -23,6 +23,7 @@ Page({
       
     }
   },
+  
   saveMineMess: function (e) {
     var that = this;
     network.requestLoading('GET', app.globalData.requestUrl + '/member/updateCustomInfo',

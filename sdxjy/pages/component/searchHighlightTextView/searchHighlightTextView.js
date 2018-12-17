@@ -22,10 +22,10 @@ Component({
     datas: {
       type: Object,
       observer: function (newVal) {
-        let searchArray = this.getHilightStrArray(newVal.job, newVal.key)
+        let  searchArray = this.getHilightStrArray(newVal.job, newVal.key)
         this.setData({
-        searchArray: searchArray,
-        keyName: newVal.key
+            searchArray: searchArray,
+            keyName: newVal.key
         })
       },
     },
@@ -35,8 +35,8 @@ Component({
       observer: function (newVal) {
         let searchArray = this.getHilightStrArray(newVal.customerName, newVal.key)
         this.setData({
-          searchArray: searchArray,
-          keyName: newVal.key
+            searchArray: searchArray,
+            keyName: newVal.key
         })
       },
     },

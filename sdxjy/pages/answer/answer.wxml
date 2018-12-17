@@ -4,7 +4,7 @@
       <view class='top-head flex'>
           <view class='top-search flex'>
               <image src='/image/search.png'></image>
-              <input type='search' bindconfirm='search' bindinput='setSearchKey' value='{{searchKey}}' placeholder-class='placeholder' placeholder='请搜索您感兴趣的内容'></input>
+              <input confirm-type='search' bindconfirm='search' bindinput='setSearchKey' value='{{searchKey}}' placeholder-class='placeholder' placeholder='请搜索您感兴趣的内容'></input>
               <image wx:if='{{showDel}}' class='delete' bindtap='deleteInput' src='/image/delete.png'></image>
           </view>
           <view class='right flex opacity' bindtap='ask'>

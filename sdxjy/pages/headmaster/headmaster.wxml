@@ -10,7 +10,7 @@
           </view> -->
           <view class='top-right flex'>
               <image src='/image/search2.png'></image>
-              <input bindconfirm='search' bindinput='setName'  placeholder-class='placeholder' value='{{orgName}}' placeholder='请搜索机构名称'></input>
+              <input confirm-type='search' bindconfirm='search' bindinput='setName'  placeholder-class='placeholder' value='{{orgName}}' placeholder='请搜索机构名称'></input>
           </view>
 
       </view> 

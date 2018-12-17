@@ -41,31 +41,33 @@ Page({
         page: that.data.page,
         pageSize: that.data.pageSize,
       }, '', function (res) {
+        let data = res.data.list ? res.data.list:[];
+        for(let i in data){
+          data[i].key = that.data.orgName;
+        }
         that.setData({
-          orgList: that.data.orgList.concat(res.data.list),
+          orgList: that.data.orgList.concat(data),
           loadBox: false,
           isLoad: false,
           totalRow: res.data.totalRow,
           totalPage: Math.ceil(res.data.totalRow / that.data.pageSize)
         },function(){
-          
-          let data = that.data.orgList;
+          let data = that.data.orgList ;
           let topData = [];
           let nextData = [];
           for (let i in data) {        
             if (data[i].orgName.indexOf('北京') != -1) {           
               data[i].isZb = true
               data[i].orgImgs = typeof (data[i].orgImgs) == "object" ? data[i].orgImgs:(data[i].orgImgs).split('@');
-              data[i].key = that.data.orgName;
               topData.push(data[i])
             }
             else {         
               data[i].isZb = false
               data[i].orgImgs = typeof (data[i].orgImgs) == "object" ? data[i].orgImgs : (data[i].orgImgs).split('@');
-              data[i].key = that.data.orgName;
               nextData.push(data[i])
             }
           }
+          console.log(9999999, topData, nextData)
           that.setData({
             orgList: that.data.orgList,
             topData: topData,

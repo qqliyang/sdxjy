@@ -154,17 +154,18 @@ App({
     return promise;
   },
   //保存formId
-  sendFromId: function () {
-    wx.request({
-      url: app.globalData.requestUrl + '/saveformidlist.jspx',
-      data: {
-        openid: app.globalData.openid,
-        formidlist: JSON.stringify(that.globalData.formIdArr),
-      },
-      success: function (res) {
-          console.log('保存成功')
-      },
-    })
+  sendFromId: function (id) {
+      var that = this;
+      wx.request({
+        url: that.globalData.requestUrl + 'wxpush/saveFormidBatch',
+        data: {
+          openid: that.globalData.openId,
+          formidBatch:id,
+        },
+        success: function (res) {
+            console.log('保存成功')
+        },
+      })
   },
   globalData: {
     topHeight:'',
@@ -174,9 +175,9 @@ App({
     customerId:'1270d2d3e35c47ae824e49600b3d49a6',//会员id
     paddingTop:'',
     recodeArr:[], //搜索记录 保留五条
-    //requestUrl:'http://47.93.178.23:8081/sdx-edu/',
+    requestUrl:'http://47.93.178.23:8081/sdx-edu/',
     imgUrl: 'http://47.93.178.23:8081/sdx-edu',
-    requestUrl: 'http://192.168.31.141:8081/sdx-edu/',
+    //requestUrl: 'http://192.168.31.141:8081/sdx-edu/',
     userId:'',  //用户id
     backTwo: false,
     phoneNumber:'phoneNumber', //手机号
@@ -186,6 +187,7 @@ App({
     indexFresh:false,//首页是否刷新
     userInfo:'',
     appoint:false,
+    cityArr:'',//城市数据
     appId:'wx602b0ff40d50e9c8',
   }
 })

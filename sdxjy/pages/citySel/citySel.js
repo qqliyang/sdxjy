@@ -47,6 +47,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (app.globalData.cityArr!=''){
+      this.setData({
+        city: app.globalData.cityArr
+      })
+      return
+    }
     this.getCity();
   },
   //获取省份
@@ -68,29 +74,8 @@ Page({
             }
           }
         }
-        // let city=[];
-        // //循环取出所有省
-        // for(let i in data){
-        //   city.push({ 'provName': data[i].provName, 'provKey': data[i].provKey, 'provId': data[i].provId})
-        // }
-        //var totalCity = unique(city);
-        // for (let x in totalCity){
-        //     totalCity[x].item = [];  
-        //     for(let y in data){
-        //       if (totalCity[x].provName == data[y].provName){
-        //         (totalCity[x].item).push(
-        //           { 
-        //             'cityName': data[y].cityName, 
-        //             'cityKey': data[y].cityKey,
-        //             'cityId': data[y].cityId, 
-        //             'provName': totalCity[x].provName, 
-        //             'provKey': totalCity[x].provKey, 
-                     
-        //           })//
-        //        }
-        //     }
-        // }
         totalCity.unshift(that.data.hotCity);
+        app.globalData.cityArr = totalCity;
         that.setData({
           city: totalCity
         })

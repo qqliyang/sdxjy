@@ -1,11 +1,14 @@
 <!--pages/search/search.wxml-->
 <import src="/pages/template/loading/loading.wxml"/>
 <import src="/pages/template/empty/empty.wxml"/>
-<view class='search common'>
+<import src="/pages/template/loadBox/loadBox.wxml"/>
+
+<template wx:if='{{loadBox}}' is="loadBox" />
+<view hidden='{{loadBox}}' class='search common'>
     <view class='top-head flex'>
         <view class='left flex'>
             <image src='/image/search2.png'></image>
-            <input value='{{contentDesc}}' placeholder-class='placeholder' bindconfirm='startSearch' bindinput='setInput'  placeholder='2019高考指南'></input>
+            <input auto-focus='true' confirm-type='search' value='{{contentDesc}}' placeholder-class='placeholder' bindconfirm='startSearch' bindinput='setInput'  placeholder='2019高考指南'></input>
             <image class='delete' bindtap='deleteInput' src='/image/delete.png'></image>
         </view>
         <view bindtap='cancle' class='cancle'>取消</view>

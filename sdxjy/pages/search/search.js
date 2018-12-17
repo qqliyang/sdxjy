@@ -13,6 +13,7 @@ Page({
       articleList:[],
       isLoad:false,
       isResult:false,
+      loadBox:true,
       totalRow:null,
       msg:'换个条件试试'
   },
@@ -55,7 +56,8 @@ Page({
         customerId:app.globalData.customerId,
       }, '', function (res) {
         that.setData({
-          searchData:res.data
+          searchData:res.data,
+          loadBox:false,
         })
       })
   },
@@ -85,8 +87,14 @@ Page({
         contentDesc: that.data.contentDesc
       }, '', function (res) {
         that.saveSearchContent();
+        let data =res.data.list;
+        //把搜索内容传到数据里 高亮作为key需要
+        for (let i in data) {
+          data[i].key = that.data.contentDesc;
+        }
         that.setData({
-          articleList: that.data.articleList.concat(res.data.list),
+          loadBox:false,
+          articleList: that.data.articleList.concat(data),
           isLoad:false,
           totalRow:res.data.totalRow,
           totalPage: Math.ceil(res.data.totalRow / that.data.pageSize)
@@ -96,14 +104,6 @@ Page({
               noMore: true
             })
           }
-
-          //把搜索内容传到数据里 高亮作为key需要
-          for(let i in that.data.articleList){
-            (that.data.articleList)[i].key = that.data.contentDesc;
-          }
-          that.setData({
-            articleList: that.data.articleList
-          })
         })
       },function(){
         that.setData({

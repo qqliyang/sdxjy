@@ -20,14 +20,13 @@ Page({
   },
   //判断老师端 还是家长端
   getIsTeacher: function () {
-    var that = this;
-    network.requestLoading('GET', app.globalData.requestUrl + 'cust/getCustomerById',
+      var that = this;
+      network.requestLoading('GET', app.globalData.requestUrl + 'cust/getCustomerById',
       {
         customerId: app.globalData.customerId,
       }, '', function (res) {
         that.setData({
-          // isTeacher: res.data.isTeacher,
-          isTeacher: 1,
+          isTeacher: res.data.isTeacher,
           userInfo:res.data,
           loadBox:false,
         })

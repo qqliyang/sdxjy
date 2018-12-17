@@ -99,6 +99,10 @@ Page({
         pageSize:that.data.pageSize
       }, '', function (res) {
         let data = res.data.list;
+        //把搜索内容传到数据里 高亮作为key需要
+        for (let i in data) {
+          data[i].key = that.data.customerName;
+        }
         that.setData({
            teacherData: that.data.teacherData.concat(data),
            isLoad:false,
@@ -110,13 +114,7 @@ Page({
               noMore: true
             })
           }
-          //把搜索内容传到数据里 高亮作为key需要
-          for (let i in that.data.teacherData) {
-            (that.data.teacherData)[i].key = that.data.customerName;
-            that.setData({
-              teacherData: that.data.teacherData
-            })
-          }
+          
         })
       },function(){
         that.setData({
