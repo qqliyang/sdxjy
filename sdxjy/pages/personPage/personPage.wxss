@@ -14,7 +14,7 @@
   z-index: 111;
   bottom:20rpx;
 }
-.top-head image{
+.top-head>image{
   opacity: 0.5
 }
 .center-con{
@@ -32,7 +32,7 @@
 .headname{
   margin-right: 16rpx;
   padding-left: 46rpx;
-  font-size: 34rpx;
+  font-size: 40rpx;
 	font-weight: normal;
 	font-stretch: normal;
 	letter-spacing: 0px;
@@ -116,7 +116,7 @@
 .head-item .item-name{
   flex-grow: 1;
   line-height: 33rpx;
-  font-size: 30rpx;
+  font-size: 24rpx;
 	font-weight: normal;
 	font-stretch: normal;
 	letter-spacing: 0px;
@@ -125,7 +125,7 @@
   text-align: center;
 }
 .item-name text{
-  font-size: 36rpx;
+  font-size: 50rpx;
   margin-right: 5rpx;
 	font-stretch: normal;
 	letter-spacing: 0px;
@@ -159,7 +159,7 @@ scroll-view{
 }
 .tab-name{
   font-size: 30rpx;
-	font-weight: normal;
+	font-weight: bold;
 	font-stretch: normal;
 	letter-spacing: 0px;
 	color: #333333;
@@ -242,7 +242,7 @@ scroll-view{
   overflow: hidden;
 }
 .pl-con .center{
-  flex-grow: 1;
+  width: 645rpx;
   padding-left: 25rpx;
   padding-top: 8rpx;
 }

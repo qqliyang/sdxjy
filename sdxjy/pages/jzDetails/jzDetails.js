@@ -36,7 +36,9 @@ Page({
         sourceId: app.globalData.customerId,
       }, '', function (res) {
         let data =res.data;
+        let timestamp = parseInt(new Date().getTime() / 1000);  //当前时间戳
         data.lectureImgs = data.lectureImgs.split('@');
+        data.isEffect = ((new Date(Date.parse(data.lectureTime.replace(/-/g, "/")))).getTime() / 1000 - timestamp) > 0 ? true : false;
         console.log(data)
         that.setData({
             jzData:data,
@@ -54,6 +56,15 @@ Page({
     let status = e.currentTarget.dataset.status;
     let index = e.currentTarget.dataset.index;
     let id = e.currentTarget.dataset.id;
+    let effect = e.currentTarget.dataset.effect;
+    console.log(9999, effect)
+    if (!effect){
+      wx.showToast({
+        title: '活动已失效',
+        icon: "none"
+      })
+      return
+    }
     if (status == 1) {
       wx.showToast({
         title: '已经报名了',

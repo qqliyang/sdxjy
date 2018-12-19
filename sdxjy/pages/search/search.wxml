@@ -27,7 +27,7 @@
                 <image hidden='{{!searchData.history||searchData.history.length==0}}' bindtap='delete' class='delete' src='/image/delete2.png'></image>
             </view>
             <view class='result-con'>
-                <view bindtap='setSearchVal' data-val='{{item.searchWord}}' class='search-result overflow1' wx:for='{{searchData.history}}'>{{item.searchWord}}</view>
+                <view hidden='{{item.searchWord==""}}' bindtap='setSearchVal' data-val='{{item.searchWord}}' class='search-result overflow1' wx:for='{{searchData.history}}'>{{item.searchWord}}</view>
             </view>
         </view>
     </view>

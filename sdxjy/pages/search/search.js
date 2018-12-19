@@ -39,6 +39,13 @@ Page({
   },
   startSearch:function(){
       var that = this;
+      if (that.data.contentDesc == '') {
+        wx.showToast({
+          title: '请输入关键字',
+          icon: 'none'
+        })
+        return
+      }
       this.setData({
          articleList:[],
          page:1,

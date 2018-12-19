@@ -152,7 +152,7 @@ Page({
       url: app.globalData.requestUrl + 'meetRecord/save',//这里是你图片上传的接口
       path: that.data.pics,//这里是选取的图片的地址数组
       formData: formData,//其他的参数
-    },false).then(function(res){
+    },true).then(function(res){
       that.taskPay(res);
     });
     that.setData({ 'tapTime': nowTime});

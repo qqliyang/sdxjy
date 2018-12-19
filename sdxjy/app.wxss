@@ -709,8 +709,12 @@ input{
   flex-flow:wrap;
 }
 .perview-image image{
-  width: 100rpx;
-  height: 100rpx;
+  width: calc(100% / 4);
+  height: 150rpx;
   margin-top:20rpx;
-  margin-right: 20rpx;
+  padding-right: 20rpx;
+  box-sizing: border-box;
+}
+.perview-image image:nth-child(4n){
+  padding-right: 0rpx;
 }

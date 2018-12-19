@@ -67,7 +67,7 @@
     <!--介绍区域-->
     <view class='center-con'>
         <view class='head-item flex'>
-            <view class='item-name'><text>{{TeacherBaseData.praiseCount}}</text>赞</view>
+            <view class='item-name'><text>{{TeacherBaseData.praiseCount}}</text>获赞</view>
             <view class='item-name'><text>{{TeacherBaseData.followCount}}</text>关注</view>
             <view class='item-name'><text>{{TeacherBaseData.meetsCount}}</text>人见过</view>
         </view>

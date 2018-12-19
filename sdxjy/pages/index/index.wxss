@@ -3,7 +3,7 @@
   background: #fff;
 }
 .top-head{
-  padding:27rpx 32rpx  20rpx 0rpx;
+  padding:10rpx 32rpx 10rpx 0rpx;
   background: #fff;
   border-bottom: 2rpx solid #eee;
 }
@@ -60,7 +60,7 @@
   flex-grow: 1;
 }
 .swiper-box{
-  height: 350rpx;
+  height: 420rpx;
 }
 .center-btn{
   width: 100%;
@@ -85,7 +85,7 @@
 .btn-item{
   flex-grow: 1;
   height: 100%;
-  padding: 28rpx 0;
+  padding: 20rpx 0;
   text-align: center;
 }
 .btnName{
@@ -100,7 +100,7 @@
 
 .notice-con{
   width: 100%;
-  height: 145rpx;
+  height: 120rpx;
   margin: 17rpx 0;
   background: #fff;
 }

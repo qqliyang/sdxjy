@@ -1,6 +1,7 @@
 //多张图片上传
 function uploadimg(data,isback) {
-  var that = this,
+  console.log(99999,data ,isback);
+   var that = this,
     i = data.i ? data.i : 0,//当前上传的哪张图片
     success = data.success ? data.success : 0,//上传成功的个数
     fail = data.fail ? data.fail : 0;//上传失败的个数
@@ -31,9 +32,9 @@ function uploadimg(data,isback) {
               let idData = JSON.parse(res.data);
               // 返回到上一页
               if (JSON.parse(res.data).resultCode == "0000") {
-                console.log('00000000', !isback)
+                console.log('00000000', isback)
                 //不是约聊直接返回
-                if (!isback) {
+                if (isback) {
                   resolve(idData.data.meetId)
                 }
                 else {

@@ -154,6 +154,7 @@ Page({
           let data = that.data.lecture;
           let hdArr1 = [];
           let hdArr2 = [];
+          
           for (let i in data) {
             data[i].isEffect = ((new Date(Date.parse(data[i].lectureTime.replace(/-/g, "/")))).getTime() / 1000 - timestamp)>0?true:false;
 
@@ -165,6 +166,7 @@ Page({
               hdArr2.push(data[i])
             }
           }
+          console.log(hdArr1)
           that.setData({
             lecture: data,
             hdArr1: hdArr1,

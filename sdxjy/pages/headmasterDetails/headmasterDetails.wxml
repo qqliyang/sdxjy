@@ -72,7 +72,7 @@
         <!--案例-->
          <view class='content-container' wx:if='{{indexs == 1}}'>
                <view class='bot-scroll'>
-                  <view data-id='{{item.contentId}}' bindtap='seeDetails' wx:for='{{exampleData}}' data-id='{{item.contentId}}' bindtap='seeDetails' class='bot-scroll-con flex'>
+                  <view data-id='{{item.contentId}}' bindtap='seeDetails' wx:for='{{exampleData}}' data-id='{{item.contentId}}'  class='bot-scroll-con flex'>
                             <view class='left'>
                                 <image src='{{item.cover}}'></image>
                                 <view class='tag'>{{item.contentType}}</view>
@@ -95,7 +95,7 @@
 
          <!--讲座-->
          <view class='content-container' wx:if='{{indexs == 2}}'>
-              <view data-id='{{item.lectureId}}'  class='jz-list' bindtap='seeJzDetails' wx:for='{{hdArr1}}'>
+              <view data-id='{{item.lectureId}}'  class='jz-list' bindtap='seeJzDetails'  wx:for='{{hdArr1}}'>
                   <view class='top-jz'>
                       <image src='{{item.mainImg}}'></image>
                       <view class='title overflow2'>{{item.lectureTitle}}</view>
@@ -123,7 +123,7 @@
                       <view class='date'>主讲人：{{item.customerName}}</view>
                       <view class='date'>时间：{{item.lectureTime}}</view>
                       <view class='address'>地点：{{item.locationName}}</view>
-                      <view bindtap='seeJzDetails' data-id='{{item.lectureId}}' class='btn has opacity'>查看详情</view>
+                      <view catchtap='seeJzDetails' data-id='{{item.lectureId}}' class='btn has opacity'>查看详情</view>
                   </view>
                   
               </view>

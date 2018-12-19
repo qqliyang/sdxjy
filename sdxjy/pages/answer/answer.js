@@ -11,7 +11,7 @@ Page({
     selindex:0,
     scroll:false,
     page:1,
-    pageSize:5,
+    pageSize:10,
     answerList:[],
     noMore:false,
     totalPage:'',
@@ -186,9 +186,17 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+      var that = thos;
       if (app.globalData.ask) {
         app.globalData.ask=false;
-        this.getTagList();
+        that.setData({
+          answerList:[],
+          page:1,
+          selindex:0,
+        },function(){
+          that.getTagList();
+        })
+       
       }
   },
 

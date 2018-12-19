@@ -14,6 +14,6 @@
               <image src='/image/share.png'></image>
               <view class='btnName'>分享</view>
           </button>
-          <view bindtap='startEnroll'  data-id='{{jzData.lectureId}}' data-status='{{jzData.myOrder}}' class='{{jzData.myOrder==1?"left-bm opacity has":"left-bm opacity"}}'>{{jzData.myOrder == 1?"已报名":"立即报名"}}</view>
+          <view data-effect='{{jzData.isEffect}}' bindtap='startEnroll'  data-id='{{jzData.lectureId}}' data-status='{{jzData.myOrder}}' class='{{jzData.myOrder==1 ||!jzData.isEffect?"left-bm opacity has":"left-bm opacity"}}'>{{!jzData.isEffect?"活动已失效":jzData.myOrder == 1?"已报名":"立即报名"}}</view>
     </view>
 </view>

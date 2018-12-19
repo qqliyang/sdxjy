@@ -12,8 +12,8 @@
         <view class='time'>{{article.createdTime}}</view>
 
         <view class='gz-con flex'>
-            <view class='headImg'><image src='{{article.cover}}'></image></view>
-            <view class='center'>
+            <view class='headImg' data-id='{{personMess.customerId}}' bindtap='seePersonPage'><image src='{{article.cover}}'></image></view>
+            <view class='center' data-id='{{personMess.customerId}}' bindtap='seePersonPage'>
                 <view class='name'>{{article.author}}</view>
                 <view class='work overflow2'>{{personMess.job}}</view>
             </view>

@@ -299,7 +299,7 @@ scroll-view.active{
 }
 
 .jz-list{
-  padding: 37rpx 0rpx 0;
+  padding: 37rpx 0rpx 30rpx;
   background: #fff;
   border-bottom: 20rpx solid #f9f9f9;
 }

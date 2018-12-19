@@ -46,6 +46,13 @@ Page({
       that.getPlList();
     })
   },
+  //到老师个人空间
+  seePersonPage: function (e) {
+    let id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '/pages/personPage/personPage?id=' + id,
+    })
+  },
   //对应类型文章数据
   getArticleListDetails: function () {
     var that = this;
